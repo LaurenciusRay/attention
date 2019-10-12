@@ -31,7 +31,7 @@
     <nav class="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark">
         <div class="container">
             <!-- LOGO -->
-            <a class="navbar-brand logo" href="index.html">
+            <a class="navbar-brand logo" href="">
                 <h1 class="logo-light">Attention</h1>
                 <h1 class="logo-dark">Attention</h1>
             </a>
