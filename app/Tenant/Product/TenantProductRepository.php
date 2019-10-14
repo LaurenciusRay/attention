@@ -1,6 +1,7 @@
 <?php
 
-namespace App\TenantProductRepository;
+namespace App\Tenant\Product;
+
 use App\Tenant\Product\TenantProduct;
 
 class TenantProductRepository{

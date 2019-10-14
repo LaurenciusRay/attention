@@ -1,6 +1,6 @@
 <?php
 
-namespace App\TenantOrderRepository;
+namespace App\TenantOrder;
 use App\TenantOrder\TenantOrder;
 
 class TenantOrderRepository{

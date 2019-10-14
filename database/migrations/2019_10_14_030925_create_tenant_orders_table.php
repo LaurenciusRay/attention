@@ -15,7 +15,7 @@ class CreateTenantOrdersTable extends Migration
     {
         Schema::create('tenant_orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('eodetail');
+            $table->integer('eodetail_id');
             $table->integer('tenantuser_id');
             $table->softDeletes();
             $table->timestamps();
