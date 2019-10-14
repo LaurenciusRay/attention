@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="card card-default">
+    <div class="card card-default mb-5">
         <div class="card-header">
             Create Events
         </div>
@@ -12,7 +12,6 @@
                     <label for=""></label>
                     <input type="text" id="">
                 </div>
-                
             </form>
         </div>
     </div>
