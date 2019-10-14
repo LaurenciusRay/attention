@@ -8,21 +8,21 @@
 
     <title>Attention</title>
     <!-- css -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-
+    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css" />
+    @yield('css')
     <!-- Font google -->
     <link href="https://fonts.googleapis.com/css?family=Leckerli+One&display=swap" rel="stylesheet">
     <!-- Swiper CSS -->
-    <link rel="stylesheet" href="css/swiper.min.css">
-
+    <link rel="stylesheet" href="{{ asset('css/swiper.min.css') }}">
+    
     <!-- Font Awesome Icon Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- normalize  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
     <!-- rating style  -->
-    <link rel="stylesheet" type="text/css" href="css/rating.css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/rating.css') }}" />
 </head>
 
 <body>
@@ -129,18 +129,19 @@
 
     </section>
     <!-- END FOOTER -->
-
+    
     <!-- javascript -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery.easing.min.js"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.easing.min.js') }}"></script>
 
     <!-- Swiper JS -->
-    <script src="js/swiper.min.js"></script>
+    <script src="{{ asset('js/swiper.min.js') }}"></script>
 
     <!-- Magnific Popup -->
-    <script src="js/appstyle.js"></script>
-    <script src="js/custom.js"></script>
+    <script src="{{ asset('js/appstyle.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
+    @yield('script')
 </body>
 
 </html>
