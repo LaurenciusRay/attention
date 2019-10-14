@@ -12,7 +12,9 @@
                     <label for=""></label>
                     <input type="text" id="">
                 </div>
+                
             </form>
         </div>
     </div>
 </div>
+@endsection

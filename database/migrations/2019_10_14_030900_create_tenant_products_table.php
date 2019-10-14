@@ -15,7 +15,7 @@ class CreateTenantProductsTable extends Migration
     {
         Schema::create('tenant_products', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('tenantuser_id');
+            $table->integer('tenant_user_id');
             $table->string('title');
             $table->string('image');
             $table->decimal('price');
