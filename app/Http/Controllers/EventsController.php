@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\events\CreateEventsRequest;
 use App\EventOrganizer\Detail\EoDetailRepository;
 use App\EventOrganizer\Detail\EoDetail;
 
+
 class EventsController extends Controller
 {
-    private $eventDetail;
     /**
      * Display a listing of the resource.
      *
@@ -35,10 +36,11 @@ class EventsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateEventsRequest $request)
     {
         $event = new EoDetailRepository();
         $event->storeEvent($request);
+        session()->flash('success', 'Event Created Successfully');
         return redirect(route('events.index'));
     }
 
