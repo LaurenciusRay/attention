@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('page.index');
 });
+
+Route::resource('events', 'EventsController');
