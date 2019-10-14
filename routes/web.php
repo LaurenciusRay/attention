@@ -16,3 +16,11 @@ Route::get('/', function () {
 });
 
 Route::resource('events', 'EventsController');
+
+Route::get('/loginEo', function () {
+    return view('page.loginEo');
+})->name('loginEo');
+
+Route::get('/loginTenant', function () {
+    return view('page.loginTenant');
+})->name('loginTenant');

@@ -43,7 +43,7 @@
                     <img class="img-responsive" src="image/loginevent.jpg" alt="">
                     <div class="overlay">
                         <h2>Login As Event</h2>
-                        <a class="info mb-3" href="#">Login</a>
+                        <a class="info mb-3" href="{{ route('loginEo') }}">Login</a>
                         <h3>Or</h3>
                         <a class="info mt-3" href="#">Register</a>
                     </div>
@@ -54,7 +54,7 @@
                     <img class="img-responsive" src="image/logintenant.jpg" alt="">
                     <div class="overlay">
                         <h2>Login As Tenant</h2>
-                        <a class="info mb-3" href="#">Login</a>
+                        <a class="info mb-3" href="{{ route('loginTenant') }}">Login</a>
                         <h3>Or</h3>
                         <a class="info mt-3" href="#">Register</a>
                     </div>
