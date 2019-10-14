@@ -10,12 +10,12 @@
     <!-- css -->
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css" />
-    @yield('css')
+
     <!-- Font google -->
     <link href="https://fonts.googleapis.com/css?family=Leckerli+One&display=swap" rel="stylesheet">
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="{{ asset('css/swiper.min.css') }}">
-    
+
     <!-- Font Awesome Icon Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- normalize  -->
@@ -23,6 +23,14 @@
 
     <!-- rating style  -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/rating.css') }}" />
+    <style>
+    .bg-home-4
+    {
+        padding-top: 0px;
+        margin-bottom: 60px;
+        margin-top: -29px;
+    }
+    </style>
 </head>
 
 <body>
@@ -63,6 +71,14 @@
         </div>
     </nav>
     <!-- Navbar End -->
+    
+    <!-- START HOME -->
+    <section class="bg-home-4" id="home">
+        <div class="home-bg-overlay">
+
+        </div>
+    </section>
+    <!-- END HOME -->
 
     @yield('content')
 
@@ -129,7 +145,7 @@
 
     </section>
     <!-- END FOOTER -->
-    
+
     <!-- javascript -->
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>

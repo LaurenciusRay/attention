@@ -17,7 +17,7 @@ class CreateEoUsersTable extends Migration
             $table->increments('id');
             $table->string('email');
             $table->string('password');
-            $table->string('title');
+            $table->string('name');
             $table->string('image_banner');
             $table->text('description');
             $table->timestamps();
