@@ -10,7 +10,7 @@
     <!-- css -->
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css" />
-
+    @yield('css_link')
     <!-- Font google -->
     <link href="https://fonts.googleapis.com/css?family=Leckerli+One&display=swap" rel="stylesheet">
     <!-- Swiper CSS -->
@@ -31,6 +31,7 @@
         margin-top: -29px;
     }
     </style>
+    @yield('css_script')
 </head>
 
 <body>
