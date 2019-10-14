@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\EventOrganizer\Detail\EoDetailRepository;
+use App\EventOrganizer\Detail\EoDetail;
 
 class EventsController extends Controller
 {
+    private $eventDetail;
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +16,7 @@ class EventsController extends Controller
      */
     public function index()
     {
-        return view('events.index');
+        return view('events.index')->with('event', EoDetail::all());
     }
 
     /**
@@ -34,7 +37,9 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $event = new EoDetailRepository();
+        $event->storeEvent($request);
+        return redirect(route('events.index'));
     }
 
     /**

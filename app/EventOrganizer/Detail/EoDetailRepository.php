@@ -7,10 +7,10 @@ use App\EventOrganizer\Detail\EoDetail;
 class EoDetailRepository{
     public function storeEvent($request)
     {
-        $event = Post::create([
+        $event = EoDetail::create([
             'title' => $request->title,
             'description' => $request->description,
-            'capcacity' => $request->capacity,
+            'capacity' => $request->capacity,
             'image' => $request->image,
         ]);
         return $event;

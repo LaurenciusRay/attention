@@ -27,7 +27,7 @@
                 </div>
                 <div class="form-group">
                     <label for="capacity"> Capacity </label>
-                    <input type="number" class="form-control" id="capacity" name="capacity" value="" min="1" max="200">
+                    <input type="number" class="form-control" id="capacity" name="capacity" min="1" max="200" step="1">
                 </div>
                 <div class="form-group">
                     <label for="image"> Image </label>
