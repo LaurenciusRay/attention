@@ -12,5 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('loginTenant');
+    return view('page.index');
 });
+
+Route::resource('events', 'EventsController');
