@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('page.index');
 });
 
 Route::resource('events', 'EventsController');
