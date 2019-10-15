@@ -15,4 +15,6 @@ Route::get('/', function () {
     return view('page.index');
 });
 
+Route::get('/tenant' , 'TenantController@index');
+
 Route::resource('events', 'EventsController');
