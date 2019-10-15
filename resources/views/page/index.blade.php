@@ -108,7 +108,7 @@
                         <h2>Login As Event</h2>
                         <a class="info mb-3" href="{{ route('loginEo') }}">Login</a>
                         <h3>Or</h3>
-                        <a class="info mt-3" href="#">Register</a>
+                        <a class="info mt-3" href="{{ route('registEo') }}">Register</a>
                     </div>
                 </div>
             </div>
@@ -119,7 +119,7 @@
                         <h2>Login As Tenant</h2>
                         <a class="info mb-3" href="{{ route('loginTenant') }}">Login</a>
                         <h3>Or</h3>
-                        <a class="info mt-3" href="#">Register</a>
+                        <a class="info mt-3" href="{{ route('registTenant') }}">Register</a>
                     </div>
                 </div>
             </div>

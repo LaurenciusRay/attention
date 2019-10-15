@@ -1,8 +1,9 @@
 <?php
 
 namespace App\EventOrganizer\User;
-use App\EventOrganizer\User\EoUser;
 
 class EoUserRepository{
-
+    public function getEoUserEmail($email){
+        return EoUsers::with([])->where('email', $email)->first();
+    }
 }

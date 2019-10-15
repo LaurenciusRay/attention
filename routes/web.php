@@ -18,9 +18,19 @@ Route::get('/', function () {
 Route::resource('events', 'EventsController');
 
 Route::get('/loginEo', function () {
-    return view('page.loginEo');
+    return view('page.frontend.login.loginEo');
 })->name('loginEo');
 
 Route::get('/loginTenant', function () {
-    return view('page.loginTenant');
+    return view('page.frontend.login.loginTenant');
 })->name('loginTenant');
+
+Route::get('/registEo', function (){
+    return view('page.frontend.register.registerEo');
+})->name('registEo');
+
+Route::post('/registEo', 'Frontend\Auth\Regist\RegisterEoController@create')->name('createUserEo');
+
+Route::get('/registTenant', function (){
+    return view('page.frontend.register.registerTenant');
+})->name('registTenant');
