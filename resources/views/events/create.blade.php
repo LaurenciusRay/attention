@@ -44,3 +44,19 @@
     </div>
 </div>
 @endsection
+@section('css_link')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+@endsection
+@section('script')
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        flatpickr('#start_date', {
+            enableTime: true,
+            enableSeconds: true
+        })
+        flatpickr('#end_date', {
+            enableTime: true,
+            enableSeconds: true
+        }) 
+    </script>
+@endsection
