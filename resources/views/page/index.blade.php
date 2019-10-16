@@ -46,7 +46,7 @@
                         <a href="{{ route('events.create') }}" class="nav-link">Create Event</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#counter" class="nav-link">Event List</a>
+                        <a href="{{ route('events.index') }}" class="nav-link">Event List</a>
                     </li>
                     <li class="nav-item">
                         <a href="#tenant" class="nav-link">Tenant List</a>
