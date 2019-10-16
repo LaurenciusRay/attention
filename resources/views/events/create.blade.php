@@ -16,7 +16,8 @@
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <textarea name="description" id="description" cols="5" rows="5" class="form-control"></textarea>
+                    <input type="hidden" id="description" name="description">
+                    <trix-editor input="description"></trix-editor>
                 </div>
                 <div class="form-group">
                     <label for="start_date"> Start Date </label>
@@ -43,4 +44,22 @@
         </div>
     </div>
 </div>
+@endsection
+@section('css_link')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.0/trix.css">
+@endsection
+@section('script')
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        flatpickr('#start_date', {
+            enableTime: true,
+            enableSeconds: true
+        })
+        flatpickr('#end_date', {
+            enableTime: true,
+            enableSeconds: true
+        }) 
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.0/trix.js"></script>
 @endsection
