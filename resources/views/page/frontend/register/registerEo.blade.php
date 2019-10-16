@@ -9,32 +9,56 @@
                 <h3>Event Organizer<br>Register</h3>
             </div>
             <div class="px-5 pb-5">
-                <form method="POST" action="{{ route('createUserEo') }} " enctype="multipart/form-data">
+                <form method="POST" action="{{ route('createEoUser') }} " enctype="multipart/form-data">
                     @csrf
                     <div class="form-group mt-3">
                         <label for="inputName">Name</label>
-                        <input id="inputName" name="name" type="text" class="form-control" placeholder="your name or organization name">
+                        <input id="inputName" name="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="your name or organization name">
+                        @if ($errors->has('name'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('name') }}</strong>
+                        </span>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label for="inputPhoto">Photo or Organization Logo</label>
                         <div class="custom-file">
-                            <input name="photo" type="file" class="custom-file-input" id="inputPhoto" required>
+                            <input name="photo" type="file" class="custom-file-input @error('photo') is-invalid @enderror" id="inputPhoto">
                             <label class="custom-file-label" for="inputPhoto">Choose file...</label>
-                            <div class="invalid-feedback">Example invalid custom file feedback</div>
+                            @if ($errors->has('photo'))
+                            <span class="help-block ">
+                                <strong>{{ $errors->first('photo') }}</strong>
+                            </span>
+                            @endif
                         </div>
                     </div>
 
                     <div class="form-group mt-3">
                         <label for="inputEmail">Email</label>
-                        <input id="inputEmail" name="email" type="email" class="form-control" placeholder="your email or organization email">
+                        <input id="inputEmail" name="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="your email or organization email">
+                        @if ($errors->has('email'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label for="inputPassword">Password</label>
-                        <input id="inputPassword" name="password" type="password" class="form-control" placeholder="password">
+                        <input id="inputPassword" name="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="password">
+                        @if ($errors->has('password'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label for="inputDescription">Description</label>
-                        <textarea id="inputDescription" name="description" class="form-control" rows="3" placeholder="description about you or your organization"></textarea>
+                        <textarea id="inputDescription" name="description" class="form-control @error('description') is-invalid @enderror" rows="3" placeholder="description about you or your organization"></textarea>
+                        @if ($errors->has('description'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('description') }}</strong>
+                        </span>
+                        @endif
                     </div>
                     <button type="submit" class="btn btn-primary w-100 mt-1">Save</button>
                 </form>
