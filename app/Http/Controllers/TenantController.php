@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 class TenantController extends Controller
 {
   public function index(){
-		$data = TenantUser::all();
-  	return view('tenant.view-tenant', compact('data'));
+		// $data = TenantUser::all();
+    // return view('tenant.view-tenant', compact('data'));
+    return view('tenant.view-tenant')->with('data', TenantUser::all());
+    
   }
 }

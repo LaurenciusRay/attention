@@ -1,8 +1,13 @@
+/* #tenant-search{
+  
+} */
+
 #container{
   width: 1200px;
   columns: 4;
   column-gap:12px;
 }
+
 #container .box{
 width: 100%;
 margin: 0 0 12px;
@@ -43,6 +48,18 @@ text-align: center;
   opacity: 0.9;
   color: white;
 }
+
+#tenant-category {
+  transition: .5s ease;
+  opacity: 1;
+  position: absolute;
+  top: 9%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: left;
+  }
+
 .tenant-brackets:hover #tenant-image {
 box-shadow: 3px 3px 5px 3px black;
 opacity: 0.7;
@@ -50,6 +67,11 @@ opacity: 0.7;
 
 .tenant-brackets:hover .tenant-middle {
 opacity: 0.9  ;
+}
+
+#tenant-category{
+  color: white;
+  background-color: rgb(216, 85, 76);
 }
 
 #tenant-btn {
@@ -69,19 +91,19 @@ padding: 8px 16px;
     box-sizing: border-box;
     padding: 20px 20px 20px 0;
   }
-}
-@media(max-width: 768px)
-{
-  #container
-  {
-    columns: 3;
-    width: calc(100% - 40px);
-    box-sizing: border-box;
-    padding: 20px 20px 20px 0;
   }
-}
-@media(max-width: 540px)
-{
+  @media(max-width: 768px)
+  {
+    #container
+    {
+      columns: 3;
+      width: calc(100% - 40px);
+      box-sizing: border-box;
+      padding: 20px 20px 20px 0;
+    }
+  }
+  @media(max-width: 540px)
+  {
   #container
   {
     columns: 2;

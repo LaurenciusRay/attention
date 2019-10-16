@@ -18,6 +18,7 @@ class CreateTenantUsersTable extends Migration
             $table->string('email');
             $table->string('password');
             $table->string('name');
+            $table->string('category');
             $table->string('image_banner');
             $table->text('description');
             $table->timestamps();
