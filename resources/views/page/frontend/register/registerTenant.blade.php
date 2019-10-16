@@ -9,33 +9,58 @@
                 <h3>Tenant<br>Register</h3>
             </div>
             <div class="px-5 pb-5">
-                <form action="">
+                <form method="POST" action="{{ route('regist.tenant-user') }} " enctype="multipart/form-data">
+                    @csrf
                     <div class="form-group mt-3">
                         <label for="inputName">Name</label>
-                        <input id="inputName" type="text" class="form-control" placeholder="your name or organization name">
+                        <input id="inputName" name="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="your name or organization name">
+                        @if ($errors->has('name'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('name') }}</strong>
+                        </span>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label for="inputPhoto">Photo or Organization Logo</label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="inputPhoto" required>
+                            <input name="photo" type="file" class="custom-file-input @error('photo') is-invalid @enderror" id="inputPhoto">
                             <label class="custom-file-label" for="inputPhoto">Choose file...</label>
-                            <div class="invalid-feedback">Example invalid custom file feedback</div>
+                            @if ($errors->has('photo'))
+                            <span class="help-block ">
+                                <strong>{{ $errors->first('photo') }}</strong>
+                            </span>
+                            @endif
                         </div>
                     </div>
 
                     <div class="form-group mt-3">
                         <label for="inputEmail">Email</label>
-                        <input id="inputEmail" type="email" class="form-control" placeholder="your email or organization email">
+                        <input name="email" id="inputEmail" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="your email or organization email">
+                        @if ($errors->has('email'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label for="inputPassword">Password</label>
-                        <input id="inputPassword" type="password" class="form-control" placeholder="password">
+                        <input name="password" id="inputPassword" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="password">
+                        @if ($errors->has('password'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label for="inputDescription">Description</label>
-                        <textarea id="inputDescription" class="form-control" rows="3" placeholder="description about you or your organization"></textarea>
+                        <textarea name="description" id="inputDescription" class="form-control @error('description') is-invalid @enderror" rows="3" placeholder="description about you or your organization"></textarea>
+                        @if ($errors->has('description'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('description') }}</strong>
+                        </span>
+                        @endif
                     </div>
-                    <button class="btn btn-primary w-100 mt-1">Save</button>
+                    <button class="btn btn-primary w-100 mt-1" type="submmit">Save</button>
                 </form>
             </div>
         </div>
