@@ -29,9 +29,40 @@
                 </div>
             </div>
             <div class="row mb-3 d-flex justify-content-center">
-                <button class="btn-lg btn-success" href="">
+                <button class="btn-lg btn-success" onclick="handleRegister({{ $event->id }})">
                     Click here to register
                 </button>
+            </div>
+            <!-- MODAL FOR FORM PARTICIPANT -->
+            <div class="modal fade" id="registerParticipantModal" tabindex="-1" role="dialog" aria-labelledby="registerParticipantLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <form action="" method="post" id="registerParticipantForm">
+                        @csrf
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel"> Registrasi Event {{ $event->title }} </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="full_name"> Full Name </label>
+                                    <input type="text" class="form-control" id="full_name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email"> E-mail </label>
+                                    <input type="text" class="form-control" id="email">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                                <button type="submit" class="btn btn-danger">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
         <div class="col-md-4 text-center" >
@@ -88,4 +119,12 @@
 @endsection
 @section('css_link')
     <link href="{{asset('css/events/style.css')}}" rel="stylesheet" type="text/css" />
+@endsection
+@section('script')
+    <script>
+        function handleRegister(id)
+        {
+            $('#registerParticipantModal').modal('show');
+        }
+    </script>
 @endsection
