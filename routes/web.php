@@ -25,17 +25,17 @@ Route::get('/loginTenant', function () {
     return view('page.frontend.login.loginTenant');
 })->name('loginTenant');
 
-Route::get('/registEo', function (){
+Route::get('/regist-eo', function (){
     return view('page.frontend.register.registerEo');
 })->name('registEo');
 
-Route::post('/registEo', 'Frontend\Auth\Regist\RegisterEoController@create')->name('createUserEo');
+Route::group(['namespace'  => 'Frontend\Auth\Regist'], function () {
+    Route::post('/regist-eo', 'EoRegistController@registEo')->name('createEoUser');
+});
 
 Route::get('/registTenant', function (){
     return view('page.frontend.register.registerTenant');
 })->name('registTenant');
-
-Route::post('loginEo','Frontend\Auth\Login\EoLoginController@login')->name('masuk');
 
 Auth::routes();
 
