@@ -17,7 +17,7 @@ class EoUserRepository
                 'photo' => 'required|image|mimes:jpeg,bmp,png',
                 'description' => 'required',
                 'email' => 'required|unique:eo_users',
-                'password' => 'required',
+                'password' => 'required|min:8',
             ],
             [
                 'name.required' => "your name or organization's name is required",
