@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class TenantUserRepository{
-    public function createEoUser(Request $request)
+    public function createTenantUser(Request $request)
     {
         $request->validate(
             [
