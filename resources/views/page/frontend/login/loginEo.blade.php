@@ -9,7 +9,7 @@
                 <h3>Event Organizer<br>Login</h3>
             </div>
             <div class="px-5 pb-5">
-                <form action="">
+                <form method="POST" action="{{ route('masuk') }}">
                     <div class="form-group mt-3">
                         <label for="email">Email</label>
                         <input type="email" class="form-control" placeholder="your email">
@@ -18,7 +18,7 @@
                         <label for="password">Password</label>
                         <input type="password" class="form-control" placeholder="your password">
                     </div>
-                    <button class="btn btn-primary w-100 mt-1">Login</button>
+                    <button type="submit" class="btn btn-primary w-100 mt-1">Login</button>
                 </form>
             </div>
         </div>

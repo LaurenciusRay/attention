@@ -34,3 +34,9 @@ Route::post('/registEo', 'Frontend\Auth\Regist\RegisterEoController@create')->na
 Route::get('/registTenant', function (){
     return view('page.frontend.register.registerTenant');
 })->name('registTenant');
+
+Route::post('loginEo','Frontend\Auth\Login\EoLoginController@login')->name('masuk');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
