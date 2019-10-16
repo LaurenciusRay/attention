@@ -38,8 +38,8 @@ class EventsController extends Controller
      */
     public function store(CreateEventsRequest $request)
     {
-        $event = new EoDetailRepository();
-        $event->storeEvent($request);
+        $eventRepo = new EoDetailRepository();
+        $eventRepo->storeEvent($request);
         session()->flash('success', 'Event Created Successfully');
         return redirect(route('events.index'));
     }
@@ -52,7 +52,9 @@ class EventsController extends Controller
      */
     public function show(Eodetail $event)
     {
-        return view('events.show')->with('event', $event);
+        $eventRepo = new EoDetailRepository();
+        $daysLeft = $eventRepo->DaysLeftEvent($event);
+        return view('events.show')->with('event', $event)->with('daysLeft' , $daysLeft);
     }
 
     /**
