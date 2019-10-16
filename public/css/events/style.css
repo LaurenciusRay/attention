@@ -16,3 +16,26 @@
     top: 0;
     transform: translateX(-50%);
 }
+
+#profile_cardEo .card
+{
+    background:#fff;
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
+    border-radius:10px;
+}
+
+#profile_cardEo .card .img
+{
+    width:120px;
+    height:120px;
+    margin:0 auto;
+    margin-top: 20px;
+    border-radius:50%;
+    overflow:hidden;
+}
+
+#profile_cardEo .card .box .img img
+{
+    width:100%;
+    height:100%;
+}

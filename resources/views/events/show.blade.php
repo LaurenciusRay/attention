@@ -34,11 +34,21 @@
                 </button>
             </div>
         </div>
-        <div class="col-md-3 text-center">
-            <div class="row mb-1">
-                <div class="col">
-                    
-                    <p>About EO</p>
+        <div class="col-md-3" >
+            <div class="row mb-1 d-flex justify-align-center">
+                <div id="profile_cardEo" class="col">
+                    <!-- Card Profile -->
+                    <div class="card" style="width: 18rem;">
+                        <div class="img">
+                            <img src="{{ Gravatar::src('raymondantonio587@gmail.com') }}" class="card-img-top" alt="...">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                    <!-- End Card Profile -->
                 </div>
             </div>
             <div class="row">
