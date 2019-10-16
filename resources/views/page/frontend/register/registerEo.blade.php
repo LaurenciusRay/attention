@@ -9,7 +9,7 @@
                 <h3>Event Organizer<br>Register</h3>
             </div>
             <div class="px-5 pb-5">
-                <form method="POST" action="{{ route('createEoUser') }} " enctype="multipart/form-data">
+                <form method="POST" action="{{ route('regist.eo-user') }} " enctype="multipart/form-data">
                     @csrf
                     <div class="form-group mt-3">
                         <label for="inputName">Name</label>

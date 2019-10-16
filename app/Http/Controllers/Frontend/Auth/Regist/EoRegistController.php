@@ -15,10 +15,15 @@ class EoRegistController extends Controller
         $this->eoUserRepository = $eoUserRepository;
     }
 
+    public function formRegistEo(){
+        return view('page.frontend.register.registerEo');
+    }
+    
     public function registEo(Request $request){
         $this->eoUserRepository->createEoUser($request);
         
-        return view ('page.frontend.login.loginEo');
+        return redirect()->route('login.eo-user');
     }
-
+    
+    
 }
