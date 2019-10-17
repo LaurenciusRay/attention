@@ -19,7 +19,6 @@ class TenantSeeder extends Seeder
  
     	for($i = 1; $i <= 32; $i++){
  
-    	      // insert data ke table pegawai menggunakan Faker
     		DB::table('tenant_users')->insert([
     			'email' => $faker->freeEmail,
     			'password' => $faker->password,

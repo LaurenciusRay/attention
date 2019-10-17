@@ -60,7 +60,8 @@
           <h5>{{$datas->name}}</h5>
           </tr>
           <!-- <p>INI SHORT DESKRIPSI</p> -->
-          <button id="tenant-btn" class="btn" type="button">Detail</button>
+          <!-- <button id="tenant-btn" class="btn" type="button">Detail</button> -->
+          <a id="tenant-btn" href="/tenant/{{$datas->id}}" class="btn btn-sm" type="sumbit">Detail</a>
         </div>
       </div> 
     </div>
