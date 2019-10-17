@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\tenants\CreateTenantDetail;
 use Illuminate\Http\Request;
 use App\Tenant\User\TenantUser;
 use App\Tenant\Product\TenantProduct;
@@ -35,9 +36,12 @@ class TenantController extends Controller{
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateTenantDetail $request)
     {
-        
+			$productRepo = new TenantProductRepository;
+			$productRepo->storeTenant($request);
+			session()->flash('Successfully add product!');
+			return redirect(round('tenants.create'));
     }
 
     /**
