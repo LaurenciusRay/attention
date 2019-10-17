@@ -23,6 +23,7 @@
 
     <!-- rating style  -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/rating.css') }}" />
+    
     <style>
     .bg-home-4
     {
