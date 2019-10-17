@@ -23,10 +23,10 @@
         <div class="row">
             <div class="col-md-8 mb-4">
                 <div class="row mb-3 d-flex justify-content-end">
-                    <a href="" class="text-info"> <h5> About Author </h5></a>
+                    <h6 class="text-danger"> {{ $daysLeft }} </h6>
                 </div>
                 <div class="row mb-2">
-                    <div class="card px-2">
+                    <div class="card px-3">
                         <p> {!! $event->description !!} </p>
                     </div>
                 </div>
@@ -94,40 +94,18 @@
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title">Event Organizer</h5>
+                                <a href="" class="text-info">  about Author </a>
                             </div>
                         </div>
                         <!-- End Card Profile -->
                     </div>
                 </div>
                 <div class="row mb-5">
-                    <div class="col d-flex justify-content-center profile_cardEo">
+                <div class="col d-flex justify-content-center profile_cardEo">
                         <div class="card" style="width: 18rem;">
-                            <div class="card-title">
-                                <h5> <strong class="text-secondary"> Capacity </strong> </h5>
-                            </div>
                             <div class="card-body">
-                                <h4 class="text-info"> 20 Left </h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-5">
-                    <div class="col d-flex justify-content-center profile_cardEo">
-                        <div class="card bg-danger" style="width: 18rem;">
-                            <div class="card-body">
-                                <h4 class="text-light"> {{ $daysLeft }} </h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-5">
-                <div class="col  d-flex justify-content-center profile_cardEo">
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-title">
                                 <h5> <strong class="text-secondary"> Address </strong> </h5>
-                            </div>
-                            <div class="card-body">
-                            <p> <strong>  Jl. Kh Ahmad Dahlan Blok L2 no.12, Jakarta Selatan </strong> </p>
+                                <p> <strong>  Jl. Kh Ahmad Dahlan Blok L2 no.12, Jakarta Selatan </strong> </p>
                             </div>
                         </div>
                     </div>
