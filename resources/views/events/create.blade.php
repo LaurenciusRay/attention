@@ -20,6 +20,10 @@
                     <trix-editor input="description"></trix-editor>
                 </div>
                 <div class="form-group">
+                    <label for="event_categories_id">Categories</label>
+                    
+                </div>
+                <div class="form-group">
                     <label for="start_date"> Start Date </label>
                     <input type="text" class="form-control" id="start_date" name="start_date" value="">
                 </div>
@@ -32,8 +36,13 @@
                     <input type="number" class="form-control" id="capacity" name="capacity" min="1" max="200" step="1">
                 </div>
                 <div class="form-group">
-                    <label for="image"> Image </label>
-                    <input type="file" class="form-control" id="image" name="image">
+                    <label for="image">
+                        <span class="btn btn-info">Add Image</span>
+                        <input type="file" id="image" style="display:none">
+                    </label>
+                </div>
+                <div class="form-group">
+                    <img src="" id="event-img-tag" width="200px" />
                 </div>
                 <div class="form-group text-center">
                     <button type="submit" class="btn btn-success">
@@ -48,9 +57,27 @@
 @section('css_link')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.0/trix.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 @endsection
 @section('script')
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <!-- Show Image Preview -->
+    <script type="text/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#event-img-tag').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#image").change(function(){
+            readURL(this);
+        });
+    </script>
+    <!-- Flatpickr -->
     <script>
         flatpickr('#start_date', {
             enableTime: true,

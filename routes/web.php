@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::resource('events', 'EventsController');
+Route::resource('events/categories', '');
