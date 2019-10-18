@@ -20,10 +20,6 @@
                     <trix-editor input="description"></trix-editor>
                 </div>
                 <div class="form-group">
-                    <label for="event_categories_id">Categories</label>
-                    
-                </div>
-                <div class="form-group">
                     <label for="start_date"> Start Date </label>
                     <input type="text" class="form-control" id="start_date" name="start_date" value="">
                 </div>
@@ -38,7 +34,7 @@
                 <div class="form-group">
                     <label for="image">
                         <span class="btn btn-info">Add Image</span>
-                        <input type="file" id="image" style="display:none">
+                        <input type="file" id="image" name="image" style="display:none">
                     </label>
                 </div>
                 <div class="form-group">
