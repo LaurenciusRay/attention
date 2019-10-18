@@ -25,6 +25,6 @@ Route::namespace('Frontend\Auth\Regist')->name('regist.')->group(function () {
 });
 
 Route::namespace('Frontend\Auth\Login')->name('login.')->group(function () { 
-    Route::get('/login-eo', 'EoLoginController@formLoginEo')->name('eo-user-form');
+    Route::get('/login-eo', 'EoLoginController@formLoginEo')->name('eo-user');
     Route::get('/login-tenant', 'TenantLoginController@formLoginTenant')->name('tenant-user-form');
 });
