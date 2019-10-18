@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class TenantUserRepository{
-<<<<<<< HEAD
     public function createTenantUser(Request $request)
     {
         $request->validate(
@@ -38,7 +37,4 @@ class TenantUserRepository{
             'password' => Hash::make($request['password']),
         ]);
     }
-=======
-  // 
->>>>>>> aris
 }

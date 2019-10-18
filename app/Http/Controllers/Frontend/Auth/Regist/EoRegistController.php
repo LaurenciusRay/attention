@@ -22,7 +22,7 @@ class EoRegistController extends Controller
     public function registEo(Request $request){
         $this->eoUserRepository->createEoUser($request);
         
-        return redirect()->route('login.eo-user');
+        return redirect()->route('login.eo-user-form');
     }
     
     
