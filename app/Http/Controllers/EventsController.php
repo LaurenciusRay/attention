@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\events\CreateEventsRequest;
+use App\EventOrganizer\Detail\EoDetailRepository;
+use App\EventOrganizer\Detail\EoDetail;
+
 
 class EventsController extends Controller
 {
@@ -13,7 +17,7 @@ class EventsController extends Controller
      */
     public function index()
     {
-        return view('events.index');
+        return view('events.index')->with('event', EoDetail::all());
     }
 
     /**
@@ -32,9 +36,12 @@ class EventsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateEventsRequest $request)
     {
-        //
+        $eventRepo = new EoDetailRepository();
+        $eventRepo->storeEvent($request);
+        session()->flash('success', 'Event Created Successfully');
+        return redirect(route('events.index'));
     }
 
     /**
@@ -43,9 +50,11 @@ class EventsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Eodetail $event)
     {
-        //
+        $eventRepo = new EoDetailRepository();
+        $daysLeft = $eventRepo->DaysLeftEvent($event);
+        return view('events.show')->with('event', $event)->with('daysLeft' , $daysLeft);
     }
 
     /**

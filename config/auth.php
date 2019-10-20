@@ -46,6 +46,16 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'eouser' => [
+            'driver' => 'session',
+            'provider' => 'eousers',
+        ],
+
+        'tenantuser' => [
+            'driver' => 'session',
+            'provider' => 'tenantusers',
+        ],
     ],
 
     /*
@@ -69,6 +79,16 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+
+        'eousers' => [
+            'driver' => 'eloquent',
+            'model' => App\EventOrganizer\User\EoUser::class,
+        ],
+
+        'tenantusers' => [
+            'driver' => 'eloquent',
+            'model' => App\Tenant\User\TenantUser::class,
         ],
 
         // 'users' => [
@@ -95,6 +115,16 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'eousers' => [
+            'provider' => 'eousers',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'tenantusers' => [
+            'provider' => 'tenantusers',
             'table' => 'password_resets',
             'expire' => 60,
         ],

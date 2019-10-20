@@ -15,7 +15,7 @@ class CreateEoDetailsTable extends Migration
     {
         Schema::create('eo_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('eo_users_id');
+            $table->integer('eo_users_id')->nullable();
             $table->string('title');
             $table->string('image');
             $table->text('description');

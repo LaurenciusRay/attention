@@ -46,7 +46,7 @@
                         <a href="{{ route('events.create') }}" class="nav-link">Create Event</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#counter" class="nav-link">Event List</a>
+                        <a href="{{ route('events.index') }}" class="nav-link">Event List</a>
                     </li>
                     <li class="nav-item">
                         <a href="#tenant" class="nav-link">Tenant List</a>
@@ -106,9 +106,9 @@
                     <img class="img-responsive" src="image/loginevent.jpg" alt="">
                     <div class="overlay">
                         <h2>Login As Event</h2>
-                        <a class="info mb-3" href="#">Login</a>
+                        <a class="info mb-3" href="{{ route('login.eo-user-form') }}">Login</a>
                         <h3>Or</h3>
-                        <a class="info mt-3" href="#">Register</a>
+                        <a class="info mt-3" href="{{ route('regist.eo-user-form') }}">Register</a>
                     </div>
                 </div>
             </div>
@@ -117,9 +117,9 @@
                     <img class="img-responsive" src="image/logintenant.jpg" alt="">
                     <div class="overlay">
                         <h2>Login As Tenant</h2>
-                        <a class="info mb-3" href="#">Login</a>
+                        <a class="info mb-3" href="{{ route('login.tenant-user-form') }}">Login</a>
                         <h3>Or</h3>
-                        <a class="info mt-3" href="#">Register</a>
+                        <a class="info mt-3" href="{{ route('regist.tenant-user-form') }}">Register</a>
                     </div>
                 </div>
             </div>
