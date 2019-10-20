@@ -30,6 +30,11 @@ class TenantController extends Controller{
         return view('tenant.detail.view-detail');
     }
 
+    public function detail()
+    {
+        return view('tenants.d_tenants');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
