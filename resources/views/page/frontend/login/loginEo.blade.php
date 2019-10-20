@@ -9,16 +9,28 @@
                 <h3>Event Organizer<br>Login</h3>
             </div>
             <div class="px-5 pb-5">
-                <form method="POST" action="">
+                <form method="POST" action="{{ route('login.eo-user') }}">
+                    @csrf
                     <div class="form-group mt-3">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" placeholder="your email">
+                        <label for="inputEmail">Email</label>
+                        <input id="inputEmail" name="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="email">
+                        @if ($errors->has('email'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                        @endif
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" placeholder="your password">
+                        <label for="inputPassword">Password</label>
+                        <input id="inputPassword" name="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="password">
+                        @if ($errors->has('password'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                        @endif
                     </div>
                     <button type="submit" class="btn btn-primary w-100 mt-1">Login</button>
+                    @php dump($errors) @endphp
                 </form>
             </div>
         </div>

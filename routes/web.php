@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('page.index');
 });
 
+Auth::routes();
+
 Route::resource('events', 'EventsController');
 
 Route::namespace('Frontend\Auth\Regist')->name('regist.')->group(function () {
@@ -24,7 +26,18 @@ Route::namespace('Frontend\Auth\Regist')->name('regist.')->group(function () {
     Route::post('/regist-tenant', 'TenantRegistController@registTenant')->name('tenant-user');
 });
 
-Route::namespace('Frontend\Auth\Login')->name('login.')->group(function () { 
+Route::namespace('Frontend\Auth\Login')->name('login.')->group(function () {
     Route::get('/login-eo', 'EoLoginController@formLoginEo')->name('eo-user-form');
     Route::get('/login-tenant', 'TenantLoginController@formLoginTenant')->name('tenant-user-form');
+    Route::post('/login-eo', 'EoLoginController@login')->name('eo-user');
+    Route::middleware(['eo.user.auth'])->name('post.')->group(function(){
+
+        Route::get('/log', function () {
+            return view('page.frontend.eoLog');
+        })->name('log');
+    }); 
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
