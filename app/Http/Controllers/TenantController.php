@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\tenants\CreateTenantDetail;
 use Illuminate\Http\Request;
 use App\Tenant\User\TenantUser;
+use App\Tenant\User\TenantUserRepository;
 use App\Tenant\Product\TenantProduct;
 use App\Tenant\Product\TenantProductRepository;
 
@@ -30,9 +31,18 @@ class TenantController extends Controller{
         return view('tenant.detail.view-detail');
     }
 
-    public function detail()
+    // public function show(Eodetail $event)
+    // {
+    //     $eventRepo = new EoDetailRepository();
+    //     $daysLeft = $eventRepo->DaysLeftEvent($event);
+    //     return view('events.show')->with('event', $event)->with('daysLeft' , $daysLeft);
+    // }
+
+    
+
+    public function detail(TenantUser $id)
     {
-        return view('tenants.d_tenants');
+        return view('tenants.d_tenants')->with('data', $id);
     }
 
     /**

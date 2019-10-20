@@ -31,7 +31,7 @@ Route::namespace('Frontend\Auth\Login')->name('login.')->group(function () {
 });
 // tenant list routes
 Route::resource('tenants', 'TenantController');
-Route::get('detail_tenants', 'TenantController@detail');
+// Route::get('detail_tenants', 'TenantController@detail');
 
 // tenant detail route
 Route::get('/tenant/{id}','TenantController@detail');
