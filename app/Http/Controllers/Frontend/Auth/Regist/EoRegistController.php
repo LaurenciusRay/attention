@@ -2,28 +2,26 @@
 
 namespace App\Http\Controllers\Frontend\Auth\Regist;
 
-use App\EventOrganizer\User\EoUserRepository;
-use Illuminate\Http\Request;
+use App\EventOrganizer\User\EoRegistRepository;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Regist\RegistEoUser as ValidationRegistEo;
 
 class EoRegistController extends Controller
 {
-    private $eoUserRepository;
+    private $eoRegistRepository;
     
-    public function __construct(EoUserRepository $eoUserRepository)
+    public function __construct(EoRegistRepository $eoRegistRepository)
     {
-        $this->eoUserRepository = $eoUserRepository;
+        $this->eoRegistRepository = $eoRegistRepository;
     }
 
     public function formRegistEo(){
         return view('page.frontend.register.registerEo');
     }
     
-    public function registEo(Request $request){
-        $this->eoUserRepository->createEoUser($request);
+    public function registEo(ValidationRegistEo $request){
+        $this->eoRegistRepository->createEoUser($request);
         
         return redirect()->route('login.eo-user-form');
     }
-    
-    
 }

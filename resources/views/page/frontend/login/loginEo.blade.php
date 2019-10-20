@@ -13,7 +13,7 @@
                     @csrf
                     <div class="form-group mt-3">
                         <label for="inputEmail">Email</label>
-                        <input id="inputEmail" name="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="email">
+                        <input id="inputEmail" name="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="email" value="{{ old('email') }}">
                         @if ($errors->has('email'))
                         <span class="help-block">
                             <strong>{{ $errors->first('email') }}</strong>
