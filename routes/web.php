@@ -14,5 +14,9 @@
 Route::get('/', function () {
     return view('page.index');
 });
+Route::get('/admin', function () {
+  return view('admin.index');  
+});
 
 Route::resource('events', 'events\EventsController');
+Route::resource('events-categories', 'admin\CategoriesEventController');
