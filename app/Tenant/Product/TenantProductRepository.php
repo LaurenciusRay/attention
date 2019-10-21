@@ -8,7 +8,7 @@ class TenantProductRepository{
   public function storeTenant($request)
   {
     // Store Image file
-    $image = $request->image->store('tenants');
+    $image = $request->image->store('image/tenant');
     // Storing Post
     
     $product = TenantProduct::create([

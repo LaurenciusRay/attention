@@ -16,9 +16,12 @@ Route::get('/', function () {
 });
 
 // tenant list routes
-Route::resource('tenants', 'TenantController');
+Route::resource('tenants', 'TenantController', [
+    'only' => ['tenants', 'index']
+]);
 
-// tenant detail route
-Route::get('/tenant/{id}','TenantController@detail');
-
+// events route
 Route::resource('events', 'EventsController');
+
+// tenant products route
+Route::resource('products', 'ProductController');

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
-use App\Tenant\User\TenantUser;
+use App\Http\Requests\tenants\CreateTenantDetail;
+use App\Tenant\Product\TenantProduct;
+use App\Tenant\Product\TenantProductRepository;
 
-
-
-class TenantController extends Controller{
+class ProductController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +16,7 @@ class TenantController extends Controller{
      */
     public function index()
     {
-        return view('tenant.view-tenant')->with('data', TenantUser::all());
+      return view('tenant.detail.view-detail')->with('data', TenantProduct::all());
     }
 
     /**
@@ -24,10 +24,9 @@ class TenantController extends Controller{
      *
      * @return \Illuminate\Http\Response
      */
-
     public function create()
     {
-        //
+      return view('tenant.detail.create-detail');
     }
 
     /**
@@ -36,10 +35,12 @@ class TenantController extends Controller{
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    
-    public function store(Request $request)
+    public function store(CreateTenantDetail $request)
     {
-        //
+		  $productRepo = new TenantProductRepository;
+		  $productRepo->storeTenant($request);
+		  session()->flash('Successfully add product!');
+		  return redirect(route('products.create'));
     }
 
     /**
