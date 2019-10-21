@@ -9,14 +9,17 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="row d-flex justify-content-end">
-                        <button href="{{ asset('storage/events/photo-1521358522799-ad7a75d9e346.jpg') }}" class="btn btn-danger btn-sm" data-fancybox="images-preview" data-thumbs='{"autoStart":true}'>
+                        <button href="{{ asset('storage/events/image1.jpg') }}" class="btn btn-danger btn-sm" data-fancybox="images-preview" data-thumbs='{"autoStart":true}'>
                             View Gallery
                         </button>
                         <div style="display:none;">
-                            <a href="{{ asset('storage/events/photo-1506112573664-1a1b66d93ff3.jpg') }}" data-fancybox="images-preview"
+                            <a href="{{ asset('storage/events/image2.jpg') }}" data-fancybox="images-preview"
                             data-width="1500" data-height="1000"
                             ></a>
-                            <a href="{{ asset('storage/events/photo-1496304841270-2cb66cf766b4.jpg') }}" data-fancybox="images-preview"
+                            <a href="{{ asset('storage/events/image3.jpg') }}" data-fancybox="images-preview"
+                            data-width="1500" data-height="1000"
+                            ></a>
+                            <a href="{{ asset('storage/events/image4.jpg') }}" data-fancybox="images-preview"
                             data-width="1500" data-height="1000"
                             ></a>
                         </div>

@@ -19,6 +19,7 @@ class CreateEoDetailsTable extends Migration
             $table->string('title');
             $table->string('image');
             $table->text('description');
+            $table->integer('event_categories_id')->nullable();
             $table->timestamp('start_date')->nullable();
             $table->timestamp('end_date')->nullable();
             $table->integer('capacity');
