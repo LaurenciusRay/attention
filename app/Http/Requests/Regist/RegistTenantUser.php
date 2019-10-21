@@ -4,7 +4,7 @@ namespace App\Http\Requests\Regist;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegistEoUser extends FormRequest
+class RegistTenantUser extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -35,7 +35,7 @@ class RegistEoUser extends FormRequest
             ],
             'email' => [
                 'required',
-                'unique:eo_users',
+                'unique:tenant_users',
             ],
             'password' => [
                 'required',

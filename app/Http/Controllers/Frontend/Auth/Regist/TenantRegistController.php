@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Frontend\Auth\Regist;
 
 use App\Tenant\User\TenantRegistRepository;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Regist\RegistTenantUser as ValidationRegistTenant;
 
 class TenantRegistController extends Controller
 {
@@ -19,7 +19,7 @@ class TenantRegistController extends Controller
         return view('page.frontend.register.registerTenant');
     }
 
-    public function registTenant(Request $request){
+    public function registTenant(ValidationRegistTenant $request){
         $this->tenantRegistRepository->createTenantUser($request);
         
         return redirect()->route('login.tenant-user-form');
