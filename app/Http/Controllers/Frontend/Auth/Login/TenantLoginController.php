@@ -4,10 +4,25 @@ namespace App\Http\Controllers\Frontend\Auth\Login;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Login\LoginTenantUser as ValidationLoginTenant;
+use App\Tenant\User\TenantLoginRepository;
 
 class TenantLoginController extends Controller
 {
-    public function formLoginTenant(){
+    private $tenantLoginRepository;
+
+    public function __construct(TenantLoginRepository $tenantLoginRepository)
+    {
+        $this->tenantLoginRepository = $tenantLoginRepository;
+    }
+
+    public function formLoginTenant()
+    {
         return view('page.frontend.login.loginTenant');
+    }
+
+    public function login(ValidationLoginTenant $request)
+    {
+        return $this->tenantLoginRepository->checkTenantLogin($request);
     }
 }

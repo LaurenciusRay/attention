@@ -6,7 +6,8 @@ use App\Tenant\User\TenantUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class TenantRegistRepository{
+class TenantRegistRepository
+{
     public function createTenantUser(Request $request)
     {
         $photo = $request->file('photo');
