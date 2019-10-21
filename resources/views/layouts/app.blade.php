@@ -13,8 +13,13 @@
     @yield('css_link')
     <!-- Font google -->
     <link href="https://fonts.googleapis.com/css?family=Leckerli+One&display=swap" rel="stylesheet">
+    <!-- tenant -->
+    <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+    <!-- // -->
+    
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="{{ asset('css/swiper.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/tenants/style.css') }}">
 
     <!-- Font Awesome Icon Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -23,6 +28,7 @@
 
     <!-- rating style  -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/rating.css') }}" />
+    
     <style>
     .bg-home-4
     {
@@ -59,7 +65,7 @@
                         <a href="{{ route('events.index') }}" class="nav-link">Event List</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#tenant" class="nav-link">Tenant List</a>
+                        <a href="/tenant" class="nav-link">Tenant List</a>
                     </li>
                     <li class="nav-item">
                         <a href="#partners" class="nav-link">Partners</a>

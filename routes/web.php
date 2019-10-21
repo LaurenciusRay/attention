@@ -37,7 +37,9 @@ Route::namespace('Frontend\Auth\Login')->name('login.')->group(function () {
         })->name('log');
     }); 
 });
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// tenant list routes
+Route::resource('tenants', 'TenantController');
 
+// tenant detail route
+Route::get('/tenant/{id}','TenantController@detail');

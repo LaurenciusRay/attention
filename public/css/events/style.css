@@ -38,3 +38,27 @@
 {
     opacity: 0.5;
 }
+
+#header
+{
+    background-size: cover;
+    background-position: center;
+    margin-top: -60px;
+}
+#content
+{
+    background-color: rgb(245, 245, 245);
+}
+.layer
+{
+    background-color: rgba(34, 34, 31, 0.4);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.h-100
+{
+    padding-top: 300px;
+    padding-bottom: 50px;
+}

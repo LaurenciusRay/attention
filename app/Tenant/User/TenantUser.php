@@ -19,5 +19,6 @@ class TenantUser extends Authenticatable
         'image_banner',
         'password',
         'description',
+        'category',
     ];
 }
