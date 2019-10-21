@@ -19,4 +19,4 @@ Route::get('/admin', function () {
 });
 
 Route::resource('events', 'events\EventsController');
-Route::resource('events-categories', 'admin\CategoriesEventController');
+Route::resource('events-categories', 'admin\EoDetailCategoryController');

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class CategoriesEventController extends Controller
+class EoDetailCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class CategoriesEventController extends Controller
      */
     public function index()
     {
-        return view('admin.category.index');
+        return view('admin.EoDetailCategory.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class CategoriesEventController extends Controller
      */
     public function create()
     {
-        return view('admin.category.create');
+        //
     }
 
     /**
