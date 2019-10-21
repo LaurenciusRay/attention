@@ -16,7 +16,7 @@
     <!-- tenant -->
     <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
     <!-- // -->
-    
+
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="{{ asset('css/swiper.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/tenants/style.css') }}">
@@ -28,14 +28,14 @@
 
     <!-- rating style  -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/rating.css') }}" />
-    
+
+
     <style>
-    .bg-home-4
-    {
-        padding-top: 0px;
-        margin-bottom: 60px;
-        margin-top: -29px;
-    }
+        .bg-home-4 {
+            padding-top: 0px;
+            margin-bottom: 60px;
+            margin-top: -29px;
+        }
     </style>
     @yield('css_script')
 </head>
@@ -45,7 +45,7 @@
     <nav class="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark">
         <div class="container">
             <!-- LOGO -->
-            <a class="navbar-brand logo" href="">
+            <a class="navbar-brand logo" href="/">
                 <h1 class="logo-light">Attention</h1>
                 <h1 class="logo-dark">Attention</h1>
             </a>
@@ -56,7 +56,7 @@
                 <ul class="navbar-nav ml-auto navbar-center" id="mySidenav">
                     @yield('search_bar')
                     <li class="nav-item active">
-                        <a href="#home" class="nav-link">Home</a>
+                        <a href="/" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('events.create') }}" class="nav-link">Create Event</a>
@@ -65,7 +65,7 @@
                         <a href="{{ route('events.index') }}" class="nav-link">Event List</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/tenant" class="nav-link">Tenant List</a>
+                        <a href="/tenants" class="nav-link">Tenant List</a>
                     </li>
                     <li class="nav-item">
                         <a href="#partners" class="nav-link">Partners</a>
@@ -79,7 +79,7 @@
         </div>
     </nav>
     <!-- Navbar End -->
-    
+
     <!-- START HOME -->
     <section class="bg-home-4" id="home">
         <div class="home-bg-overlay">
@@ -87,17 +87,17 @@
         </div>
     </section>
     <!-- END HOME -->
-    
+
     <!-- Session -->
     @if(session()->has('success'))
-        <div class="alert alert-success">
-            {{ session()->get('success') }}
-        </div>
+    <div class="alert alert-success">
+        {{ session()->get('success') }}
+    </div>
     @endif
     @if(session()->has('error'))
-        <div class="alert alert-danger">
-            {{ session()->get('error') }}
-        </div>
+    <div class="alert alert-danger">
+        {{ session()->get('error') }}
+    </div>
     @endif
     <!-- EndSession -->
 
@@ -176,6 +176,34 @@
 
     <!-- Swiper JS -->
     <script src="{{ asset('js/swiper.min.js') }}"></script>
+
+    <!-- filter  -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $(".filter-button").click(function() {
+                var value = $(this).attr('data-filter');
+
+                if (value == "all") {
+                    //$('.filter').removeClass('hidden');
+                    $('.filter').show('1000');
+                } else {
+                    //            $('.filter[filter-item="'+value+'"]').removeClass('hidden');
+                    //            $(".filter").not('.filter[filter-item="'+value+'"]').addClass('hidden');
+                    $(".filter").not('.' + value).hide('3000');
+                    $('.filter').filter('.' + value).show('3000');
+
+                }
+            });
+
+            if ($(".filter-button").removeClass("active")) {
+                $(this).removeClass("active");
+            }
+            $(this).addClass("active");
+
+        });
+    </script>
+
 
     <!-- Magnific Popup -->
     <script src="{{ asset('js/appstyle.js') }}"></script>
