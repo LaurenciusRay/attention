@@ -15,5 +15,4 @@ Route::get('/', function () {
     return view('page.index');
 });
 
-Route::resource('events', 'EventsController');
-Route::resource('events/categories', 'Events/CategoriesController');
+Route::resource('events', 'events\EventsController');

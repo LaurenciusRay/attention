@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\events;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\events\CreateEventsRequest;
 use App\EventOrganizer\Detail\EoDetailRepository;
 use App\EventOrganizer\Detail\EoDetail;
-
+use App\Http\Controllers\Controller;
 
 class EventsController extends Controller
 {
