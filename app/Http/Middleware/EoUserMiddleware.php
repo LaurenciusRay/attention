@@ -16,8 +16,14 @@ class EoUserMiddleware
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if ($guard == "eouser" && Auth::guard($guard)->check()) {
-            return redirect()->route('regist.eo-user');
+        if (Auth::guard($guard)->check()) {
+            if($guard == "eouser"){
+                //user was authenticated with admin guard.
+                return redirect()->route('log');
+            } else {
+                //default guard.
+                return redirect()->route('login.eo-user-form');
+            }
         }
 
         return $next($request);

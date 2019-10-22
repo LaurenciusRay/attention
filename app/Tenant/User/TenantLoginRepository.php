@@ -10,7 +10,7 @@ class TenantLoginRepository
     {
         if (Auth::guard('tenantuser')->attempt($request->only('email', 'password'), $request->filled('remember'))) {
 
-            return redirect()->route('login.post.log');
+            return redirect()->route('tenant.logged-in');
         }
 
         return $this->loginFailed();
@@ -23,5 +23,16 @@ class TenantLoginRepository
                 'password' => 'wrong email or password combination',
                 'email' => 'wrong email or password combination'
             ]);
+    }
+
+    public function formLoginTenant()
+    {
+        $request = view('page.frontend.login.loginTenant');
+        
+        if (Auth::guard('eouser')->check() || Auth::guard('tenantuser')->check()) {
+            return redirect()->back();
+        }
+
+        return $request;
     }
 }

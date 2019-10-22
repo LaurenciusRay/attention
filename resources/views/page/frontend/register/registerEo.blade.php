@@ -66,7 +66,6 @@
         </div>
     </div>
 </div>
-<?php dump($errors) ?>
 @endsection
 
 @section('script')

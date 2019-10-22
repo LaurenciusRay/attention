@@ -15,9 +15,9 @@ class EoLoginController extends Controller
         $this->eoLoginRepository = $eoLoginRepository;
     }
 
-    public function formLoginEo()
+    public function formLogin()
     {
-        return view('page.frontend.login.loginEo');
+        return $this->eoLoginRepository->formLoginEo();
     }
 
     public function login(ValidationLoginEo $request)

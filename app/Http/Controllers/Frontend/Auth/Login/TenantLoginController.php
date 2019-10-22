@@ -16,9 +16,9 @@ class TenantLoginController extends Controller
         $this->tenantLoginRepository = $tenantLoginRepository;
     }
 
-    public function formLoginTenant()
+    public function formLogin()
     {
-        return view('page.frontend.login.loginTenant');
+        return $this->tenantLoginRepository->formLoginTenant();
     }
 
     public function login(ValidationLoginTenant $request)

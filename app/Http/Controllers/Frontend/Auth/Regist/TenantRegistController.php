@@ -9,19 +9,21 @@ use App\Http\Requests\Regist\RegistTenantUser as ValidationRegistTenant;
 class TenantRegistController extends Controller
 {
     private $tenantRegistRepository;
-    
+
     public function __construct(TenantRegistRepository $tenantRegistRepository)
     {
         $this->tenantRegistRepository = $tenantRegistRepository;
     }
-    
-    public function formRegistTenant(){
-        return view('page.frontend.register.registerTenant');
+
+    public function formRegist()
+    {
+        return $this->tenantRegistRepository->formRegistTenant();
     }
 
-    public function registTenant(ValidationRegistTenant $request){
+    public function registTenant(ValidationRegistTenant $request)
+    {
         $this->tenantRegistRepository->createTenantUser($request);
-        
+
         return redirect()->route('login.tenant-user-form');
     }
 }

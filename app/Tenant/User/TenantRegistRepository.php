@@ -2,6 +2,7 @@
 
 namespace App\Tenant\User;
 
+use Auth;
 use App\Tenant\User\TenantUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -20,5 +21,16 @@ class TenantRegistRepository
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
+    }
+
+    public function formRegistTenant()
+    {
+        $request = view('page.frontend.register.registerTenant');
+
+        if (Auth::guard('eouser')->check() || Auth::guard('tenantuser')->check()) {
+            return redirect()->back();
+        }
+
+        return $request;
     }
 }
