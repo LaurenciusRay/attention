@@ -24,8 +24,17 @@
       <td><img style="width:100px" src="{{asset('storage/'.$datas->image)}}" alt="products image"></td>
       <td>{{$datas->price}}</td>
       <td>  
-        <a href="/products/{{$datas->id}}"><button class="btn btn-outline-info btn-sm">Edit</button></a> 
-        <button class="btn btn-outline-danger btn-sm"><a href="/products/{$datas->id}"></a> Delete</button>
+
+        <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#update_modal{{$datas->id}}">
+          Ubah
+        </button>
+        @include('tenant.detail.update-detail')
+
+        <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#hapus_modal">
+          Delete
+        </button>
+        @include('tenant.detail.delete-detail')
+        
       </td>
       
     </tr>
@@ -33,7 +42,6 @@
   @endforeach
 
 </table>
-
 
 </div>
 

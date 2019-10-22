@@ -3,7 +3,7 @@
 
 @section('content')
   <!-- tenant content -->
-  <div class="container mb-5">
+  <!-- <div class="container mb-5">
     <form>
       <div class="form-row">
         <div class="col-12">
@@ -11,7 +11,7 @@
         </div>
       </div>
     </form>
-  </div>
+  </div> -->
   <!--  -->
   <!-- <div class="container my-5">
     <br><br>

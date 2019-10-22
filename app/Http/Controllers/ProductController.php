@@ -38,7 +38,7 @@ class ProductController extends Controller
     public function store(CreateTenantDetail $request)
     {
 		  $productRepo = new TenantProductRepository;
-		  $productRepo->storeTenant($request);
+		  $productRepo->storeProducts($request);
 		  session()->flash('Successfully add product!');
 		  return redirect(route('products.create'));
     }
@@ -62,7 +62,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('tenant.detail.view-detail')->with('data', TenantProduct::all());
     }
 
     /**
@@ -72,9 +72,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateTenantDetail $request, TenantProduct $products)
     {
-        //
+        $productRepo = new TenantProductRepository;
+		$productRepo->updateProducts($request);
     }
 
     /**
@@ -83,8 +84,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($request)
     {
-        //
+        $destroyRepo = new TenantProductRepository;
+        $destroyRepo->destroyProducts($request);
+        
+        return redirect('products');
     }
 }

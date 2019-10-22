@@ -3,9 +3,11 @@
 namespace App\Tenant\Product;
 // use Illuminate\Support\Facades\Storage;
 use App\Tenant\Product\TenantProduct;
+use Illuminate\Support\Facades\Request;
 
 class TenantProductRepository{
-  public function storeTenant($request)
+
+  public function storeProducts($request)
   {
     // Store Image file
     $image = $request->image->store('image/tenant');
@@ -19,4 +21,16 @@ class TenantProductRepository{
     ]);
     return $product;
   }
+
+  public function destroyProducts($id)
+  {
+    $data = TenantProduct::find($id);
+    $data->delete();
+  }
+
+  public function updateProducts($as, $id)
+  {
+
+  }
+
 }
