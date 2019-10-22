@@ -28,7 +28,7 @@ class TenantProductRepository{
     $data->delete();
   }
 
-  public function updateProducts($as, $id)
+  public function updateProducts($request, $id)
   {
 
   }

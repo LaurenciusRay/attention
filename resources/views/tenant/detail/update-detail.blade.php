@@ -13,22 +13,28 @@
     {{method_field('PUT')}}
 
     <table>
+    <div class="form-group row">
+        <label class="col-sm-12 col-form-label">Tenant_id</label>
+        <div class="col-sm-12">
+          <input type="number" id="tenant_users_id" name="tenant_users_id" class="form-control">
+        </div>
+      </div>
       <div class="form-group row">
         <label class="col-sm-12 col-form-label">Title</label>
         <div class="col-sm-12">
-          <input type="text" class="form-control" name="title" datas="{{$datas->title}}" placeholder="">
+          <input type="text" class="form-control" name="title" placeholder="">
         </div>
       </div>
       <div class="form-group row">
-        <label class="col-sm-12 col-form-label">TEMPAT LAHIR</label>
+        <label class="col-sm-12 col-form-label">Price</label>
         <div class="col-sm-12">
-          <input type="text" class="form-control" datas="{{$datas->image}}"  placeholder="" name="image">
+          <input type="number" class="form-control" placeholder="" name="price">
         </div>
       </div>
       <div class="form-group row">
-        <label class="col-sm-12 col-form-label">TEMPAT LAHIR</label>
+        <label class="col-sm-12 col-form-label">Image</label>
         <div class="col-sm-12">
-          <input type="text" class="form-control" datas="{{$datas->price}}"  placeholder="" name="price">
+          <input type="file" class="form-control" placeholder="" name="image">
         </div>
       </div>
     </table>

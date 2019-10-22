@@ -38,7 +38,8 @@ class ProductController extends Controller
     public function store(CreateTenantDetail $request)
     {
 		  $productRepo = new TenantProductRepository;
-		  $productRepo->storeProducts($request);
+      $productRepo->storeProducts($request);
+      
 		  session()->flash('Successfully add product!');
 		  return redirect(route('products.create'));
     }
@@ -72,11 +73,34 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CreateTenantDetail $request, TenantProduct $products)
-    {
-        $productRepo = new TenantProductRepository;
-		$productRepo->updateProducts($request);
-    }
+    public function update(Request $request, $id){
+
+      $data = TenantProduct::where('id', $id)->first();
+      $data->title = $request->title;
+      $data->tenant_users_id = $request->tenant_users_id;
+      $data->price = $request->price;
+
+      // cek
+      if ($request->file('image')== "") {
+          $data->image = $data->image;
+      }
+      else {
+          if ($request->hasFile('image')) {
+              // gambar sebelumnya di hapus dan di ganti baru
+          $file = 'tenants/detail/'.$data->image;
+          if (is_file($file)) {
+              unlink($file);
+          }
+          // 
+          $file = $request->file('image');
+          $filename = $file->getClientOriginalName();
+          $request->file('file')->move('tenants/detail/',$filename);
+          $data->file = $filename;
+      }
+  }
+      $data->save();
+      return redirect('products');
+  }
 
     /**
      * Remove the specified resource from storage.
