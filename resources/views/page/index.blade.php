@@ -49,7 +49,7 @@
                         <a href="{{ route('events.index') }}" class="nav-link">Event List</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#tenant" class="nav-link">Tenant List</a>
+                        <a href="{{ route('tenants.index') }}" class="nav-link">Tenant List</a>
                     </li>
                     <li class="nav-item">
                         <a href="#partners" class="nav-link">Partners</a>
@@ -348,7 +348,7 @@
                                                 <!-- end emoji wrapper  -->
                                             </div>
                                             <div class="item_overlay">
-                                                <a href="" class="shop_btn">Detail</a>
+                                                <a href="/detail_tenants" class="shop_btn">Detail</a>
                                             </div>
                                         </div>
                                     </div>
@@ -374,7 +374,7 @@
                                                 <!-- end emoji wrapper  -->
                                             </div>
                                             <div class="item_overlay">
-                                                <a href="" class="shop_btn">Detail</a>
+                                                <a href="/detail_tenants" class="shop_btn">Detail</a>
                                             </div>
                                         </div>
                                     </div>
@@ -426,7 +426,7 @@
                                                 <!-- end emoji wrapper  -->
                                             </div>
                                             <div class="item_overlay">
-                                                <a href="" class="shop_btn">Detail</a>
+                                                <a href="/detail_tenants" class="shop_btn">Detail</a>
                                             </div>
                                         </div>
                                     </div>
@@ -452,7 +452,7 @@
                                                 <!-- end emoji wrapper  -->
                                             </div>
                                             <div class="item_overlay">
-                                                <a href="" class="shop_btn">Detail</a>
+                                                <a href="/detail_tenants" class="shop_btn">Detail</a>
                                             </div>
                                         </div>
                                     </div>
@@ -478,7 +478,7 @@
                                                 <!-- end emoji wrapper  -->
                                             </div>
                                             <div class="item_overlay">
-                                                <a href="" class="shop_btn">Detail</a>
+                                                <a href="/detail_tenants" class="shop_btn">Detail</a>
                                             </div>
                                         </div>
                                     </div>

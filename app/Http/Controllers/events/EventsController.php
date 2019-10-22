@@ -30,7 +30,7 @@ class EventsController extends Controller
      */
     public function create()
     {
-        return view('events.create');
+        return view('events.create')->with('eoDetailCategory', EoDetailCategory::all());
     }
 
     public function createbooth(Eodetail $event)

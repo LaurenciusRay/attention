@@ -1,23 +1,5 @@
 @extends('layouts.app')
 @section('content')
-<!-- <div class="container">
-    <div class="row">
-        @foreach($event as $e)
-        <div class="col-sm-4">
-            <div class="card" style="width: 12rem;">
-                <div class="wrapper">
-                    <img class="card-img-top" src="{{asset('storage/'.$e->image)}}" alt="Card image cap" width="100%">
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">{{$e->title}}</h5>
-                    <p class="card-text">{!! $e->description !!}, {{ $e->start_date }}</p>
-                    <a href="{{ route('events.show', $e->id) }}" class="btn btn-primary">Link</a>
-                </div>
-            </div>
-        </div>
-        @endforeach
-    </div>
-</div> -->
 
 <!-- card event list  -->
 <div class="container">
@@ -27,10 +9,6 @@
             @foreach($category as $cat)
             <button type="button" class="filter-button" data-filter="{{$cat->id}}">{{$cat->name}}</button>
             @endforeach
-            <!-- <button type="button" class="filter-button" data-filter="food">Food</button>
-            <button type="button" class="filter-button" data-filter="fashion">Fashion</button>
-            <button type="button" class="filter-button" data-filter="sport">Sport</button>
-            <button type="button" class="filter-button" data-filter="technology">Technology</button> -->
         </div>
     </div>
 </div>

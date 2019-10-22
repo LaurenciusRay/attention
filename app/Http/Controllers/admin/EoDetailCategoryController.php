@@ -4,12 +4,18 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\events\CreateCategoriesRequest;
+use App\Http\Requests\events\UpdateCategoriesRequest;
 use App\EventOrganizer\Detail\Category\EoDetailCategory;
 use App\EventOrganizer\Detail\Category\EoDetailCategoryRepository;
 use App\Http\Controllers\Controller;
 
 class EoDetailCategoryController extends Controller
 {
+    private $eventCategoryRepo;
+    public function __construct(EoDetailCategoryRepository $eodetailcategoryrepository)
+    {
+        $this->eventCategoryRepo = $eodetailcategoryrepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +23,7 @@ class EoDetailCategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.EoDetailCategory.index');
+        return view('admin.EoDetailCategory.index')->with('eoDetailCategory', EoDetailCategory::all());
     }
 
     /**
@@ -38,8 +44,8 @@ class EoDetailCategoryController extends Controller
      */
     public function store(CreateCategoriesRequest $request)
     {
-        $eventCategoryRepo = new EoDetailCategoryRepository();
-        $eventCategoryRepo->storeCategory($request);
+        $this->eventCategoryRepo->storeCategory($request);
+        session()->flash('success', 'Category Created Successfully');
         return redirect(route('events-categories.index'));
     }
 
@@ -60,9 +66,9 @@ class EoDetailCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(EoDetailCategory $events_category)
     {
-        //
+        return view('admin.EoDetailCategory.create')->with('eoDetailCategory', $events_category);
     }
 
     /**
@@ -72,9 +78,11 @@ class EoDetailCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCategoriesRequest $request, EoDetailCategory $events_category)
     {
-        //
+        $this->eventCategoryRepo->updateCategory($request, $events_category);
+        session()->flash('success', 'Category Updated Successfully');
+        return redirect(route('events-categories.index'));
     }
 
     /**
