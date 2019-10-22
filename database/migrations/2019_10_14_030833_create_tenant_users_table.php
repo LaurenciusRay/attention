@@ -15,9 +15,10 @@ class CreateTenantUsersTable extends Migration
     {
         Schema::create('tenant_users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('password');
             $table->string('name');
+            $table->string('category')->nullable();
             $table->string('image_banner');
             $table->text('description');
             $table->timestamps();

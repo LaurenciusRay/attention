@@ -6,7 +6,8 @@ use App\EventOrganizer\Detail\EoDetail;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
-class EoDetailRepository{
+class EoDetailRepository
+{
     public function storeEvent($request)
     {
         // Store Image file

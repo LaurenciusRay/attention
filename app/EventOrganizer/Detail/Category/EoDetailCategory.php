@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class EoDetailCategory extends Model
 {
-    protected $fillable = ['name', 'eo_details_id'];
+    protected $fillable = ['name'];
 
     public function eodetail()
     {

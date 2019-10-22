@@ -2,9 +2,22 @@
 
 namespace App\EventOrganizer\User;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class EoUser extends Model
+class EoUser extends Authenticatable
 {
-    //
+    use Notifiable;
+
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
+    protected $fillable = [
+        'name',
+        'email', 
+        'image_banner',
+        'password',
+        'description',
+    ];
 }
