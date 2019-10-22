@@ -35,7 +35,7 @@ Route::namespace('Frontend\Auth\Login')->name('login.')->group(function () {
 
 Route::middleware('auth:eouser')->name('eouser.')->group(function(){
     // route for logged in eouser
-    Route::get('/sample-logged-in-eouser', function (){
+    Route::get('/sample-eouser', function (){
         return view('page.frontend.sample.logged_in_eo');
     })->name('logged-in');
 }); 
