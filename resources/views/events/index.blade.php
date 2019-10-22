@@ -5,6 +5,7 @@
 <div class="container">
     <div class="row event-controllers-container">
         <div class="event-controllers wow fadeLeft" data-wow-duration="1s" data-wow-delay=".1s">
+            <button type="button" class="filter-button active-work" data-filter="all">All</button>
             @foreach($category as $cat)
             <button type="button" class="filter-button" data-filter="{{$cat->id}}">{{$cat->name}}</button>
             @endforeach
