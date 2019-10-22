@@ -97,7 +97,7 @@ class ProductController extends Controller
           $request->file('file')->move('tenants/detail/',$filename);
           $data->file = $filename;
       }
-  }
+    }
       $data->save();
       return redirect('products');
   }
@@ -113,6 +113,6 @@ class ProductController extends Controller
         $destroyRepo = new TenantProductRepository;
         $destroyRepo->destroyProducts($request);
         
-        return redirect('products');
+        return redirect('products')->with('success', 'Data is successfully deleted');
     }
 }
