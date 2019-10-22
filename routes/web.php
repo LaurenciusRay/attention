@@ -52,3 +52,6 @@ Route::resource('tenants', 'TenantController');
 
 // tenant detail route
 Route::get('/tenant/{id}','TenantController@detail');
+
+// event list routes
+Route::resource('events', 'events\EventsController');

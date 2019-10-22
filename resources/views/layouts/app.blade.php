@@ -56,7 +56,7 @@
                 <ul class="navbar-nav ml-auto navbar-center" id="mySidenav">
                     @yield('search_bar')
                     <li class="nav-item active">
-                        <a href="#home" class="nav-link">Home</a>
+                        <a href="/" class="nav-link">Home</a>
                     </li>
 
                     @auth('eouser')
@@ -69,7 +69,7 @@
                         <a href="{{ route('events.index') }}" class="nav-link">Event List</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/tenant" class="nav-link">Tenant List</a>
+                        <a href="{{ route('tenants.index') }}" class="nav-link">Tenant List</a>
                     </li>
                     <li class="nav-item">
                         <a href="#partners" class="nav-link">Partners</a>
