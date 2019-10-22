@@ -33,6 +33,12 @@ class EventsController extends Controller
         return view('events.create');
     }
 
+    public function createbooth(Eodetail $event)
+    {
+
+        return view('events.createbooth', compact('event'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
