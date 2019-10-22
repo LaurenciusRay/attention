@@ -32,6 +32,16 @@
                     <input type="number" class="form-control" id="capacity" name="capacity" min="1" max="200" step="1">
                 </div>
                 <div class="form-group">
+                <label for="category">Category</label>
+                <select name="category" id="category" class="form-control">
+                    @foreach($eoDetailCategory as $eoDc)
+                        <option value="{{ $eoDc->id }}">
+                            {{ $eoDc->name }}
+                        </option>
+                    @endforeach
+                </select>
+                </div>
+                <div class="form-group">
                     <label for="image">
                         <span class="btn btn-info">Add Image</span>
                         <input type="file" id="image" name="image" style="display:none">

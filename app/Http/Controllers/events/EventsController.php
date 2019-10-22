@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\events\CreateEventsRequest;
 use App\EventOrganizer\Detail\EoDetailRepository;
 use App\EventOrganizer\Detail\EoDetail;
+use App\EventOrganizer\Detail\Category\EoDetailCategory;
 use App\Http\Controllers\Controller;
 
 class EventsController extends Controller
@@ -27,7 +28,7 @@ class EventsController extends Controller
      */
     public function create()
     {
-        return view('events.create');
+        return view('events.create')->with('eoDetailCategory', EoDetailCategory::all());
     }
 
     /**

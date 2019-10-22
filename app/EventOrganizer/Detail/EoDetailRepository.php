@@ -19,7 +19,7 @@ class EoDetailRepository{
             'image' => $image,
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
-            'category' => $request->category,
+            'eo_detail_categories_id' => $request->category,
         ]);
         return $event;
     }

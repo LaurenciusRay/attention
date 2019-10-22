@@ -11,4 +11,10 @@ class EoDetailCategoryRepository{
         ]);
         return $eventCategories;
     }
+    public function updateCategory($request, $id)
+    {
+        $id->update([
+            'name' => $request->name
+        ]);
+    }
 }
