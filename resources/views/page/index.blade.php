@@ -8,6 +8,7 @@
 
     <title>Attention</title>
     <!-- css -->
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css" />
 
@@ -61,7 +62,7 @@
                     </li>
 
                     @auth('eouser')
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown user-dropdown">
                         <a id="navbarDropdownUserEo" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ Auth::guard('eouser')->user()->name }}
                         </a>
@@ -77,7 +78,7 @@
                     @endauth
 
                     @auth('tenantuser')
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown user-dropdown">
                         <a id="navbarDropdownUserTenant" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ Auth::guard('tenantuser')->user()->name }}
                         </a>

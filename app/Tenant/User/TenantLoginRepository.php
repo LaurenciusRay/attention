@@ -10,7 +10,7 @@ class TenantLoginRepository
     {
         if (Auth::guard('tenantuser')->attempt($request->only('email', 'password'), $request->filled('remember'))) {
 
-            return redirect()->route('tenant.logged-in');
+            return redirect()->route('tenantuser.logged-in');
         }
 
         return $this->loginFailed();
