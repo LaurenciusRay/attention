@@ -94,7 +94,7 @@
         #header
         {
             background-image:
-            {{$data->image_banner}};
+            url({{asset('storage/'.$data->image_banner)}});
         }
     </style>
 @endsection

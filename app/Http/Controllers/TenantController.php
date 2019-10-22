@@ -42,7 +42,7 @@ class TenantController extends Controller{
 
     public function detail(TenantUser $id)
     {
-        return view('tenants.d_tenants')->with('data', $id);
+        
     }
 
     /**
@@ -65,9 +65,9 @@ class TenantController extends Controller{
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(TenantUser $tenant)
     {
-        //
+        return view('tenants.d_tenants')->with('data', $tenant);
     }
 
     /**
