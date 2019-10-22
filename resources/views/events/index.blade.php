@@ -23,18 +23,20 @@
 <div class="container">
     <div class="row event-controllers-container">
         <div class="event-controllers wow fadeLeft" data-wow-duration="1s" data-wow-delay=".1s">
-            <button type="button" class="filter-button active-work" data-filter="all">All</button>
-            <button type="button" class="filter-button" data-filter="food">Food</button>
+            @foreach($category as $cat)
+            <button type="button" class="filter-button" data-filter="{{$cat->id}}">{{$cat->name}}</button>
+            @endforeach
+            <!-- <button type="button" class="filter-button" data-filter="food">Food</button>
             <button type="button" class="filter-button" data-filter="fashion">Fashion</button>
             <button type="button" class="filter-button" data-filter="sport">Sport</button>
-            <button type="button" class="filter-button" data-filter="technology">Technology</button>
+            <button type="button" class="filter-button" data-filter="technology">Technology</button> -->
         </div>
     </div>
 </div>
 <div class="container">
     <div class="row">
         @foreach($event as $e)
-        <div class="card filter {{$e->title}}" onclick="this.classList.toggle('expanded')">
+        <div class="card filter {{$e->eo_detail_categories_id}}" onclick="this.classList.toggle('expanded')">
             <img class="label" src="{{asset('storage/'.$e->image)}}" width="100%" height="200px" alt="card image event list">
             <div class="text1">
                 <div class="text-content">

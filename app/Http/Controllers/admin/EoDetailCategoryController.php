@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Events;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\events\CreateCategoriesRequest;
+use App\EventOrganizer\Detail\Category\EoDetailCategory;
+use App\EventOrganizer\Detail\Category\EoDetailCategoryRepository;
 use App\Http\Controllers\Controller;
 
-class CategoriesController extends Controller
+class EoDetailCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +17,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return view('events.index');
+        return view('admin.EoDetailCategory.index');
     }
 
     /**
@@ -24,7 +27,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.EoDetailCategory.create');
     }
 
     /**
@@ -33,9 +36,11 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateCategoriesRequest $request)
     {
-        //
+        $eventCategoryRepo = new EoDetailCategoryRepository();
+        $eventCategoryRepo->storeCategory($request);
+        return redirect(route('events-categories.index'));
     }
 
     /**

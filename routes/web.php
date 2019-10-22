@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('page.index');
 });
+Route::get('/admin', function () {
+    return view('admin.index');
+});
 
 
 Route::namespace('Frontend\Auth\Regist')->name('regist.')->group(function () {
@@ -33,5 +36,5 @@ Route::resource('tenants', 'TenantController');
 // tenant detail route
 Route::get('/tenant/{id}', 'TenantController@detail');
 
-Route::resource('events', 'EventsController');
-Route::resource('events/categories', 'Events/CategoriesController');
+Route::resource('events', 'events\EventsController');
+Route::resource('events-categories', 'admin\EoDetailCategoryController');

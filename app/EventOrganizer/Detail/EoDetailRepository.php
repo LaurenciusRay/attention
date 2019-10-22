@@ -6,7 +6,8 @@ use App\EventOrganizer\Detail\EoDetail;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
-class EoDetailRepository{
+class EoDetailRepository
+{
     public function storeEvent($request)
     {
         // Store Image file
@@ -19,7 +20,7 @@ class EoDetailRepository{
             'image' => $image,
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
-            'category' => $request->category,
+            'eo_detail_categories_id' => $request->eo_detail_categories_id,
         ]);
         return $event;
     }
