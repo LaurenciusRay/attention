@@ -80,7 +80,7 @@
                     
                         @auth('eouser')
                         <li class="nav-item dropdown user-dropdown">
-                            <a id="navbarDropdownUserEo" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a id="navbarDropdownUserEo" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::guard('eouser')->user()->name }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownUserEo">
@@ -97,7 +97,7 @@
                     
                         @auth('tenantuser')
                         <li class="nav-item dropdown user-dropdown">
-                            <a id="navbarDropdownUserTenant" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a id="navbarDropdownUserTenant" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::guard('tenantuser')->user()->name }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownUserTenant">
