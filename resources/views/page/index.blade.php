@@ -385,7 +385,7 @@
                                                 <!-- end emoji wrapper  -->
                                             </div>
                                             <div class="item_overlay">
-                                                <a href="" class="shop_btn">Detail</a>
+                                                <a href="/detail_tenants" class="shop_btn">Detail</a>
                                             </div>
                                         </div>
                                     </div>
@@ -411,7 +411,7 @@
                                                 <!-- end emoji wrapper  -->
                                             </div>
                                             <div class="item_overlay">
-                                                <a href="" class="shop_btn">Detail</a>
+                                                <a href="/detail_tenants" class="shop_btn">Detail</a>
                                             </div>
                                         </div>
                                     </div>
@@ -463,7 +463,7 @@
                                                 <!-- end emoji wrapper  -->
                                             </div>
                                             <div class="item_overlay">
-                                                <a href="" class="shop_btn">Detail</a>
+                                                <a href="/detail_tenants" class="shop_btn">Detail</a>
                                             </div>
                                         </div>
                                     </div>
@@ -489,7 +489,7 @@
                                                 <!-- end emoji wrapper  -->
                                             </div>
                                             <div class="item_overlay">
-                                                <a href="" class="shop_btn">Detail</a>
+                                                <a href="/detail_tenants" class="shop_btn">Detail</a>
                                             </div>
                                         </div>
                                     </div>
@@ -515,7 +515,7 @@
                                                 <!-- end emoji wrapper  -->
                                             </div>
                                             <div class="item_overlay">
-                                                <a href="" class="shop_btn">Detail</a>
+                                                <a href="/detail_tenants" class="shop_btn">Detail</a>
                                             </div>
                                         </div>
                                     </div>

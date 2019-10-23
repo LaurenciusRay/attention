@@ -214,6 +214,34 @@
     <!-- Swiper JS -->
     <script src="{{ asset('js/swiper.min.js') }}"></script>
 
+    <!-- filter  -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $(".filter-button").click(function() {
+                var value = $(this).attr('data-filter');
+
+                if (value == "all") {
+                    //$('.filter').removeClass('hidden');
+                    $('.filter').show('1000');
+                } else {
+                    //            $('.filter[filter-item="'+value+'"]').removeClass('hidden');
+                    //            $(".filter").not('.filter[filter-item="'+value+'"]').addClass('hidden');
+                    $(".filter").not('.' + value).hide('3000');
+                    $('.filter').filter('.' + value).show('3000');
+
+                }
+            });
+
+            if ($(".filter-button").removeClass("active")) {
+                $(this).removeClass("active");
+            }
+            $(this).addClass("active");
+
+        });
+    </script>
+
+
     <!-- Magnific Popup -->
     <script src="{{ asset('js/appstyle.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>

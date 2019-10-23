@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class EoDetail extends Model
 {
-    protected $fillable = ['title', 'description', 'capacity', 'image', 'start_date', 'end_date', 'event_categories_id'];
+    protected $fillable = ['title', 'description', 'capacity', 'image', 'start_date', 'end_date', 'eo_detail_categories_id'];
     protected $dates = ['start_date', 'end_date'];
+
+    public function eodetailcategory()
+    {
+        return $this->belongsTo(EoDetailCategory::class);
+    }
 }

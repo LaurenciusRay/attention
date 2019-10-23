@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\events;
 
+use App\EventOrganizer\Detail\Category\EoDetailCategory;
 use Illuminate\Http\Request;
 use App\Http\Requests\events\CreateEventsRequest;
 use App\EventOrganizer\Detail\EoDetailRepository;
@@ -17,7 +18,9 @@ class EventsController extends Controller
      */
     public function index()
     {
-        return view('events.index')->with('event', EoDetail::all());
+        $event = EoDetail::all();
+        $category = EoDetailCategory::all();
+        return view('events.index', compact('event', 'category'));
     }
 
     /**
@@ -27,7 +30,7 @@ class EventsController extends Controller
      */
     public function create()
     {
-        return view('events.create');
+        return view('events.create')->with('eoDetailCategory', EoDetailCategory::all());
     }
 
     /**
@@ -54,7 +57,7 @@ class EventsController extends Controller
     {
         $eventRepo = new EoDetailRepository();
         $daysLeft = $eventRepo->DaysLeftEvent($event);
-        return view('events.show')->with('event', $event)->with('daysLeft' , $daysLeft);
+        return view('events.show')->with('event', $event)->with('daysLeft', $daysLeft);
     }
 
     /**

@@ -14,6 +14,10 @@
 Route::get('/', function () {
     return view('page.index');
 });
+Route::get('/admin', function () {
+    return view('admin.index');
+});
+
 
 Auth::routes();
 
@@ -51,7 +55,7 @@ Route::middleware('auth:tenantuser')->name('tenantuser.')->group(function(){
 Route::resource('tenants', 'TenantController');
 
 // tenant detail route
-Route::get('/tenant/{id}','TenantController@detail');
+Route::get('/tenant/{id}', 'TenantController@detail');
 
-// event list routes
 Route::resource('events', 'events\EventsController');
+Route::resource('events-categories', 'admin\EoDetailCategoryController');
