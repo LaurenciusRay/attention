@@ -70,8 +70,9 @@
 @endsection
 @section('script')
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<!-- Show Image Preview -->
+
 <script type="text/javascript">
+    // Show Image Preview
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -82,26 +83,10 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
-
-    function readLayout(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function(e) {
-                $('#event-img-tag-layout').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
     $("#image").change(function() {
         readURL(this);
     });
-    $("#imagelayout").change(function() {
-        readLayout(this);
-    });
-</script>
-<!-- Flatpickr -->
-<script>
+    // Flatpickr
     flatpickr('#start_date', {
         enableTime: true,
         enableSeconds: true
