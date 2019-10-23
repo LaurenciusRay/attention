@@ -21,7 +21,7 @@ class CreateEoDetailsTable extends Migration
             $table->text('description');
             $table->integer('eo_detail_categories_id');
             $table->timestamp('start_date');
-            $table->timestamp('end_date');
+            $table->timestamp('end_date')->nullable();
             $table->integer('capacity');
             $table->timestamps();
             $table->softDeletes();
