@@ -19,18 +19,38 @@ Route::get('/admin', function () {
 });
 
 
+Auth::routes();
+
+Route::resource('events', 'EventsController');
 
 Route::namespace('Frontend\Auth\Regist')->name('regist.')->group(function () {
-    Route::get('/regist-eo', 'EoRegistController@formRegistEo')->name('eo-user-form');
+    Route::get('/regist-eo','EoRegistController@formRegist')->name('eo-user-form');
     Route::post('/regist-eo', 'EoRegistController@registEo')->name('eo-user');
-    Route::get('/regist-tenant', 'TenantRegistController@formRegistTenant')->name('tenant-user-form');
+    Route::get('/regist-tenant', 'TenantRegistController@formRegist')->name('tenant-user-form');
     Route::post('/regist-tenant', 'TenantRegistController@registTenant')->name('tenant-user');
 });
 
 Route::namespace('Frontend\Auth\Login')->name('login.')->group(function () {
-    Route::get('/login-eo', 'EoLoginController@formLoginEo')->name('eo-user-form');
-    Route::get('/login-tenant', 'TenantLoginController@formLoginTenant')->name('tenant-user-form');
+    Route::get('/login-eo', 'EoLoginController@formLogin')->name('eo-user-form');
+    Route::get('/login-tenant', 'TenantLoginController@formLogin')->name('tenant-user-form');
+    Route::post('/login-eo', 'EoLoginController@login')->name('eo-user');
+    Route::post('/login-tenant', 'TenantLoginController@login')->name('tenant-user');
 });
+
+Route::middleware('auth:eouser')->name('eouser.')->group(function(){
+    // route for logged in eouser
+    Route::get('/sample-eouser', function (){
+        return view('page.frontend.sample.logged_in_eo');
+    })->name('logged-in');
+}); 
+
+Route::middleware('auth:tenantuser')->name('tenantuser.')->group(function(){
+    // route for logged in tenant user
+    Route::get('/sample-tenant', function () {
+        return view('page.frontend.sample.logged_in_tenant');
+    })->name('logged-in');
+}); 
+
 // tenant list routes
 Route::resource('tenants', 'TenantController');
 

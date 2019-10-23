@@ -8,14 +8,15 @@
 
     <title>Attention</title>
     <!-- css -->
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css" />
-    
+
     <!-- Font google -->
     <link href="https://fonts.googleapis.com/css?family=Leckerli+One&display=swap" rel="stylesheet">
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="{{ asset('css/swiper.min.css') }}">
-    
+
     <!-- Font Awesome Icon Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- normalize  -->
@@ -30,7 +31,7 @@
     <nav class="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark">
         <div class="container">
             <!-- LOGO -->
-            <a class="navbar-brand logo" href="">
+            <a class="navbar-brand logo" href="/">
                 <h1 class="logo-light">Attention</h1>
                 <h1 class="logo-dark">Attention</h1>
             </a>
@@ -42,9 +43,11 @@
                     <li class="nav-item active">
                         <a href="#home" class="nav-link">Home</a>
                     </li>
+                    @auth('eouser')
                     <li class="nav-item">
                         <a href="{{ route('events.create') }}" class="nav-link">Create Event</a>
                     </li>
+                    @endauth
                     <li class="nav-item">
                         <a href="{{ route('events.index') }}" class="nav-link">Event List</a>
                     </li>
@@ -57,8 +60,40 @@
                     <li class="nav-item">
                         <a href="#contact" class="nav-link">Contact</a>
                     </li>
-                </ul>
 
+                    @auth('eouser')
+                    <li class="nav-item dropdown user-dropdown">
+                        <a id="navbarDropdownUserEo" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::guard('eouser')->user()->name }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownUserEo">
+                            <a class="dropdown-item" href="#" onclick="event.preventDefault();document.querySelector('#logout-form').submit();">
+                                Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    @endauth
+
+                    @auth('tenantuser')
+                    <li class="nav-item dropdown user-dropdown">
+                        <a id="navbarDropdownUserTenant" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::guard('tenantuser')->user()->name }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownUserTenant">
+                            <a class="dropdown-item" href="#" onclick="event.preventDefault();document.querySelector('#logout-form').submit();">
+                                Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    @endauth
+
+                </ul>
             </div>
         </div>
     </nav>
@@ -99,6 +134,7 @@
     <!-- END HOME -->
 
     <!-- START FEATURES -->
+    @unless (Auth::guard('eouser')->check() || Auth::guard('tenantuser')->check())
     <section class="bg-light" id="login">
         <div class="row no-gutters">
             <div class="col-sm-6 col-md-6 col-lg-6">
@@ -125,6 +161,7 @@
             </div>
         </div>
     </section>
+    @endunless
     <!-- END FEATURES -->
 
     <!-- START EVENT -->
@@ -730,7 +767,7 @@
 
     </section>
     <!-- END FOOTER -->
-    
+
     <!-- javascript -->
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>

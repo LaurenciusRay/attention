@@ -8,6 +8,7 @@
 
     <title>Attention</title>
     <!-- css -->
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css" />
     @yield('css_link')
@@ -28,7 +29,6 @@
 
     <!-- rating style  -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/rating.css') }}" />
-
 
     <style>
         .bg-home-4 {
@@ -58,14 +58,18 @@
                     <li class="nav-item active">
                         <a href="/" class="nav-link">Home</a>
                     </li>
+
+                    @auth('eouser')
                     <li class="nav-item">
                         <a href="{{ route('events.create') }}" class="nav-link">Create Event</a>
                     </li>
+                    @endauth
+
                     <li class="nav-item">
                         <a href="{{ route('events.index') }}" class="nav-link">Event List</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/tenants" class="nav-link">Tenant List</a>
+                        <a href="{{ route('tenants.index') }}" class="nav-link">Tenant List</a>
                     </li>
                     <li class="nav-item">
                         <a href="#partners" class="nav-link">Partners</a>
@@ -73,8 +77,41 @@
                     <li class="nav-item">
                         <a href="#contact" class="nav-link">Contact</a>
                     </li>
+                    
+                        @auth('eouser')
+                        <li class="nav-item dropdown user-dropdown">
+                            <a id="navbarDropdownUserEo" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::guard('eouser')->user()->name }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownUserEo">
+                                <a class="dropdown-item" href="#" onclick="event.preventDefault();document.querySelector('#logout-form').submit();">
+                                    Logout
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                        @endauth
+                    
+                    
+                        @auth('tenantuser')
+                        <li class="nav-item dropdown user-dropdown">
+                            <a id="navbarDropdownUserTenant" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::guard('tenantuser')->user()->name }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownUserTenant">
+                                <a class="dropdown-item" href="#" onclick="event.preventDefault();document.querySelector('#logout-form').submit();">
+                                    Logout
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                        @endauth
+                    
                 </ul>
-
             </div>
         </div>
     </nav>

@@ -2,25 +2,28 @@
 
 namespace App\Http\Controllers\Frontend\Auth\Regist;
 
-use App\Tenant\User\TenantUserRepository;
-use Illuminate\Http\Request;
+use App\Tenant\User\TenantRegistRepository;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Regist\RegistTenantUser as ValidationRegistTenant;
 
 class TenantRegistController extends Controller
 {
-    private $tenantUserRepository;
-    
-    public function __construct(TenantUserRepository $tenantUserRepository)
+    private $tenantRegistRepository;
+
+    public function __construct(TenantRegistRepository $tenantRegistRepository)
     {
-        $this->tenantUserRepository = $tenantUserRepository;
-    }
-    public function formRegistTenant(){
-        return view('page.frontend.register.registerTenant');
+        $this->tenantRegistRepository = $tenantRegistRepository;
     }
 
-    public function registTenant(Request $request){
-        $this->tenantUserRepository->createTenantUser($request);
-        
+    public function formRegist()
+    {
+        return $this->tenantRegistRepository->formRegistTenant();
+    }
+
+    public function registTenant(ValidationRegistTenant $request)
+    {
+        $this->tenantRegistRepository->createTenantUser($request);
+
         return redirect()->route('login.tenant-user-form');
     }
 }
