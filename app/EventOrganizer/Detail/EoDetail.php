@@ -13,4 +13,8 @@ class EoDetail extends Model
     {
         return $this->belongsTo(EoDetailCategory::class);
     }
+    public function deleteImage()
+    {
+        Storage::delete($this->image);
+    }
 }

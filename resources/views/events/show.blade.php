@@ -104,6 +104,7 @@
                         </div>
                     </div>
                 </div>
+                <a href="{{ route('events.edit', $event->id) }}"> Edit </a>
             </div>
         </div>
     </div>

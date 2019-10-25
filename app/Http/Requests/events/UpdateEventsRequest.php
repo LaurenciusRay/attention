@@ -4,7 +4,7 @@ namespace App\Http\Requests\events;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateEventsRequest extends FormRequest
+class UpdateEventsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,7 +29,6 @@ class CreateEventsRequest extends FormRequest
             'start_date' => 'required',
             'end_date' => 'required',
             'capacity' => 'required',
-            'image' => 'required|image',
             'category' => 'required'
         ];
     }

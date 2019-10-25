@@ -13,7 +13,7 @@ class EoDetailRepository
         // Store Image file
         $image = $request->image->store('events');
         // Storing Post
-        $event = EoDetail::create([
+        $store = EoDetail::create([
             'title' => $request->title,
             'description' => $request->description,
             'capacity' => $request->capacity,
@@ -22,7 +22,7 @@ class EoDetailRepository
             'end_date' => $request->end_date,
             'eo_detail_categories_id' => $request->category,
         ]);
-        return $event;
+        return $store;
     }
     public function DaysLeftEvent($event)
     {
@@ -31,9 +31,19 @@ class EoDetailRepository
         $difference = ($endDate->diff($now)->days < 1) ? 'Today' : $endDate->diffForHumans($now);
         return $difference;
     }
-    public function deleteImage()
+    public function updateEvent($request, $event)
     {
-        // Delete Image
-        Storage::delete($this->image);
+        $data = $request->only('title', 'description', 'start_date', 'end_date', 'capacity', 'category');
+        if($request->hasFile('image'))
+        {
+            // Upload it
+            $image = $request->image->store('events');
+            // Delete old one
+            $event->deleteImage();
+            // Save the $image to $data array
+            $data['image'] = $image;
+        }
+        $update = $event->update($data);
+        return $update;
     }
 }
