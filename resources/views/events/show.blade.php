@@ -87,8 +87,8 @@
                                 <img src="{{ Gravatar::src('raymondantonio587@gmail.com') }}" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title">Event Organizer</h5>
-                                <a href="" class="text-info">  about Author </a>
+                                <h5 class="card-title">{{ Auth::guard('eouser')->user()->name }}</h5>
+                                <a href="{{ route('eventorganizer.index') }}" class="text-info">  about Author </a>
                             </div>
                         </div>
                         <!-- End Card Profile -->

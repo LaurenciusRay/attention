@@ -13,6 +13,7 @@
                 @if(isset($event))
                     @method('PUT')
                 @endif
+                {{ Form::hidden('user_id', Auth::guard('eouser')->user()->id) }}
                 <!-- Input field 1 -->
                 <div class="form-group">
                     <label for="title">Title</label>

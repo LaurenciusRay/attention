@@ -17,7 +17,7 @@ Route::get('/', function () {
 Route::get('/admin', function () {
     return view('admin.index');
 });
-
+Route::get('/event-organizer', 'events\EventOrganizerController@index')->name('eventorganizer.index');
 
 Auth::routes();
 

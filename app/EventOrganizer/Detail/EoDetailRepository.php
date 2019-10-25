@@ -21,6 +21,7 @@ class EoDetailRepository
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
             'eo_detail_categories_id' => $request->category,
+            'eo_users_id' => $request->user_id,
         ]);
         return $store;
     }
