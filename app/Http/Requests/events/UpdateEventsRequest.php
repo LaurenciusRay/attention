@@ -24,7 +24,7 @@ class UpdateEventsRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|unique:eo_details',
+            'title' => 'required',
             'description' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',

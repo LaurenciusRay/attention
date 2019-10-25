@@ -16,28 +16,28 @@
                 <!-- Input field 1 -->
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" id="title" name="title" class="form-control" value=" {{ isset($event) ? $event->title : '' }} ">
+                    <input type="text" id="title" name="title" class="form-control" value=" {{ isset($event) ? $event->title : old('title') }} ">
                 </div>
                 <!-- Input field 2 -->
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <input type="hidden" id="description" name="description" value=" {{ isset($event) ? $event->description : '' }} ">
+                    <input type="hidden" id="description" name="description" value=" {{ isset($event) ? $event->description : old('description') }} ">
                     <trix-editor input="description"></trix-editor>
                 </div>
                 <!-- Input field 3 -->
                 <div class="form-group">
                     <label for="start_date"> Start Date </label>
-                    <input type="text" class="form-control" id="start_date" name="start_date" value=" {{isset($event) ? $event->start_date : ''}} ">
+                    <input type="text" class="form-control" id="start_date" name="start_date" value=" {{isset($event) ? $event->start_date : old('start_date')}} ">
                 </div>
                 <!-- Input field 4 -->
                 <div class="form-group">
                     <label for="end_date"> End Date </label>
-                    <input type="text" class="form-control" id="end_date" name="end_date" value=" {{isset($event) ? $event->end_date : ''}} ">
+                    <input type="text" class="form-control" id="end_date" name="end_date" value=" {{isset($event) ? $event->end_date : old('end_date')}} ">
                 </div>
                 <!-- Input field 5 -->
                 <div class="form-group">
                     <label for="capacity"> Capacity </label>
-                    <input type="number" class="form-control" id="capacity" name="capacity" min="1" max="200" step="1" value={{ isset($event) ? $event->capacity : '' }} >
+                    <input type="number" class="form-control" id="capacity" name="capacity" min="1" max="200" step="1" value={{ isset($event) ? $event->capacity : old('capacity') }} >
                 </div>
                 <!-- Input field 6 -->
                 <div class="form-group">
@@ -62,7 +62,7 @@
                     <label for="image">
                         <p>Add Image for your Homepage</p>
                         <span class="btn btn-info">Add</span>
-                        <input type="file" id="image" name="image" style="display:none" >
+                        <input type="file" id="image" name="image" style="display:none" value={{isset($event) ? $event->image : ''}} >
                     </label>
                     <label id="file-name"></label>
                 </div>
