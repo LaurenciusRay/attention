@@ -13,6 +13,8 @@ class TenantSeeder extends Seeder
      */
     public function run()
     {
+
+      //please add this command before you run seed composer require "emanueleminotto/faker-placehold-it-provider"
  
       $faker = Faker::create('id_ID');
       $faker->addProvider(new EmanueleMinotto\Faker\PlaceholdItProvider($faker));

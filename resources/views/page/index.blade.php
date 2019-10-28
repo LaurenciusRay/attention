@@ -8,14 +8,15 @@
 
     <title>Attention</title>
     <!-- css -->
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css" />
-    
+
     <!-- Font google -->
     <link href="https://fonts.googleapis.com/css?family=Leckerli+One&display=swap" rel="stylesheet">
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="{{ asset('css/swiper.min.css') }}">
-    
+
     <!-- Font Awesome Icon Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- normalize  -->
@@ -30,7 +31,7 @@
     <nav class="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark">
         <div class="container">
             <!-- LOGO -->
-            <a class="navbar-brand logo" href="">
+            <a class="navbar-brand logo" href="/">
                 <h1 class="logo-light">Attention</h1>
                 <h1 class="logo-dark">Attention</h1>
             </a>
@@ -43,13 +44,10 @@
                         <a href="#home" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('events.create') }}" class="nav-link">Create Event</a>
-                    </li>
-                    <li class="nav-item">
                         <a href="{{ route('events.index') }}" class="nav-link">Event List</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#tenant" class="nav-link">Tenant List</a>
+                        <a href="{{ route('tenants.index') }}" class="nav-link">Tenant List</a>
                     </li>
                     <li class="nav-item">
                         <a href="#partners" class="nav-link">Partners</a>
@@ -57,8 +55,43 @@
                     <li class="nav-item">
                         <a href="#contact" class="nav-link">Contact</a>
                     </li>
-                </ul>
 
+                    @auth('eouser')
+                    <li class="nav-item dropdown user-dropdown">
+                        <a id="navbarDropdownUserEo" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::guard('eouser')->user()->name }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownUserEo">
+                            <a href="{{ route('events.create') }}" class="dropdown-item">
+                                Create Event
+                            </a>
+                            <a class="dropdown-item" href="#" onclick="event.preventDefault();document.querySelector('#logout-form').submit();">
+                                Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    @endauth
+
+                    @auth('tenantuser')
+                    <li class="nav-item dropdown user-dropdown">
+                        <a id="navbarDropdownUserTenant" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::guard('tenantuser')->user()->name }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownUserTenant">
+                            <a class="dropdown-item" href="#" onclick="event.preventDefault();document.querySelector('#logout-form').submit();">
+                                Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    @endauth
+
+                </ul>
             </div>
         </div>
     </nav>
@@ -99,6 +132,7 @@
     <!-- END HOME -->
 
     <!-- START FEATURES -->
+    @unless (Auth::guard('eouser')->check() || Auth::guard('tenantuser')->check())
     <section class="bg-light" id="login">
         <div class="row no-gutters">
             <div class="col-sm-6 col-md-6 col-lg-6">
@@ -106,9 +140,9 @@
                     <img class="img-responsive" src="image/loginevent.jpg" alt="">
                     <div class="overlay">
                         <h2>Login As Event</h2>
-                        <a class="info mb-3" href="#">Login</a>
+                        <a class="info mb-3" href="{{ route('login.eo-user-form') }}">Login</a>
                         <h3>Or</h3>
-                        <a class="info mt-3" href="#">Register</a>
+                        <a class="info mt-3" href="{{ route('regist.eo-user-form') }}">Register</a>
                     </div>
                 </div>
             </div>
@@ -117,14 +151,15 @@
                     <img class="img-responsive" src="image/logintenant.jpg" alt="">
                     <div class="overlay">
                         <h2>Login As Tenant</h2>
-                        <a class="info mb-3" href="#">Login</a>
+                        <a class="info mb-3" href="{{ route('login.tenant-user-form') }}">Login</a>
                         <h3>Or</h3>
-                        <a class="info mt-3" href="#">Register</a>
+                        <a class="info mt-3" href="{{ route('regist.tenant-user-form') }}">Register</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    @endunless
     <!-- END FEATURES -->
 
     <!-- START EVENT -->
@@ -348,7 +383,7 @@
                                                 <!-- end emoji wrapper  -->
                                             </div>
                                             <div class="item_overlay">
-                                                <a href="" class="shop_btn">Detail</a>
+                                                <a href="/detail_tenants" class="shop_btn">Detail</a>
                                             </div>
                                         </div>
                                     </div>
@@ -374,7 +409,7 @@
                                                 <!-- end emoji wrapper  -->
                                             </div>
                                             <div class="item_overlay">
-                                                <a href="" class="shop_btn">Detail</a>
+                                                <a href="/detail_tenants" class="shop_btn">Detail</a>
                                             </div>
                                         </div>
                                     </div>
@@ -426,7 +461,7 @@
                                                 <!-- end emoji wrapper  -->
                                             </div>
                                             <div class="item_overlay">
-                                                <a href="" class="shop_btn">Detail</a>
+                                                <a href="/detail_tenants" class="shop_btn">Detail</a>
                                             </div>
                                         </div>
                                     </div>
@@ -452,7 +487,7 @@
                                                 <!-- end emoji wrapper  -->
                                             </div>
                                             <div class="item_overlay">
-                                                <a href="" class="shop_btn">Detail</a>
+                                                <a href="/detail_tenants" class="shop_btn">Detail</a>
                                             </div>
                                         </div>
                                     </div>
@@ -478,7 +513,7 @@
                                                 <!-- end emoji wrapper  -->
                                             </div>
                                             <div class="item_overlay">
-                                                <a href="" class="shop_btn">Detail</a>
+                                                <a href="/detail_tenants" class="shop_btn">Detail</a>
                                             </div>
                                         </div>
                                     </div>
@@ -730,7 +765,7 @@
 
     </section>
     <!-- END FOOTER -->
-    
+
     <!-- javascript -->
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>

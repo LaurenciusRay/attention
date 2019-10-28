@@ -1,15 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\events;
 
+use App\EventOrganizer\Detail\Category\EoDetailCategory;
 use Illuminate\Http\Request;
 use App\Http\Requests\events\CreateEventsRequest;
+use App\Http\Requests\events\UpdateEventsRequest;
 use App\EventOrganizer\Detail\EoDetailRepository;
 use App\EventOrganizer\Detail\EoDetail;
-
+use App\EventOrganizer\User\EoUser;
+use App\Http\Controllers\Controller;
 
 class EventsController extends Controller
 {
+    private $eventRepo;
+    public function __construct(EoDetailRepository $eodetailrepository)
+    {
+        $this->eventRepo = $eodetailrepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +25,9 @@ class EventsController extends Controller
      */
     public function index()
     {
-        return view('events.index')->with('event', EoDetail::all());
+        $event = EoDetail::all();
+        $category = EoDetailCategory::all();
+        return view('events.index', compact('event', 'category'));
     }
 
     /**
@@ -27,7 +37,7 @@ class EventsController extends Controller
      */
     public function create()
     {
-        return view('events.create');
+        return view('events.create')->with('eoDetailCategory', EoDetailCategory::all());
     }
 
     /**
@@ -38,8 +48,7 @@ class EventsController extends Controller
      */
     public function store(CreateEventsRequest $request)
     {
-        $eventRepo = new EoDetailRepository();
-        $eventRepo->storeEvent($request);
+        $this->eventRepo->storeEvent($request);
         session()->flash('success', 'Event Created Successfully');
         return redirect(route('events.index'));
     }
@@ -52,9 +61,8 @@ class EventsController extends Controller
      */
     public function show(Eodetail $event)
     {
-        $eventRepo = new EoDetailRepository();
-        $daysLeft = $eventRepo->DaysLeftEvent($event);
-        return view('events.show')->with('event', $event)->with('daysLeft' , $daysLeft);
+        $daysLeft = $this->eventRepo->DaysLeftEvent($event);
+        return view('events.show')->with('event', $event)->with('daysLeft', $daysLeft);
     }
 
     /**
@@ -63,9 +71,9 @@ class EventsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Eodetail $event)
     {
-        //
+        return view('events.create')->with('event', $event)->with('eoDetailCategory', EoDetailCategory::all());
     }
 
     /**
@@ -75,9 +83,11 @@ class EventsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateEventsRequest $request, Eodetail $event)
     {
-        //
+        $this->eventRepo->updateEvent($request, $event);
+        session()->flash('success', 'Event Updated Successfully');
+        return redirect(route('events.index'));
     }
 
     /**

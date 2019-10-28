@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tenant\User\TenantUser;
-
+use App\Tenant\User\TenantUserRepository;
+use App\Tenant\Product\TenantProduct;
+use App\Tenant\Product\TenantProductRepository;
 
 
 class TenantController extends Controller{
@@ -30,6 +32,20 @@ class TenantController extends Controller{
         //
     }
 
+    // public function show(Eodetail $event)
+    // {
+    //     $eventRepo = new EoDetailRepository();
+    //     $daysLeft = $eventRepo->DaysLeftEvent($event);
+    //     return view('events.show')->with('event', $event)->with('daysLeft' , $daysLeft);
+    // }
+
+    
+
+    public function detail(TenantUser $id)
+    {
+        
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -48,9 +64,9 @@ class TenantController extends Controller{
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(TenantUser $tenant)
     {
-        //
+        return view('tenant.show')->with('data', $tenant);
     }
 
     /**
