@@ -87,20 +87,20 @@ class ProductController extends Controller
       else {
           if ($request->hasFile('image')) {
               // gambar sebelumnya di hapus dan di ganti baru
-          $file = 'tenants/detail/'.$data->image;
+          $file = 'image/tenant/'.$data->image;
           if (is_file($file)) {
               unlink($file);
           }
           // 
           $file = $request->file('image');
           $filename = $file->getClientOriginalName();
-          $request->file('file')->move('tenants/detail/',$filename);
+          $request->file('file')->move('image/tenant/'.$filename);
           $data->file = $filename;
       }
     }
       $data->save();
       return redirect('products');
-  }
+    }
 
     /**
      * Remove the specified resource from storage.

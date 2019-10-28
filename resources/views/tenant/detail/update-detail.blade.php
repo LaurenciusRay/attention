@@ -11,33 +11,35 @@
       <div class="modal-body">
     {{ csrf_field() }}
     {{method_field('PUT')}}
-
+    
+  @foreach($data as $datas)
     <table>
     <div class="form-group row">
         <label class="col-sm-12 col-form-label">Tenant_id</label>
         <div class="col-sm-12">
-          <input type="number" id="tenant_users_id" name="tenant_users_id" class="form-control">
+          <input type="number" id="tenant_users_id" value="{{$datas->tenant_users_id}}" name="tenant_users_id" class="form-control">
         </div>
       </div>
       <div class="form-group row">
         <label class="col-sm-12 col-form-label">Title</label>
         <div class="col-sm-12">
-          <input type="text" class="form-control" name="title" placeholder="">
+          <input type="text" class="form-control" value="{{$datas->title}}" name="title" placeholder="">
         </div>
       </div>
       <div class="form-group row">
         <label class="col-sm-12 col-form-label">Price</label>
         <div class="col-sm-12">
-          <input type="number" class="form-control" placeholder="" name="price">
+          <input type="number" class="form-control" value="{{$datas->price}}" placeholder="" name="price">
         </div>
       </div>
       <div class="form-group row">
         <label class="col-sm-12 col-form-label">Image</label>
-        <div class="col-sm-12">
-          <input type="file" class="form-control" placeholder="" name="image">
+        <div class="col-sm-7">
+          <input type="file" class="form-control" placeholder="" name="image" style="padding-bottom:37px">
         </div>
       </div>
     </table>
+  @endforeach
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-sm btn-outline-dark" data-dismiss="modal">Close</button>

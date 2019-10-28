@@ -25,3 +25,5 @@ Route::resource('events', 'EventsController');
 
 // tenant products route
 Route::resource('products', 'ProductController');
+
+// Route::get('/tenants/search','TenantController@search');
