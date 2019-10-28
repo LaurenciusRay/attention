@@ -8,6 +8,7 @@ use App\Http\Requests\events\CreateEventsRequest;
 use App\Http\Requests\events\UpdateEventsRequest;
 use App\EventOrganizer\Detail\EoDetailRepository;
 use App\EventOrganizer\Detail\EoDetail;
+use App\EventOrganizer\User\EoUser;
 use App\Http\Controllers\Controller;
 
 class EventsController extends Controller

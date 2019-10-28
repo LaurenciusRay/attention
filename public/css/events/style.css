@@ -65,4 +65,7 @@ input#image {
     display: none;
 }
 
-
+#profile
+{
+    margin-top: -75px;
+}
