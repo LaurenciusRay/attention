@@ -13,37 +13,79 @@
 <section id="content" class="pt-4">
     <div class="container">
         <div class="row pb-4">
-            <div id="profile" class="col-3 col-md-2 text-center">
+            <div id="profile" class="col-3 col-md-2">
                 <div class="border border-white">
                     <img src="{{ Gravatar::src('raymondantonio587@gmail.com') }}" class="card-img-top" alt="...">
                 </div>
-                <p class="card-title"> <strong> {{$eventorganizer->name}} </strong></p>
+            </div>
+            <div class="col-3">
+                <h5 class="card-title"> <strong> {{$eventorganizer->name}} </strong></h5>
+                Location
             </div>
         </div>
         <div class="row">
-        <p>
-            <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
-            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
-            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
-            </p>
-            <div class="row">
-            <div class="col">
-                <div class="collapse multi-collapse" id="multiCollapseExample1">
-                <div class="card card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+            <div class="container bg-light eo-content">
+                <div class="col my-3">
+                    <p> {{ $eventorganizer->description }} </p>
                 </div>
+                <hr>
+                <div class="col mb-3" id="eo-event-card">
+                    <div class="space-2 bg-light">
+                        <div class="container">
+                            <div class="row d-flex justify-content-center">
+                                @foreach($eventSelection as $eSel)
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <!-- Card -->
+                                    <div class="card border-0 shadow">
+                                        <!-- Card image -->
+                                        <div class="view ">
+                                            <img class="card-img-top rounded-top" src="{{ asset('storage/'. $eSel->image) }}" alt="Card image cap">
+                                            <a href="#!">
+                                                <div class="mask rgba-white-slight"></div>
+                                            </a>
+                                        </div>
+                                        <!-- Card content -->
+                                        <div class="card-body border rounded-bottom">
+                                            <a href="#" class="card-text small mb-2 d-block">{{$eSel->eo_detail_categories->name}}</a>
+                                            <!-- Title --><a href="#" class="h5 card-title">{{$eSel->title}}</a>
+                                            <!-- Description -->
+                                            <!-- <p>NS Glasses ™ will Switch the Switch into 3D with Color Switching technology</p> -->
+                                            <hr>
+                                            <ul class="list-unstyled d-flex justify-content-between mb-3 text-center small">
+                                                <li class="pledged">
+                                                    <p class="mb-1 font-weight-bold text-dark">Loc.</p>
+                                                    <span class="amount">Jakarta</span> 
+                                                </li>
+                                                <li class="funded">
+                                                    <p class="mb-1 font-weight-bold text-dark">Attendance</p>
+                                                    <span class="amount">{{ $eSel->capacity }}</span> 
+                                                </li>
+                                                <li class="days">
+                                                    <p class="mb-1 font-weight-bold text-dark">Date</p>
+                                                    <span class="amount">{{ $eSel->end_date }}</span> 
+                                                </li>
+                                            </ul>
+                                            <!-- <div class="progress mb-2">
+                                                <div class="progress-bar bg-success" role="progressbar" aria-valuenow="55" aria-valuemin="91" aria-valuemax="100" style="width:62%">62%</div>
+                                            </div> -->
+                                            <!-- end: progress bard -->
+                                            @if($eSel->eo_users_id == Auth::guard('eouser')->user()->id))
+                                                <div class="col d-flex justify-content-center">
+                                                    <a class="btn btn-success" href="{{ route('events.show', $eSel->id) }}">
+                                                        Check
+                                                    </a>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <!-- Card -->
+                                </div>
+                                <!-- end col -->
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            
-            </div>
-            <div class="row">
-            <div class="col">
-                <div class="collapse multi-collapse" id="multiCollapseExample2">
-                <div class="card card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                </div>
-                </div>
-            </div>
             </div>
         </div>
     </div>

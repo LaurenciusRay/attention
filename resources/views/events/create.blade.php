@@ -17,7 +17,7 @@
                 <!-- Input field 1 -->
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" id="title" name="title" class="form-control" value=" {{ isset($event) ? $event->title : old('title') }} ">
+                    <input type="text" id="title" name="title" class="form-control" value="{{ isset($event) ? $event->title : old('title') }}">
                 </div>
                 <!-- Input field 2 -->
                 <div class="form-group">

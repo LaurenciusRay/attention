@@ -43,11 +43,6 @@
                     <li class="nav-item active">
                         <a href="#home" class="nav-link">Home</a>
                     </li>
-                    @auth('eouser')
-                    <li class="nav-item">
-                        <a href="{{ route('events.create') }}" class="nav-link">Create Event</a>
-                    </li>
-                    @endauth
                     <li class="nav-item">
                         <a href="{{ route('events.index') }}" class="nav-link">Event List</a>
                     </li>
@@ -67,6 +62,9 @@
                             {{ Auth::guard('eouser')->user()->name }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownUserEo">
+                            <a href="{{ route('events.create') }}" class="dropdown-item">
+                                Create Event
+                            </a>
                             <a class="dropdown-item" href="#" onclick="event.preventDefault();document.querySelector('#logout-form').submit();">
                                 Logout
                             </a>

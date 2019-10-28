@@ -47,4 +47,10 @@ class EoDetailRepository
         $update = $event->update($data);
         return $update;
     }
+
+    public function eventSelection($eventorganizer)
+    {
+        $result = EoDetail::all()->where('eo_users_id', '==', $eventorganizer->id);
+        return $result;
+    }
 }

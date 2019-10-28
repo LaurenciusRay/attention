@@ -69,3 +69,24 @@ input#image {
 {
     margin-top: -75px;
 }
+.eo-content
+{
+    min-height: 250px;
+    width: 100%;
+}
+
+#eo-event-card.space-2 {
+  padding-top:7rem;
+    padding-bottom:7rem;
+}
+#eo-event-card.bg-light {
+  background-color: #F7FBFE!important;
+}
+
+#eo-event-card a.card-text {
+  color:inherit;
+}
+#eo-event-card a:hover {
+  /* color:#4C49A2; */
+  text-decoration:none;
+}
