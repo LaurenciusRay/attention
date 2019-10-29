@@ -16,9 +16,13 @@ class EoRegistController extends Controller
         $this->eoRegistRepository = $eoRegistRepository;
     }
 
-    public function formRegist()
+    public function viewFormRegistEo()
     {
-        return $this->eoRegistRepository->formRegistEo();
+        if (Auth::guard('eouser')->check() || Auth::guard('tenantuser')->check()) {
+            return redirect()->back();
+        } else {
+            return view('page.frontend.register.registerEo');
+        }
     }
 
     public function registEo(ValidationRegistEo $request)

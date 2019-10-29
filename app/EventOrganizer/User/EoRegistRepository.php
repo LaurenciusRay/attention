@@ -22,15 +22,4 @@ class EoRegistRepository
             'password' => Hash::make($request['password']),
         ]);
     }
-
-    public function formRegistEo()
-    {
-        $request = view('page.frontend.register.registerEo');
-
-        if (Auth::guard('eouser')->check() || Auth::guard('tenantuser')->check()) {
-            return redirect()->back();
-        }
-
-        return $request;
-    }
 }

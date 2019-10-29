@@ -25,7 +25,7 @@ Auth::routes();
 Route::resource('events', 'events\EventsController');
 
 Route::namespace('Frontend\Auth\Regist')->name('regist.')->group(function () {
-    Route::get('/regist-eo','EoRegistController@formRegist')->name('eo-user-form');
+    Route::get('/regist-eo','EoRegistController@viewFormRegistEo')->name('eo-user-form');
     Route::post('/regist-eo', 'EoRegistController@registEo')->name('eo-user');
     Route::get('/regist-tenant', 'TenantRegistController@formRegist')->name('tenant-user-form');
     Route::post('/regist-tenant', 'TenantRegistController@registTenant')->name('tenant-user');
