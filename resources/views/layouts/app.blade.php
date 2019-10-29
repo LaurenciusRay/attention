@@ -55,16 +55,28 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav ml-auto navbar-center" id="mySidenav">
                     @yield('search_bar')
-                    <li class="nav-item active">
-                        <a href="/" class="nav-link">Home</a>
-                    </li>
-
                     <!-- @auth('eouser')
                     <li class="nav-item">
                         <a href="{{ route('events.create') }}" class="nav-link">Create Event</a>
                     </li>
                     @endauth -->
-
+                    @auth('eouser')
+                    <li class="nav-item">
+                        <a href="{{ route('eventorganizer.index', Auth::guard('eouser')->user()->id) }}" class="nav-link">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('tenants.index') }}" class="nav-link">Tenant List</a>
+                    </li>
+                    @endauth
+                    @auth('tenantuser')
+                    <li class="nav-item">
+                        <a href="{{ route('events.index') }}" class="nav-link">Event List</a>
+                    </li>
+                    @endauth
+                    @unless (Auth::guard('eouser')->check() || Auth::guard('tenantuser')->check())
+                    <li class="nav-item active">
+                        <a href="/" class="nav-link">Home</a>
+                    </li>
                     <li class="nav-item">
                         <a href="{{ route('events.index') }}" class="nav-link">Event List</a>
                     </li>
@@ -77,43 +89,40 @@
                     <li class="nav-item">
                         <a href="#contact" class="nav-link">Contact</a>
                     </li>
-                    
-                        @auth('eouser')
-                        <li class="nav-item dropdown user-dropdown">
-                            <a id="navbarDropdownUserEo" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::guard('eouser')->user()->name }}
+                    @endunless
+                    @auth('eouser')
+                    <li class="nav-item dropdown user-dropdown">
+                        <a id="navbarDropdownUserEo" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::guard('eouser')->user()->name }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownUserEo">
+                            <a href="{{ route('events.create') }}" class="dropdown-item">
+                                Create Event
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownUserEo">
-                                <a href="{{ route('events.create') }}" class="dropdown-item">
-                                    Create Event
-                                </a>
-                                <a class="dropdown-item" href="#" onclick="event.preventDefault();document.querySelector('#logout-form').submit();">
-                                    Logout
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                        @endauth
-                    
-                    
-                        @auth('tenantuser')
-                        <li class="nav-item dropdown user-dropdown">
-                            <a id="navbarDropdownUserTenant" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::guard('tenantuser')->user()->name }}
+                            <a class="dropdown-item" href="#" onclick="event.preventDefault();document.querySelector('#logout-form').submit();">
+                                Logout
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownUserTenant">
-                                <a class="dropdown-item" href="#" onclick="event.preventDefault();document.querySelector('#logout-form').submit();">
-                                    Logout
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                        @endauth
-                    
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    @endauth
+                    @auth('tenantuser')
+                    <li class="nav-item dropdown user-dropdown">
+                        <a id="navbarDropdownUserTenant" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::guard('tenantuser')->user()->name }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownUserTenant">
+                            <a class="dropdown-item" href="#" onclick="event.preventDefault();document.querySelector('#logout-form').submit();">
+                                Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    @endauth    
                 </ul>
             </div>
         </div>
