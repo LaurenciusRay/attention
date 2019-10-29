@@ -18,7 +18,16 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+
+            // return redirect()->intended('/');
+            if($guard == 'eouser'){
+            //     //user was authenticated with admin guard.
+                // return redirect()->route('admin.home');
+                return redirect()->intended('/sample-eouser');
+            } else {
+            //     //default guard.
+                return redirect('/');
+            }
         }
 
         return $next($request);

@@ -21,7 +21,8 @@ Route::get('/event-organizer/{eventorganizer}', 'events\EventOrganizerController
 
 Auth::routes();
 
-Route::resource('events', 'EventsController');
+// event list routes
+Route::resource('events', 'events\EventsController');
 
 Route::namespace('Frontend\Auth\Regist')->name('regist.')->group(function () {
     Route::get('/regist-eo','EoRegistController@formRegist')->name('eo-user-form');
@@ -37,11 +38,16 @@ Route::namespace('Frontend\Auth\Login')->name('login.')->group(function () {
     Route::post('/login-tenant', 'TenantLoginController@login')->name('tenant-user');
 });
 
-Route::middleware('auth:eouser')->name('eouser.')->group(function(){
-    // route for logged in eouser
+Route::middleware(['auth:eouser'])->name('eouser.')->group(function(){
+    // all route for logged in eouser
+    
+    // route sample
     Route::get('/sample-eouser', function (){
         return view('page.frontend.sample.logged_in_eo');
     })->name('logged-in');
+
+    // route event
+    Route::resource('events', 'events\EventsController')->only(['create', 'store']);
 }); 
 
 Route::middleware('auth:tenantuser')->name('tenantuser.')->group(function(){

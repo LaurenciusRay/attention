@@ -66,6 +66,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('tenants.index') }}" class="nav-link">Tenant List</a>
+                        <a href="{{ route('eouser.events.create') }}" class="nav-link">Create Event</a>
                     </li>
                     @endauth
                     @auth('tenantuser')
