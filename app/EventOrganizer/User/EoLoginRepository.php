@@ -10,7 +10,8 @@ class EoLoginRepository
     {
         if (Auth::guard('eouser')->attempt($request->only('email', 'password'), $request->filled('remember'))) {
 
-            return redirect()->route('eouser.logged-in');
+            // return redirect()->route('eouser.logged-in');
+            return redirect()->intended();
         }
 
         return $this->loginFailed();
@@ -27,13 +28,15 @@ class EoLoginRepository
 
     public function formLoginEo()
     {
-        $request = view('page.frontend.login.loginEo');
-        
+        // $request = view('page.frontend.login.loginEo');
+    
         if (Auth::guard('eouser')->check() || Auth::guard('tenantuser')->check()) {
             return redirect()->back();
+        } else {
+            return view('page.frontend.login.loginEo');
         }
 
-        return $request;
+        // return $request;
     }
 
 }

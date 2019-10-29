@@ -34,7 +34,7 @@ Route::namespace('Frontend\Auth\Login')->name('login.')->group(function () {
     Route::post('/login-tenant', 'TenantLoginController@login')->name('tenant-user');
 });
 
-Route::middleware('auth:eouser')->name('eouser.')->group(function(){
+Route::middleware(['auth:eouser'])->name('eouser.')->group(function(){
     // all route for logged in eouser
     
     // route sample

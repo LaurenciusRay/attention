@@ -8,7 +8,7 @@
         </div>
         <div class="card-body">
             @include('partials.error')
-            <form action="{{ route('events.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('eouser.events.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="title">Title</label>

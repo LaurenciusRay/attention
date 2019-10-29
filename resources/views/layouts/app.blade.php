@@ -61,7 +61,7 @@
 
                     @auth('eouser')
                     <li class="nav-item">
-                        <a href="{{ route('events.create') }}" class="nav-link">Create Event</a>
+                        <a href="{{ route('eouser.events.create') }}" class="nav-link">Create Event</a>
                     </li>
                     @endauth
 
