@@ -30,7 +30,29 @@ class TenantProductRepository{
 
   public function updateProducts($request, $id)
   {
+    $data = TenantProduct::where('id', $id)->first();
+      $data->title = $request->title;
+      $data->tenant_users_id = $request->tenant_users_id;
+      $data->price = $request->price;
 
+      // cek
+      if ($request->file('image')== "") {
+          $data->image = $data->image;
+      }
+      else {
+          if ($request->hasFile('image')) {
+          $file = 'image/tenant/'.$data->image;
+          if (is_file($file)) {
+              unlink($file);
+          }
+          // 
+          $file = $request->file('image');
+          $filename = $file->getClientOriginalName();
+          $request->file('file')->move('image/tenant/'.$filename);
+          $data->file = $filename;
+      }
+    }
+      $data->save();
   }
 
 }

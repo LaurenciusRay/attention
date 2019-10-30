@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\tenants\CreateTenantDetail;
+use App\Http\Requests\Tenants\CreateTenantDetail;
+use App\Http\Requests\Tenants\ProductCreateRequest;
+use App\Http\Requests\Tenants\ProductUpdateRequest;
 use App\Tenant\Product\TenantProduct;
 use App\Tenant\Product\TenantProductRepository;
 
@@ -63,7 +65,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        return view('tenant.detail.view-detail')->with('data', TenantProduct::all());
+      return view('tenant.detail.view-detail')->with('data', TenantProduct::all());
     }
 
     /**
@@ -73,32 +75,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id){
-
-      $data = TenantProduct::where('id', $id)->first();
-      $data->title = $request->title;
-      $data->tenant_users_id = $request->tenant_users_id;
-      $data->price = $request->price;
-
-      // cek
-      if ($request->file('image')== "") {
-          $data->image = $data->image;
-      }
-      else {
-          if ($request->hasFile('image')) {
-              // gambar sebelumnya di hapus dan di ganti baru
-          $file = 'image/tenant/'.$data->image;
-          if (is_file($file)) {
-              unlink($file);
-          }
-          // 
-          $file = $request->file('image');
-          $filename = $file->getClientOriginalName();
-          $request->file('file')->move('image/tenant/'.$filename);
-          $data->file = $filename;
-      }
-    }
-      $data->save();
+    public function update(ProductUpdateRequest $request,TenantProduct $id){
+      $productRepo  = new TenantProductRepository;
+      $productRepo->storeProducts($request);
+      
       return redirect('products');
     }
 
