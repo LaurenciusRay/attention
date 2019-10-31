@@ -11,6 +11,13 @@ use App\Tenant\Product\TenantProductRepository;
 
 class ProductController extends Controller
 {
+    private $productRepo;
+
+    public function __construct(TenantProductRepository $tenantproductrepo)
+    {
+        $this->productRepo = $tenantproductrepo;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -39,9 +46,7 @@ class ProductController extends Controller
      */
     public function store(CreateTenantDetail $request)
     {
-		  $productRepo = new TenantProductRepository;
-      $productRepo->storeProducts($request);
-      
+      $this->productRepo->storeProducts($request);
 		  session()->flash('Successfully add product!');
 		  return redirect(route('products.create'));
     }

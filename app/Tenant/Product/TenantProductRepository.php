@@ -14,7 +14,7 @@ class TenantProductRepository{
     // Storing Post
     
     $product = TenantProduct::create([
-      'tenant_users_id' => $request->tenant_users_id,
+      'tenant_users_id' => $request->user_id,
       'title' => $request->title,
       'image' => $image,
       'price' => $request->price,
@@ -32,7 +32,6 @@ class TenantProductRepository{
   {
     $data = TenantProduct::where('id', $id)->first();
       $data->title = $request->title;
-      $data->tenant_users_id = $request->tenant_users_id;
       $data->price = $request->price;
 
       // cek

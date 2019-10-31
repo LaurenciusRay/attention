@@ -11,6 +11,15 @@ use App\Tenant\Product\TenantProductRepository;
 
 
 class TenantController extends Controller{
+
+    private $tenantRepo;
+    private $tenantProductRepo;
+
+    public function __construct(TenantProductRepository $tenantproductrepo, TenantUserRepository $tenantuserrepo)
+    {
+        $this->tenantRepo = $tenantuserrepo;
+        $this->tenantProductRepo = $tenantproductrepo;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -66,7 +75,8 @@ class TenantController extends Controller{
      */
     public function show(TenantUser $tenant)
     {
-        return view('tenant.show')->with('data', $tenant);
+        $productSelection = $this->tenantRepo->productSelection($tenant);
+        return view('tenant.show')->with('data', $tenant)->with('productSelection', $productSelection);
     }
 
     /**

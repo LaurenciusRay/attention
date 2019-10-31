@@ -48,37 +48,11 @@
         </div>
 
         <hr>
-        <h5>Pernah Mengikuti Events</h5>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="card" style="width: 18rem; padding:20px;">
-                <img src="https://s.kaskus.id/r540x540/images/2017/04/18/4461023_201704181033040639.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Events Makanan</h5>
-                   
-                </div>
-            </div>
-         </div>
-        
-         <div class="col-md-4">
-            <div class="card" style="width: 18rem; padding:20px;">
-                <img src="https://s.kaskus.id/r540x540/images/2017/04/18/4461023_201704181033040639.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Events Pakaian</h5>
-                   
-                </div>
-            </div>  
-        </div>
+        <h6>Product</h6>
+        @foreach($productSelection as $pSel)
+            {{ $pSel->title }}
+        @endforeach
        
-         <div class="col-md-4">
-            <div class="card" style="width: 18rem; padding:20px;">
-                <img src="https://s.kaskus.id/r540x540/images/2017/04/18/4461023_201704181033040639.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Events Pameran </h5>
-                   
-                </div>
-            </div>  
-        </div>
     </div>
     </div>
 
