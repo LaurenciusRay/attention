@@ -11,6 +11,7 @@
             <!-- @include('partials.error') -->
             <form action="{{ route('products.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
+                {{ Form::hidden('user_id', Auth::guard('tenantuser')->user()->id) }}
                 <div class="form-group">
                     <label for="title">Tenant id</label>
                     <input type="number" id="tenant_users_id" name="tenant_users_id" class="form-control">

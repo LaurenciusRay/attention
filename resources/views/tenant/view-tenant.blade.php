@@ -27,7 +27,7 @@
           </tr>
           <!-- <p>INI SHORT DESKRIPSI</p> -->
           <!-- <button id="tenant-btn" class="btn" type="button">Detail</button> -->
-          <a id="tenant-btn" href="{{ route('tenants.index', $datas->id) }}" class="btn btn-sm" type="sumbit">Detail</a>
+          <a id="tenant-btn" href="{{ route('tenants.show', $datas->id) }}" class="btn btn-sm" type="sumbit">Detail</a>
         </div>
       </div> 
     </div>

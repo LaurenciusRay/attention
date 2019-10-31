@@ -52,9 +52,7 @@ Route::middleware('auth:tenantuser')->name('tenantuser.')->group(function(){
 }); 
 
 // tenant list routes
-Route::resource('tenants', 'TenantController', [
-    'only' => ['tenants', 'index']
-]);
+Route::resource('tenants', 'TenantController');
 
 // tenant products route
 Route::resource('products', 'ProductController');
