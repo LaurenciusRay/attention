@@ -3,6 +3,7 @@
 namespace App\EventOrganizer\Detail;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class EoDetail extends Model
 {
