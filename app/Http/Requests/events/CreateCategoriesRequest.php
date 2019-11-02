@@ -24,7 +24,7 @@ class CreateCategoriesRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'required|unique:eo_detail_categories|min:3',
         ];
     }
 }

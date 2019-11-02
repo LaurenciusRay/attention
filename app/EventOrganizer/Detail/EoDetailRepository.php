@@ -52,5 +52,9 @@ class EoDetailRepository
         $result = EoDetail::all()->where('eo_users_id', '==', $eventorganizer->id);
         return $result;
     }
-    
+    public function eventShowed()
+    {
+        $result = EoDetail::all()->where('start_date', '<=', now())->where('end_date', '>=', now());
+        return $result;
+    }
 }

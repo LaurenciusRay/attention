@@ -24,7 +24,7 @@ class CreateEventsRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|unique:eo_details',
+            'title' => 'required|unique:eo_details|min"3',
             'description' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
