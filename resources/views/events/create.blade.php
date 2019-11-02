@@ -38,7 +38,7 @@
                 <!-- Input field 5 -->
                 <div class="form-group">
                     <label for="capacity"> Capacity </label>
-                    <input type="number" class="form-control" id="capacity" name="capacity" min="1" max="200" step="1" value={{ isset($event) ? $event->capacity : old('capacity') }} >
+                    <input type="number" class="form-control" id="capacity" name="capacity" min="1" max="100" step="1" value={{ isset($event) ? $event->capacity : old('capacity') }} >
                 </div>
                 <!-- Input field 6 -->
                 <div class="form-group">
