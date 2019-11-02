@@ -29,7 +29,7 @@ class UpdateEventsRequest extends FormRequest
             'start_date' => 'required',
             'end_date' => 'required',
             'capacity' => 'required',
-            'category' => 'required'
+            'category' => 'required',
         ];
     }
 }
