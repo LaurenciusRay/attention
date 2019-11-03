@@ -35,7 +35,7 @@
                  <div class="card px-3">
                  <a class="label label-default" href="#">Kategori:{{ $data->category}}</a>
            
-                        <p> {!! $data->description !!} </p>
+                        <p> {!! $data->description !!} </p> 
                 </div>
             </div>
             <div class=col-md-6>
@@ -49,10 +49,24 @@
 
         <hr>
         <h6>Product</h6>
+
+        <div class="row">
         @foreach($productSelection as $pSel)
-            {{ $pSel->title }}
+            
+                <div class="col-md-3">
+                    <div class="card" style="max-width:18em">
+                    <div class="card-header">
+                        {{ $pSel->title }}
+                    </div>
+                    <div class="card-body text-center">
+                        <img src="{{ asset('storage/'.$pSel->image) }}" style="max-width:15em;max-height:8em" alt="">
+                    </div>
+                </div>
+                </div>
+            
         @endforeach
-       
+        </div>
+        
     </div>
     </div>
 

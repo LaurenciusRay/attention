@@ -82,7 +82,7 @@ class ProductController extends Controller
      */
     public function update(ProductUpdateRequest $request,TenantProduct $id){
       $productRepo  = new TenantProductRepository;
-      $productRepo->storeProducts($request);
+      $productRepo->updateProducts($request, $id);
       
       return redirect('products');
     }

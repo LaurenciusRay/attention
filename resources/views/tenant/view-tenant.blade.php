@@ -20,7 +20,6 @@
       <div class="tenant-brackets">
       <span id="tenant-category" class="badge">{{$datas->category}}</span>
         <img src="{{ asset('storage/'.$datas->image_banner) }}" alt="gambar" id="tenant-image" style="width:100%">
-        <!-- <img id="tenant-image" src="https://ecs7.tokopedia.net/img/cache/700/product-1/2018/7/3/8584561/8584561_2971a63e-ab6b-479f-94c9-f402b1d80cf4_720_720.jpg" alt=""> -->
         <div id="tenantList" class="tenant-middle">
           <tr>
           <h5>{{$datas->name}}</h5>
