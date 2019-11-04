@@ -38,59 +38,48 @@
                 <!-- Input field 5 -->
                 <div class="form-group">
                     <label for="capacity"> Capacity </label>
-                    <<<<<<< HEAD <input type="number" class="form-control" id="capacity" name="capacity" min="1" max="200" step="1" value={{ isset($event) ? $event->capacity : old('capacity') }}>
-                        =======
-                        <input type="number" class="form-control" id="capacity" name="capacity" min="1" max="100" step="1" value={{ isset($event) ? $event->capacity : old('capacity') }}>
-                        >>>>>>> 432a6fb4ef2181904b42facab7e3e063b0918a7c
-                </div>
-                <!-- Input field 6 -->
-                <div class="form-group">
-                    <label for="category">Category</label>
-                    <select name="category" id="category" class="form-control">
-                        <option value="">None</option>
-                        @foreach($eoDetailCategory as $eoDc)
-                        <option value="{{ $eoDc->id }}" @if(isset($event)) @if($eoDc->id == $event->eo_detail_categories_id)
-                            selected
-                            @endif
-                            @endif
-                            >
-                            {{ $eoDc->name }}
-                        </option>
-                        @endforeach
-                    </select>
-                </div>
-                <!-- Input field 7 -->
-                <div class="form-group">
-                    <label for="image">
-                        <p>Add Image for your Homepage</p>
-                        <span class="btn btn-info">Add</span>
-                        <input type="file" id="image" name="image" style="display:none" value={{isset($event) ? $event->image : ''}}>
-                    </label>
-                    <label id="file-name"></label>
-                </div>
-                <div class="form-group">
-                    <img src=" {{ isset($event) ? asset('storage/'. $event->image) : ''}}" id="event-img-tag" name="img-tag" width="200px" />
-                </div>
-                <div class="form-group">
-                    <label for="imagelayout">
-                        <span class="btn btn-info">Add Image Booth Layout</span>
-                        <input type="file" id="imagelayout" name="image_layout" style="display:none">
-                    </label>
-                </div>
-                <div class="form-group">
-                    <img src="" id="event-img-tag-layout" name="img-tag" width="200px" />
-                </div>
-                <div class="form-group text-center">
-                    <button type="submit" class="btn btn-success">
-                        Add Booth
-                        <p>Add Image for your Gallery (didn't ready yet)</p>
-                        <a href="" class="btn btn-info">Add</a>
-                </div>
-                <div class="form-group text-center">
-                    <button type="submit" class="btn btn-success">
-                        {{ isset($event) ? 'Edit' : 'Create'}}
-                    </button>
-                </div>
+                    <input type="number" class="form-control" id="capacity" name="capacity" min="1" max="200" step="1" value={{ isset($event) ? $event->capacity : old('capacity') }}>
+                    <!-- Input field 6 -->
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select name="category" id="category" class="form-control">
+                            <option value="">None</option>
+                            @foreach($eoDetailCategory as $eoDc)
+                            <option value="{{ $eoDc->id }}" @if(isset($event)) @if($eoDc->id == $event->eo_detail_categories_id)
+                                selected
+                                @endif
+                                @endif
+                                >
+                                {{ $eoDc->name }}
+                            </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <!-- Input field 7 -->
+                    <div class="form-group">
+                        <label for="image">
+                            <p>Add Image for your Homepage</p>
+                            <span class="btn btn-info">Add</span>
+                            <input type="file" id="image" name="image" style="display:none" value={{isset($event) ? $event->image : ''}}>
+                        </label>
+                        <label id="file-name"></label>
+                    </div>
+                    <div class="form-group">
+                        <img src=" {{ isset($event) ? asset('storage/'. $event->image) : ''}}" id="event-img-tag" name="img-tag" width="200px" />
+                    </div>
+                    <div class="form-group">
+                        <label for="imagelayout">
+                            <span class="btn btn-info">Add Image Booth Layout</span>
+                            <input type="file" id="imagelayout" name="image_layout" style="display:none">
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <img src="" id="event-img-tag-layout" name="img-tag" width="200px" />
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-success">
+                            Add Booth
+                    </div>
             </form>
         </div>
     </div>
@@ -136,7 +125,7 @@
 </script>
 <!-- Flatpickr -->
 <script>
-    $document.querySelector("#image").onchange = function() {
+    document.querySelector("#image").onchange = function() {
         document.querySelector("#file-name").textContent = this.files[0].name;
     }
 
