@@ -70,16 +70,6 @@
                 <div class="form-group">
                     <img src=" {{ isset($event) ? asset('storage/'. $event->image) : ''}}" id="event-img-tag" name="img-tag" width="200px" />
                 </div>
-                <div class="form-group">
-                <!-- pake form, trus store ke controller -->
-                    <p>Add Image for your Gallery (didn't ready yet)</p>
-                    <input type="file" id="image2" name="image2" style="display:none" value={{isset($event) ? $event->image : ''}} >
-                     <a href="" class="btn btn-info">Add</a> <!-- ini submit -->
-                    <!-- <table id="galery" style="border:none;">
-                        <td>(nama file) misal 8798734983.jpg</td> hidden ------------- ini yg disave pake create,tambah id aja
-                        <td> <img src=""></td> tampilan fotonya
-                    </table>  -->
-                </div>
                 <div class="form-group text-center">
                     <button type="submit" class="btn btn-success">
                     {{ isset($event) ? 'Edit' : 'Create'}}
@@ -110,13 +100,6 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
-    $("#image").change(function() {
-        readURL(this);
-    });
-    
-    // tambah buat image2
-
-
     document.querySelector("#image").onchange = function()
     {
         document.querySelector("#file-name").textContent = this.files[0].name;
