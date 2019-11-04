@@ -29,6 +29,7 @@ class CreateEventsRequest extends FormRequest
             'image' => 'required|image',
             'image_layout' => 'required|image',
             'capacity' => 'required',
+            'category' => 'required'
         ];
     }
 }

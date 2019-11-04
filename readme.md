@@ -4,6 +4,9 @@ For you, that want to use function Create Event
 1. Make sure your .env file add FILESYSTEM_DRIVER = public
 2. php artisan storage:link (for connect your public folder to Storage folder)
 
+My References on CSS Card Selection on Event Organizer Page
+https://sharebootstrap.com/crowdfunding-bootstrap-card/
+
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
 ## Learning Laravel

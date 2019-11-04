@@ -13,7 +13,7 @@
                     @csrf
                     <div class="form-group mt-3">
                         <label for="inputName">Name</label>
-                        <input id="inputName" name="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="your name or organization name">
+                        <input id="inputName" name="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="your name or organization name" value="{{ old('name') }}">
                         @if ($errors->has('name'))
                         <span class="help-block">
                             <strong>{{ $errors->first('name') }}</strong>
@@ -35,7 +35,7 @@
 
                     <div class="form-group mt-3">
                         <label for="inputEmail">Email</label>
-                        <input id="inputEmail" name="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="your email or organization email">
+                        <input id="inputEmail" name="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="your email or organization email" value="{{ old('email') }}">
                         @if ($errors->has('email'))
                         <span class="help-block">
                             <strong>{{ $errors->first('email') }}</strong>
@@ -53,7 +53,7 @@
                     </div>
                     <div class="form-group">
                         <label for="inputDescription">Description</label>
-                        <textarea id="inputDescription" name="description" class="form-control @error('description') is-invalid @enderror" rows="3" placeholder="description about you or your organization"></textarea>
+                        <textarea id="inputDescription" name="description" class="form-control @error('description') is-invalid @enderror" rows="3" placeholder="description about you or your organization">{{ old('description') }}</textarea>
                         @if ($errors->has('description'))
                         <span class="help-block">
                             <strong>{{ $errors->first('description') }}</strong>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Route;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 
 class Authenticate extends Middleware
@@ -14,7 +15,13 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        if (! $request->expectsJson()) {
+        if (!$request->expectsJson()) {
+            if (Route::is('eouser.*')) {
+                return route('login.eo-user-form');
+            }
+            if (Route::is('tenantuser.*')) {
+                return route('login.tenant-user-form');
+            }
             return route('login');
         }
     }

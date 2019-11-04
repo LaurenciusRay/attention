@@ -67,7 +67,7 @@ class TenantController extends Controller{
      */
     public function show(TenantUser $tenant)
     {
-        return view('tenants.d_tenants')->with('data', $tenant);
+        return view('tenant.show')->with('data', $tenant);
     }
 
     /**

@@ -2,28 +2,26 @@
 
 namespace App\Http\Controllers\Frontend\Auth\Login;
 
-use Auth;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Login\LoginEoUser as ValidationLoginEo;
+use App\EventOrganizer\User\EoLoginRepository;
 
 class EoLoginController extends Controller
 {
-    public function formLoginEo()
+    private $eoLoginRepository;
+
+    public function __construct(EoLoginRepository $eoLoginRepository)
     {
-        return view('page.frontend.login.loginEo');
+        $this->eoLoginRepository = $eoLoginRepository;
     }
 
-    public function login(Request $request)
+    public function formLogin()
     {
-        // $this->validator($request);
+        return $this->eoLoginRepository->formLoginEo();
+    }
 
-        if (Auth::guard('eouser')->attempt($request->only('email', 'password'), $request->filled('remember'))) {
-            //Authentication passed...
-            return redirect()
-                ->intended(route('home'))
-                ->with('status', 'You are Logged in as Admin!');
-        }
-        //Authentication failed...
-        return $this->loginFailed();
+    public function login(ValidationLoginEo $request)
+    {
+        return $this->eoLoginRepository->checkEoLogin($request);
     }
 }

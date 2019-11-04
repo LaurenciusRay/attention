@@ -36,16 +36,38 @@
                 <div class="row mb-3 d-flex justify-content-end">
                     <h6 class="text-danger"> {{ $daysLeft }} </h6>
                 </div>
-                <div class="row mb-2">
-                    <div class="card px-3">
+                <div class="row mb-4">
+                    <div class="card px-3 eo-content">
                         <p> {!! $event->description !!} </p>
                     </div>
                 </div>
+                @auth('tenantuser')  
+                <div class="text-center">
+                    <p>Click here to</p>
+                </div>
                 <div class="row mb-3 d-flex justify-content-center">
-                    <button class="btn-lg btn-success" onclick="handleRegister({{ $event->id }})">
-                        Click here to register
+                    <button class="btn btn-info" onclick="handleRegister({{ $event->id }})">
+                        Join
                     </button>
                 </div>
+                @endauth
+                @auth('eouser')
+                    @if($event->eo_users_id == Auth::guard('eouser')->user()->id)
+                    <div class="row mb-3 d-flex justify-content-center">
+                        <a class="btn btn-success" href="{{ route('events.edit', $event->id) }}">
+                            Edit
+                        </a>
+                    </div>
+                    @endif
+                @endauth
+                @unless (Auth::guard('eouser')->check() || Auth::guard('tenantuser')->check())
+                <div class="text-center">
+                    <p>You must login first as tenant to Join</p>
+                </div>
+                <div class="row mb-3 d-flex justify-content-center">
+                    <a class="btn btn-info" href="{{ route('login.tenant-user-form') }}">Login</a>
+                </div>
+                @endunless
                 <!-- MODAL FOR FORM PARTICIPANT -->
                 <div class="modal fade" id="registerParticipantModal" tabindex="-1" role="dialog" aria-labelledby="registerParticipantLabel"
                     aria-hidden="true">
@@ -87,8 +109,8 @@
                                 <img src="{{ Gravatar::src('raymondantonio587@gmail.com') }}" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title">Event Organizer</h5>
-                                <a href="" class="text-info">  about Author </a>
+                                <h5 class="card-title">{{ $event->eo_users->name }}</h5>
+                                <a href="{{ route('eventorganizer.index', $event->eo_users->id) }}" class="text-info">  about Author </a>
                             </div>
                         </div>
                         <!-- End Card Profile -->
@@ -104,6 +126,7 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
         </div>
     </div>

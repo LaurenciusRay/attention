@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Frontend\Auth\Regist;
+namespace App\Http\Requests\events;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegistEo extends FormRequest
+class UpdateEventsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class RegistEo extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,11 +24,12 @@ class RegistEo extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique',
-            'password' => 'required|string|min:6',
+            'title' => 'required',
             'description' => 'required',
-            'image_banner' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'capacity' => 'required',
+            'category' => 'required'
         ];
     }
 }

@@ -5,17 +5,19 @@ namespace App\Http\Controllers\events;
 use App\EventOrganizer\Detail\Category\EoDetailCategory;
 use Illuminate\Http\Request;
 use App\Http\Requests\events\CreateEventsRequest;
+use App\Http\Requests\events\UpdateEventsRequest;
 use App\EventOrganizer\Detail\EoDetailRepository;
 use App\EventOrganizer\Detail\EoDetail;
 use App\EventOrganizer\DetailBooth\EoDetailBooth;
+use App\EventOrganizer\User\EoUser;
 use App\Http\Controllers\Controller;
 
 class EventsController extends Controller
 {
-    private $eventsRepo;
+    private $eventRepo;
     public function __construct(EoDetailRepository $eodetailrepository)
     {
-        $this->eventsRepo = $eodetailrepository;
+        $this->eventRepo = $eodetailrepository;
     }
     /**
      * Display a listing of the resource.
@@ -63,7 +65,7 @@ class EventsController extends Controller
      */
     public function store(CreateEventsRequest $request)
     {
-        $this->eventsRepo->storeEvent($request);
+        $this->eventRepo->storeEvent($request);
         session()->flash('success', 'Event Created Successfully');
         $title = $request->title;
         $capacity = $request->capacity;
@@ -80,8 +82,7 @@ class EventsController extends Controller
      */
     public function show(Eodetail $event)
     {
-
-        $daysLeft = $this->eventsRepo->DaysLeftEvent($event);
+        $daysLeft = $this->eventRepo->DaysLeftEvent($event);
         return view('events.show')->with('event', $event)->with('daysLeft', $daysLeft);
     }
 
@@ -91,9 +92,9 @@ class EventsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Eodetail $event)
     {
-        //
+        return view('events.create')->with('event', $event)->with('eoDetailCategory', EoDetailCategory::all());
     }
 
     /**
@@ -103,9 +104,11 @@ class EventsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateEventsRequest $request, Eodetail $event)
     {
-        //
+        $this->eventRepo->updateEvent($request, $event);
+        session()->flash('success', 'Event Updated Successfully');
+        return redirect(route('events.index'));
     }
 
     /**
