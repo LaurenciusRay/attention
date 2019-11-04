@@ -26,7 +26,7 @@ class EventsController extends Controller
      */
     public function index()
     {
-        $event = EoDetail::all();
+        $event = $this->eventRepo->eventShowed();
         $category = EoDetailCategory::all();
         return view('events.index', compact('event', 'category'));
     }

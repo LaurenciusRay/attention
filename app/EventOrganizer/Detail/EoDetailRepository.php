@@ -37,8 +37,7 @@ class EoDetailRepository
     public function updateEvent($request, $event)
     {
         $data = $request->only('title', 'description', 'start_date', 'end_date', 'capacity', 'category');
-        if($request->hasFile('image'))
-        {
+        if ($request->hasFile('image')) {
             // Upload it
             $image = $request->image->store('events');
             // Delete old one
@@ -49,7 +48,6 @@ class EoDetailRepository
         $update = $event->update($data);
         return $update;
     }
-
     public function eventSelection($eventorganizer)
     {
         $result = EoDetail::all()->where('eo_users_id', '==', $eventorganizer->id);
@@ -61,5 +59,16 @@ class EoDetailRepository
         return EoDetail::all()->where('title', '==', $title)
             ->where('capacity', '==', $capacity)
             ->first();
+    }
+
+    public function eventShowed()
+    {
+        $search = request()->query('search');
+        if ($search) {
+            $result = EoDetail::where('start_date', '<=', now())->where('end_date', '>=', now())->where('title', 'LIKE', "%{$search}%")->paginate(4);
+        } else {
+            $result = EoDetail::where('start_date', '<=', now())->where('end_date', '>=', now())->paginate(8);
+        }
+        return $result;
     }
 }

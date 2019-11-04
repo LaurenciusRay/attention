@@ -38,7 +38,10 @@
                 <!-- Input field 5 -->
                 <div class="form-group">
                     <label for="capacity"> Capacity </label>
-                    <input type="number" class="form-control" id="capacity" name="capacity" min="1" max="200" step="1" value={{ isset($event) ? $event->capacity : old('capacity') }}>
+                    <<<<<<< HEAD <input type="number" class="form-control" id="capacity" name="capacity" min="1" max="200" step="1" value={{ isset($event) ? $event->capacity : old('capacity') }}>
+                        =======
+                        <input type="number" class="form-control" id="capacity" name="capacity" min="1" max="100" step="1" value={{ isset($event) ? $event->capacity : old('capacity') }}>
+                        >>>>>>> 432a6fb4ef2181904b42facab7e3e063b0918a7c
                 </div>
                 <!-- Input field 6 -->
                 <div class="form-group">
@@ -69,10 +72,10 @@
                     <img src=" {{ isset($event) ? asset('storage/'. $event->image) : ''}}" id="event-img-tag" name="img-tag" width="200px" />
                 </div>
                 <div class="form-group">
-                    <<<<<<< HEAD <label for="imagelayout">
+                    <label for="imagelayout">
                         <span class="btn btn-info">Add Image Booth Layout</span>
                         <input type="file" id="imagelayout" name="image_layout" style="display:none">
-                        </label>
+                    </label>
                 </div>
                 <div class="form-group">
                     <img src="" id="event-img-tag-layout" name="img-tag" width="200px" />
@@ -80,14 +83,12 @@
                 <div class="form-group text-center">
                     <button type="submit" class="btn btn-success">
                         Add Booth
-                        =======
                         <p>Add Image for your Gallery (didn't ready yet)</p>
                         <a href="" class="btn btn-info">Add</a>
                 </div>
                 <div class="form-group text-center">
                     <button type="submit" class="btn btn-success">
                         {{ isset($event) ? 'Edit' : 'Create'}}
-                        >>>>>>> 6624ae74d7eb50f53c809cad38eec0a329b5b2d3
                     </button>
                 </div>
             </form>
@@ -117,9 +118,7 @@
     }
     $("#image").change(function() {
         readURL(this);
-    }); <<
-    <<
-    << < HEAD
+    });
 
     function readURLayout(input) {
         if (input.files && input.files[0]) {
@@ -137,16 +136,11 @@
 </script>
 <!-- Flatpickr -->
 <script>
-    === === =
-    document.querySelector("#image").onchange = function() {
-            document.querySelector("#file-name").textContent = this.files[0].name;
-        }
-        // Flatpickr
-        >>>
-        >>>
-        > 6624 ae74d7eb50f53c809cad38eec0a329b5b2d3
-    flatpickr('#start_date', {
-        enableTime: true,
+    $document.querySelector("#image").onchange = function() {
+        document.querySelector("#file-name").textContent = this.files[0].name;
+    }
+
+    enableTime: true,
         enableSeconds: true
     })
     flatpickr('#end_date', {

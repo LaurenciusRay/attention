@@ -69,13 +69,15 @@
                                                 <div class="progress-bar bg-success" role="progressbar" aria-valuenow="55" aria-valuemin="91" aria-valuemax="100" style="width:62%">62%</div>
                                             </div> -->
                                             <!-- end: progress bard -->
-                                            @if($eSel->eo_users_id == Auth::guard('eouser')->user()->id))
+                                            @auth('eouser')
+                                            @if($eSel->eo_users_id == Auth::guard('eouser')->user()->id)
                                                 <div class="col d-flex justify-content-center">
                                                     <a class="btn btn-success" href="{{ route('events.show', $eSel->id) }}">
                                                         Check
                                                     </a>
                                                 </div>
                                             @endif
+                                            @endauth
                                         </div>
                                     </div>
                                     <!-- Card -->
