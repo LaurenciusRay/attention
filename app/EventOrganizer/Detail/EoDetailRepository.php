@@ -54,7 +54,15 @@ class EoDetailRepository
     }
     public function eventShowed()
     {
-        $result = EoDetail::all()->where('start_date', '<=', now())->where('end_date', '>=', now());
+        $search = request()->query('search');
+        if($search)
+        {
+            $result = EoDetail::where('start_date', '<=', now())->where('end_date', '>=', now())->where('title', 'LIKE', "%{$search}%")->paginate(4);
+        }
+        else
+        {
+            $result = EoDetail::where('start_date', '<=', now())->where('end_date', '>=', now())->paginate(8);
+        }
         return $result;
     }
 }

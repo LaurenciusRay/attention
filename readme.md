@@ -7,7 +7,5 @@
 4. For testing only, run php artisan db:seed
 
 ## References
--> CSS Card on Event Organizer Page
-https://sharebootstrap.com/crowdfunding-bootstrap-card/
--> Admin Page
-https://getstisla.com/
+1. CSS Card on Event Organizer Page (https://sharebootstrap.com/crowdfunding-bootstrap-card/)
+2. Admin Page (https://getstisla.com/)
