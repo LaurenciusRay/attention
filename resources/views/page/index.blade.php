@@ -43,11 +43,13 @@
                     <li class="nav-item active">
                         <a href="#home" class="nav-link">Home</a>
                     </li>
-                    @auth('eouser')
+
+                    @if (Auth::guard('eouser')->check())
                     <li class="nav-item">
                         <a href="{{ route('eouser.events.create') }}" class="nav-link" v-pre>Create Event</a>
                     </li>
-                    @endauth
+                    @endif
+
                     <li class="nav-item">
                         <a href="{{ route('events.index') }}" class="nav-link">Event List</a>
                     </li>
@@ -61,7 +63,7 @@
                         <a href="#contact" class="nav-link">Contact</a>
                     </li>
 
-                    @auth('eouser')
+                    @if (Auth::guard('eouser')->check())
                     <li class="nav-item dropdown user-dropdown">
                         <a id="navbarDropdownUserEo" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::guard('eouser')->user()->name }}
@@ -78,9 +80,9 @@
                             </form>
                         </div>
                     </li>
-                    @endauth
+                    @endif
 
-                    @auth('tenantuser')
+                    @if (Auth::guard('tenantuser')->check())
                     <li class="nav-item dropdown user-dropdown">
                         <a id="navbarDropdownUserTenant" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::guard('tenantuser')->user()->name }}
@@ -94,7 +96,7 @@
                             </form>
                         </div>
                     </li>
-                    @endauth
+                    @endif
 
                 </ul>
             </div>
