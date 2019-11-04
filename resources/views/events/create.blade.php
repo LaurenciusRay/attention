@@ -32,14 +32,14 @@
                     <input type="number" class="form-control" id="capacity" name="capacity" min="1" max="200" step="1" value=" {{old('capacity')}} ">
                 </div>
                 <div class="form-group">
-                <label for="category">Category</label>
-                <select name="category" id="category" class="form-control">
-                    @foreach($eoDetailCategory as $eoDc)
+                    <label for="category">Category</label>
+                    <select name="category" id="category" class="form-control">
+                        @foreach($eoDetailCategory as $eoDc)
                         <option value="{{ $eoDc->id }}">
                             {{ $eoDc->name }}
                         </option>
-                    @endforeach
-                </select>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="image">
@@ -49,6 +49,12 @@
                 </div>
                 <div class="form-group">
                     <img src="" id="event-img-tag" name="img-tag" width="200px" />
+                </div>
+                <div class="form-group">
+                    <label for="imagelayout">
+                        <span class="btn btn-info">Add Image Booth Layout</span>
+                        <input type="file" id="imagelayout" name="image_layout" style="display:none">
+                    </label>
                 </div>
                 <div class="form-group">
                     <img src="" id="event-img-tag-layout" name="img-tag" width="200px" />
@@ -82,8 +88,11 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
+    $("#image").change(function() {
+        readURL(this);
+    });
 
-    function readLayout(input) {
+    function readURLayout(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
 
@@ -93,11 +102,8 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
-    $("#image").change(function() {
-        readURL(this);
-    });
     $("#imagelayout").change(function() {
-        readLayout(this);
+        readURLayout(this);
     });
 </script>
 <!-- Flatpickr -->

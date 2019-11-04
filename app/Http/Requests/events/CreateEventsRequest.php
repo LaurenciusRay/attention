@@ -27,6 +27,7 @@ class CreateEventsRequest extends FormRequest
             'title' => 'required|unique:eo_details',
             'description' => 'required',
             'image' => 'required|image',
+            'image_layout' => 'required|image',
             'capacity' => 'required',
         ];
     }

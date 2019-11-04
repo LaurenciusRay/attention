@@ -7,10 +7,16 @@ use Illuminate\Http\Request;
 use App\Http\Requests\events\CreateEventsRequest;
 use App\EventOrganizer\Detail\EoDetailRepository;
 use App\EventOrganizer\Detail\EoDetail;
+use App\EventOrganizer\DetailBooth\EoDetailBooth;
 use App\Http\Controllers\Controller;
 
 class EventsController extends Controller
 {
+    private $eventsRepo;
+    public function __construct(EoDetailRepository $eodetailrepository)
+    {
+        $this->eventsRepo = $eodetailrepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -33,10 +39,20 @@ class EventsController extends Controller
         return view('events.create')->with('eoDetailCategory', EoDetailCategory::all());
     }
 
-    public function createbooth(Eodetail $event)
+    public function createbooth($title, $capacity)
+    {
+        $eventbooth = $this->eventsRepo->getEventBooth($title, $capacity);
+        return view('events.createbooth', compact('eventbooth'));
+    }
+
+    public function addbooth(Request $request)
     {
 
-        return view('events.createbooth', compact('event'));
+        foreach ($request->booth as $key => $value) {
+            EoDetailBooth::create($value);
+        }
+
+        return back()->with('success', 'Record Created Successfully.');
     }
 
     /**
@@ -47,11 +63,14 @@ class EventsController extends Controller
      */
     public function store(CreateEventsRequest $request)
     {
-        $eventRepo = new EoDetailRepository();
-        $eventRepo->storeEvent($request);
+        $this->eventsRepo->storeEvent($request);
         session()->flash('success', 'Event Created Successfully');
-        return redirect(route('events.index'));
+        $title = $request->title;
+        $capacity = $request->capacity;
+        return redirect(route('createboothnew', compact('title', 'capacity')));
     }
+
+
 
     /**
      * Display the specified resource.
@@ -61,8 +80,8 @@ class EventsController extends Controller
      */
     public function show(Eodetail $event)
     {
-        $eventRepo = new EoDetailRepository();
-        $daysLeft = $eventRepo->DaysLeftEvent($event);
+
+        $daysLeft = $this->eventsRepo->DaysLeftEvent($event);
         return view('events.show')->with('event', $event)->with('daysLeft', $daysLeft);
     }
 

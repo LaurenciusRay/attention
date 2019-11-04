@@ -12,12 +12,14 @@ class EoDetailRepository
     {
         // Store Image file
         $image = $request->image->store('events');
+        $imagelayout = $request->image_layout->store('events');
         // Storing Post
         $event = EoDetail::create([
             'title' => $request->title,
             'description' => $request->description,
             'capacity' => $request->capacity,
             'image' => $image,
+            'image_layout' => $imagelayout,
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
             'eo_detail_categories_id' => $request->category,
@@ -35,5 +37,12 @@ class EoDetailRepository
     {
         // Delete Image
         Storage::delete($this->image);
+    }
+
+    public function getEventBooth($title, $capacity)
+    {
+        return EoDetail::all()->where('title', '==', $title)
+            ->where('capacity', '==', $capacity)
+            ->first();
     }
 }

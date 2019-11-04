@@ -18,11 +18,12 @@ class CreateEoDetailsTable extends Migration
             $table->integer('eo_users_id')->nullable();
             $table->string('title');
             $table->string('image');
+            $table->string('image_layout')->nullable();
             $table->text('description');
             $table->integer('eo_detail_categories_id');
-            $table->timestamp('start_date');
-            $table->timestamp('end_date');
             $table->integer('capacity');
+            $table->timestamp('start_date');
+            $table->timestamp('end_date')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
