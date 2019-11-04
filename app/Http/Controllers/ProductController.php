@@ -15,7 +15,7 @@ class ProductController extends Controller
 
     public function __construct(TenantProductRepository $tenantproductrepo)
     {
-        $this->productRepo = $tenantproductrepo;
+      $this->productRepo = $tenantproductrepo;
     }
 
     /**
@@ -80,10 +80,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductUpdateRequest $request,TenantProduct $id){
-      $productRepo  = new TenantProductRepository;
-      $productRepo->updateProducts($request, $id);
-      
+    public function update(ProductUpdateRequest $request,TenantProduct $product){
+      $this->productRepo->updateProducts($request, $product);
+      session()->flash('success', 'Product Updated Successfully');
       return redirect('products');
     }
 

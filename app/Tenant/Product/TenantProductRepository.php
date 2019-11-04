@@ -28,30 +28,42 @@ class TenantProductRepository{
     $data->delete();
   }
 
-  public function updateProducts($request, $id)
+  public function updateProducts($request, $product)
   {
-    $data = TenantProduct::where('id', $id)->first();
-      $data->title = $request->title;
-      $data->price = $request->price;
+    // $data = TenantProduct::where('id', $id)->first();
+    //   $data->title = $request->title;
+    //   $data->price = $request->price;
 
-      // cek
-      if ($request->file('image')== "") {
-          $data->image = $data->image;
-      }
-      else {
-          if ($request->hasFile('image')) {
-          $file = 'image/tenant/'.$data->image;
-          if (is_file($file)) {
-              unlink($file);
-          }
-          // 
-          $file = $request->file('image');
-          $filename = $file->getClientOriginalName();
-          $request->file('file')->move('image/tenant/'.$filename);
-          $data->file = $filename;
-      }
+    //   // cek
+    //   if ($request->file('image')== "") {
+    //       $data->image = $data->image;
+    //   }
+    //   else {
+    //       if ($request->hasFile('image')) {
+    //       $file = 'image/tenant/'.$data->image;
+    //       if (is_file($file)) {
+    //           unlink($file);
+    //       }
+    //       // 
+    //       $file = $request->file('image');
+    //       $filename = $file->getClientOriginalName();
+    //       $request->file('file')->move('image/tenant/'.$filename);
+    //       $data->file = $filename;
+    //   }
+    // }
+    //   $data->save();
+
+    $data = $request->only('title, price');
+    if($request->hasFile('image')){
+      // upload image
+      $image = $request->image->store('image/tenant');
+      // delete old image
+      $product->deleteImage();
+      // save the $image to $data array
+      $data['image'] = $image;
     }
-      $data->save();
+    $update = $product->update($data);
+    return $update;
   }
 
 }

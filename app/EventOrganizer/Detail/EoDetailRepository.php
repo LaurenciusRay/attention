@@ -47,10 +47,22 @@ class EoDetailRepository
         $update = $event->update($data);
         return $update;
     }
-
     public function eventSelection($eventorganizer)
     {
         $result = EoDetail::all()->where('eo_users_id', '==', $eventorganizer->id);
+        return $result;
+    }
+    public function eventShowed()
+    {
+        $search = request()->query('search');
+        if($search)
+        {
+            $result = EoDetail::where('start_date', '<=', now())->where('end_date', '>=', now())->where('title', 'LIKE', "%{$search}%")->paginate(4);
+        }
+        else
+        {
+            $result = EoDetail::where('start_date', '<=', now())->where('end_date', '>=', now())->paginate(8);
+        }
         return $result;
     }
 }

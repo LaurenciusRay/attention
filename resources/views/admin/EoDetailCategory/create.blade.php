@@ -15,7 +15,7 @@
             @endif
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" id="name" class="form-control" name="name" value="{{isset($eoDetailCategory) ? $eoDetailCategory->name : '' }}">
+                <input type="text" id="name" class="form-control" name="name" value="{{isset($eoDetailCategory) ? $eoDetailCategory->name : old('name') }}">
             </div>
             <div class="form-group">
                 <button class="btn btn-success">

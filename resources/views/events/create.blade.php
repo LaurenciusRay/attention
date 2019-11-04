@@ -38,7 +38,7 @@
                 <!-- Input field 5 -->
                 <div class="form-group">
                     <label for="capacity"> Capacity </label>
-                    <input type="number" class="form-control" id="capacity" name="capacity" min="1" max="200" step="1" value={{ isset($event) ? $event->capacity : old('capacity') }} >
+                    <input type="number" class="form-control" id="capacity" name="capacity" min="1" max="100" step="1" value={{ isset($event) ? $event->capacity : old('capacity') }} >
                 </div>
                 <!-- Input field 6 -->
                 <div class="form-group">
@@ -70,10 +70,6 @@
                 <div class="form-group">
                     <img src=" {{ isset($event) ? asset('storage/'. $event->image) : ''}}" id="event-img-tag" name="img-tag" width="200px" />
                 </div>
-                <div class="form-group">
-                    <p>Add Image for your Gallery (didn't ready yet)</p>
-                    <a href="" class="btn btn-info">Add</a>
-                </div>
                 <div class="form-group text-center">
                     <button type="submit" class="btn btn-success">
                     {{ isset($event) ? 'Edit' : 'Create'}}
@@ -104,13 +100,13 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
-    $("#image").change(function() {
-        readURL(this);
-    });
     document.querySelector("#image").onchange = function()
     {
         document.querySelector("#file-name").textContent = this.files[0].name;
     }
+    $("#image").change(function() {
+        readURL(this);
+    });
     // Flatpickr
     flatpickr('#start_date', {
         enableTime: true,
