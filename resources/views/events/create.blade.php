@@ -104,6 +104,9 @@
     {
         document.querySelector("#file-name").textContent = this.files[0].name;
     }
+    $("#image").change(function() {
+        readURL(this);
+    });
     // Flatpickr
     flatpickr('#start_date', {
         enableTime: true,
