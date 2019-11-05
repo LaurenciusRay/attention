@@ -19,7 +19,7 @@
     @foreach($data as $datas)
     <tbody>
       <tr>
-        <th scope="row">{{$datas->id}}</th>
+        <th scope="row">{{$loop->iteration}}</th>
         <td>{{$datas->title}}</td>
         <td><img style="width:100px" src="{{asset('storage/'.$datas->image)}}" alt="products image"></td>
         <td>{{$datas->price}}</td>

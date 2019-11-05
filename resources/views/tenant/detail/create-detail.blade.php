@@ -27,9 +27,11 @@
                     <label for="image"> Image </label>
                     <input type="file" style="padding-bottom:37px" class="form-control" id="image" name="image">
                 </div>
-                <div class="form-group row">
+                @if(isset($data))
+                <div class="form-group">
                     <img src=" {{ asset('storage/'. $data->image) }}" id="product-img-tag" name="img-tag" width="200px" />
                 </div>
+                @endif
                 <div class="form-group text-center">
                     <button type="submit" class="btn btn-success">
                         {{ isset($data) ? 'Edit Product' : 'Upload Product' }}
