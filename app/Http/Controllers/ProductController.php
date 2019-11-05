@@ -68,9 +68,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(TenantProduct $product)
     {
-      return view('tenant.detail.view-detail')->with('data', TenantProduct::all());
+      return view('tenant.detail.create-detail')->with('data', $product);
     }
 
     /**
@@ -92,11 +92,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($request)
+    public function destroy(TenantProduct $product)
     {
-        $destroyRepo = new TenantProductRepository;
-        $destroyRepo->destroyProducts($request);
-        
-        return redirect('products')->with('success', 'Data is successfully deleted');
+        $product->delete();
+        session()->flash('error', 'Product Deleted Successfully');
+        return redirect('products');
     }
 }
