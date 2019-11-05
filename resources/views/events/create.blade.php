@@ -78,7 +78,8 @@
                     </div>
                     <div class="form-group text-center">
                         <button type="submit" class="btn btn-success">
-                            Add Booth
+                            {{ isset($event) ? 'Edit' : 'Add Booth'}}
+                        </button>
                     </div>
             </form>
         </div>
@@ -124,12 +125,10 @@
     });
 </script>
 <!-- Flatpickr -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
-    document.querySelector("#image").onchange = function() {
-        document.querySelector("#file-name").textContent = this.files[0].name;
-    }
-
-    enableTime: true,
+    flatpickr('#start_date', {
+        enableTime: true,
         enableSeconds: true
     })
     flatpickr('#end_date', {

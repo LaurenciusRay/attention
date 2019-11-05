@@ -55,6 +55,7 @@
                                 <th>Description</th>
                             </tr>
                             <tr>
+                                <input type="hidden" name="eo_users_id" value="{{$eventbooth->eo_users_id}}">
                             </tr>
                         </table>
 

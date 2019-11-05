@@ -3,6 +3,7 @@
 namespace App\EventOrganizer\Detail;
 
 use App\EventOrganizer\Detail\EoDetail;
+use App\EventOrganizer\DetailBooth\EoDetailBooth;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
@@ -70,5 +71,10 @@ class EoDetailRepository
             $result = EoDetail::where('start_date', '<=', now())->where('end_date', '>=', now())->paginate(8);
         }
         return $result;
+    }
+
+    public function showBooth($event)
+    {
+        return EoDetailBooth::all()->where('eo_detail_id', '==', $event->id);
     }
 }

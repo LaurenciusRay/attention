@@ -43,7 +43,7 @@ class EventsController extends Controller
 
     public function createbooth($title, $capacity)
     {
-        $eventbooth = $this->eventsRepo->getEventBooth($title, $capacity);
+        $eventbooth = $this->eventRepo->getEventBooth($title, $capacity);
         return view('events.createbooth', compact('eventbooth'));
     }
 
@@ -53,8 +53,9 @@ class EventsController extends Controller
         foreach ($request->booth as $key => $value) {
             EoDetailBooth::create($value);
         }
+        $eventorganizer = $request->eo_users_id;
 
-        return back()->with('success', 'Record Created Successfully.');
+        return redirect(route('eventorganizer.index', compact('eventorganizer')));
     }
 
     /**
@@ -83,7 +84,8 @@ class EventsController extends Controller
     public function show(Eodetail $event)
     {
         $daysLeft = $this->eventRepo->DaysLeftEvent($event);
-        return view('events.show')->with('event', $event)->with('daysLeft', $daysLeft);
+        $boothShow = $this->eventRepo->showBooth($event);
+        return view('events.show', compact('event', 'boothShow'))->with('daysLeft', $daysLeft);
     }
 
     /**
