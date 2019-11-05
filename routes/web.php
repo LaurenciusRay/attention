@@ -32,10 +32,14 @@ Route::namespace('Frontend\Auth\Regist')->name('regist.')->group(function () {
 });
 
 Route::namespace('Frontend\Auth\Login')->name('login.')->group(function () {
-    Route::get('/login-eo', 'EoLoginController@formLogin')->name('eo-user-form');
-    Route::get('/login-tenant', 'TenantLoginController@formLogin')->name('tenant-user-form');
+    Route::get('/login-eo', 'EoLoginController@formLogin')->name('eo-user-form')->middleware('block-tenant-user:tenantuser');
+    Route::get('/login-tenant', 'TenantLoginController@formLogin')->name('tenant-user-form')->middleware('block-eo-user:eouser');
     Route::post('/login-eo', 'EoLoginController@login')->name('eo-user');
     Route::post('/login-tenant', 'TenantLoginController@login')->name('tenant-user');
+});
+
+Route::get('/unauthorized', function() {
+    return view('page.frontend.403');
 });
 
 Route::middleware(['auth:eouser'])->name('eouser.')->group(function(){
@@ -50,7 +54,7 @@ Route::middleware(['auth:eouser'])->name('eouser.')->group(function(){
     Route::resource('events', 'events\EventsController')->only(['create', 'store']);
 }); 
 
-Route::middleware('auth:tenantuser')->name('tenantuser.')->group(function(){
+Route::middleware(['auth:tenantuser'])->name('tenantuser.')->group(function(){
     // route for logged in tenant user
     Route::get('/sample-tenant', function () {
         return view('page.frontend.sample.logged_in_tenant');

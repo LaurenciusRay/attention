@@ -8,7 +8,7 @@
         </div>
         <div class="card-body">
             @include('partials.error')
-            <form action="{{ isset($event) ? route('events.update', $event->id) : route('events.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ isset($event) ? route('eouser.events.update', $event->id) : route('eouser.events.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @if(isset($event))
                     @method('PUT')

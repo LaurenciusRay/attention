@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class EoUserMiddleware
+class BlockEoUserMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,14 +17,11 @@ class EoUserMiddleware
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            if ($guard != "admin") {
-                return redirect()->back();
-            }
+            if ($guard == 'eouser') {
+                return redirect('/unauthorized');
+            } 
         }
 
-        if (Auth::guard('eouser')->check()) {
-            return redirect()->back();
-        }
         return $next($request);
     }
 }
