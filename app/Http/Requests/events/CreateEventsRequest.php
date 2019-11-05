@@ -23,6 +23,7 @@ class CreateEventsRequest extends FormRequest
      */
     public function rules()
     {
+        
         return [
             'title' => 'required|unique:eo_details|min:3',
             'description' => 'required',
@@ -30,6 +31,8 @@ class CreateEventsRequest extends FormRequest
             'end_date' => 'required|after:start_date',
             'capacity' => 'required',
             'image' => 'required|image',
+            'images' => 'required|array',
+            'images.*' => 'required|image',
             'category' => 'required'
         ];
     }

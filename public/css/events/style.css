@@ -90,3 +90,7 @@ input#image {
   /* color:#4C49A2; */
   text-decoration:none;
 }
+#image_preview img{
+    width: 200px;
+    padding: 5px;
+}
