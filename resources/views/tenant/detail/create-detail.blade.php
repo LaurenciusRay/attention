@@ -5,7 +5,7 @@
 <div class="container">
     <div class="card card-default mb-5">
         <div class="card-header">
-            Add Products
+            {{ isset($data) ? 'Edit Product' : 'Add Product' }}
         </div>
         <div class="card-body">
             <!-- @include('partials.error') -->
