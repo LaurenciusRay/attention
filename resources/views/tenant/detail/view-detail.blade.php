@@ -2,38 +2,47 @@
 @section('title', 'Tenant')
 
 @section('content')
+
 <div class="container">
-    <div class="card card-default mb-5">
-        <div class="card-header">
-            Add Products
-        </div>
-        <div class="card-body">
-            <!-- @include('partials.error') -->
-            <form action="{{ route('tenants.store') }}" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="form-group">
-                    <label for="title">Tenant id</label>
-                    <input type="number" id="tenant_users_id" name="tenant_users_id" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" id="title" name="title" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="price">Price</label>
-                    <input type="number" id="price" name="price" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="image"> Image </label>
-                    <input type="file" style="padding-bottom:37px" class="form-control" id="image" name="image">
-                </div>
-                <div class="form-group text-center">
-                    <button type="submit" class="btn btn-success">
-                        Create Event
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Title</th>
+      <th scope="col">Image</th>
+      <th scope="col">Price</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+
+  @foreach($data as $datas)
+  <tbody>
+    <tr>
+      <th scope="row">{{$datas->id}}</th>
+      <td>{{$datas->title}}</td>
+      <td><img style="width:100px" src="{{asset('storage/'.$datas->image)}}" alt="products image"></td>
+      <td>{{$datas->price}}</td>
+      <td>  
+
+        <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#update_modal{{$datas->id}}">
+          Ubah
+        </button>
+        @include('tenant.detail.update-detail')
+
+        <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#hapus_modal">
+          Delete
+        </button>
+        @include('tenant.detail.delete-detail')
+        
+      </td>
+      
+    </tr>
+  </tbody>
+  @endforeach
+
+</table>
+
 </div>
+
 @endsection

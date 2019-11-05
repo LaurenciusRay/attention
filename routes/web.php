@@ -54,6 +54,10 @@ Route::middleware('auth:tenantuser')->name('tenantuser.')->group(function(){
 // tenant list routes
 Route::resource('tenants', 'TenantController');
 
+// tenant products route
+Route::resource('products', 'ProductController');
+
+// Route::get('/tenants/search','TenantController@search');
 // tenant detail route
 Route::get('/tenant/{id}', 'TenantController@detail');
 

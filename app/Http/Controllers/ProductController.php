@@ -2,24 +2,22 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
-use App\Tenant\User\TenantUser;
-use App\Tenant\User\TenantUserRepository;
+use App\Http\Requests\Tenants\CreateTenantDetail;
+use App\Http\Requests\Tenants\ProductCreateRequest;
+use App\Http\Requests\Tenants\ProductUpdateRequest;
 use App\Tenant\Product\TenantProduct;
 use App\Tenant\Product\TenantProductRepository;
 
+class ProductController extends Controller
+{
+    private $productRepo;
 
-class TenantController extends Controller{
-
-    private $tenantRepo;
-    private $tenantProductRepo;
-
-    public function __construct(TenantProductRepository $tenantproductrepo, TenantUserRepository $tenantuserrepo)
+    public function __construct(TenantProductRepository $tenantproductrepo)
     {
-        $this->tenantRepo = $tenantuserrepo;
-        $this->tenantProductRepo = $tenantproductrepo;
+        $this->productRepo = $tenantproductrepo;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +25,7 @@ class TenantController extends Controller{
      */
     public function index()
     {
-        return view('tenant.view-tenant')->with('data', TenantUser::all());
+      return view('tenant.detail.view-detail')->with('data', TenantProduct::all());
     }
 
     /**
@@ -35,24 +33,9 @@ class TenantController extends Controller{
      *
      * @return \Illuminate\Http\Response
      */
-
     public function create()
     {
-        //
-    }
-
-    // public function show(Eodetail $event)
-    // {
-    //     $eventRepo = new EoDetailRepository();
-    //     $daysLeft = $eventRepo->DaysLeftEvent($event);
-    //     return view('events.show')->with('event', $event)->with('daysLeft' , $daysLeft);
-    // }
-
-    
-
-    public function detail(TenantUser $id)
-    {
-        
+      return view('tenant.detail.create-detail');
     }
 
     /**
@@ -61,10 +44,11 @@ class TenantController extends Controller{
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    
-    public function store(Request $request)
+    public function store(CreateTenantDetail $request)
     {
-        //
+      $this->productRepo->storeProducts($request);
+		  session()->flash('Successfully add product!');
+		  return redirect(route('products.create'));
     }
 
     /**
@@ -73,10 +57,9 @@ class TenantController extends Controller{
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(TenantUser $tenant)
+    public function show($id)
     {
-        $productSelection = $this->tenantRepo->productSelection($tenant);
-        return view('tenant.show')->with('data', $tenant)->with('productSelection', $productSelection);
+        //
     }
 
     /**
@@ -87,7 +70,7 @@ class TenantController extends Controller{
      */
     public function edit($id)
     {
-        //
+      return view('tenant.detail.view-detail')->with('data', TenantProduct::all());
     }
 
     /**
@@ -97,9 +80,11 @@ class TenantController extends Controller{
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(ProductUpdateRequest $request,TenantProduct $id){
+      $productRepo  = new TenantProductRepository;
+      $productRepo->storeProducts($request);
+      
+      return redirect('products');
     }
 
     /**
@@ -108,8 +93,11 @@ class TenantController extends Controller{
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($request)
     {
-        //
+        $destroyRepo = new TenantProductRepository;
+        $destroyRepo->destroyProducts($request);
+        
+        return redirect('products')->with('success', 'Data is successfully deleted');
     }
 }
