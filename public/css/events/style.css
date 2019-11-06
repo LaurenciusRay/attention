@@ -61,10 +61,6 @@
     padding-bottom: 50px;
 }
 
-input#image {
-    display: none;
-}
-
 #profile
 {
     margin-top: -75px;
@@ -89,4 +85,8 @@ input#image {
 #eo-event-card a:hover {
   /* color:#4C49A2; */
   text-decoration:none;
+}
+#image_preview img{
+    width: 200px;
+    padding: 5px;
 }

@@ -3,6 +3,7 @@
 namespace App\EventOrganizer\Detail;
 
 use App\EventOrganizer\Detail\EoDetail;
+use App\EventOrganizer\Detail\Image\EoGallery;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
@@ -13,7 +14,7 @@ class EoDetailRepository
         // Store Image file
         $image = $request->image->store('events');
         // Storing Post
-        $store = EoDetail::create([
+        $event = EoDetail::create([
             'title' => $request->title,
             'description' => $request->description,
             'capacity' => $request->capacity,
@@ -23,7 +24,14 @@ class EoDetailRepository
             'eo_detail_categories_id' => $request->category,
             'eo_users_id' => $request->user_id,
         ]);
-        return $store;
+        foreach ($request->images as $images)
+        {
+            $filename = $images->store('events');
+            $store = EoGallery::create([
+                'eo_details_id' => $event->id,
+                'images' => $filename
+            ]);
+        };
     }
     public function DaysLeftEvent($event)
     {
@@ -63,6 +71,18 @@ class EoDetailRepository
         {
             $result = EoDetail::where('start_date', '<=', now())->where('end_date', '>=', now())->paginate(8);
         }
+        return $result;
+    }
+    // This function for first image pop up on button view gallery
+    public function firstImage($event)
+    {
+        $result = EoGallery::all()->where('eo_details_id', '==', $event->id);
+        return $result;
+    }
+    // This function for images on gallery slide (except first image)
+    public function imageGallery($event)
+    {
+        $result = EoGallery::all()->where('eo_details_id', '==', $event->id)->where('id', '>', '1');
         return $result;
     }
 }
