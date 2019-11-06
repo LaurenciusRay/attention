@@ -49,7 +49,7 @@
                 <div class="form-group">
                     <label for="category">Category</label>
                     <select name="category" id="category" class="form-control">
-                        <option value="">None</option>
+                        <option value="">Default</option>
                         @foreach($eoDetailCategory as $eoDc)
                         <option value="{{ $eoDc->id }}" @if(isset($event)) @if($eoDc->id ==
                             $event->eo_detail_categories_id)
@@ -66,12 +66,6 @@
                 <div class="form-group">
                     <label for="image"> Image </label>
                     <input type="file" style="padding-bottom:37px" class="form-control" id="image" name="image" value={{isset($event) ? $event->image : ''}}>
-                    <!-- <label for="image">
-                        <p>Add Image for your Homepage</p>
-                        <span class="btn btn-info">Add</span>
-                        
-                    </label>
-                    <label id="file-name"></label> -->
                 </div>
                 <div class="form-group">
                     <img src=" {{ isset($event) ? asset('storage/'. $event->image) : ''}}" id="event-img-tag"

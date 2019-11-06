@@ -36,9 +36,11 @@ Admin Attention
                             <a href="{{ route('events-categories.edit', $eoDc->id) }}" class="btn btn-info mr-1">
                                 Edit
                             </a>
-                            <button class="btn btn-danger" href="">
-                                Delete
-                            </button>
+                            <form method="POST" action=" {{ route('events-categories.destroy', $eoDc->id) }} ">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                <input type="submit" class="btn btn-danger" value="Delete">
+                            </form>
                         </div>
                     </td>
                 </tr>

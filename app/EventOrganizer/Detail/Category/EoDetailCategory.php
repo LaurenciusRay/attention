@@ -8,8 +8,8 @@ class EoDetailCategory extends Model
 {
     protected $fillable = ['name'];
 
-    public function eodetail()
+    public function eodetails()
     {
-        return $this->hasToMany(EoDetail::class);
+        return $this->hasMany('App\EventOrganizer\Detail\EoDetail', 'eo_detail_categories_id');
     }
 }
