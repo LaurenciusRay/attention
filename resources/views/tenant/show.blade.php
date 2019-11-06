@@ -31,6 +31,11 @@
                                 <th>Muhamar</th>
                             </tr>
                             <tr>
+                                <td>Jenis Kelamin</td>
+                                <td>:</td>
+                                <th>Laki-Laki</th>
+                            </tr>
+                            <tr>
                                 <td>Tempat Tanggal Lahir</td>
                                 <td>:</td>
                                 <th>Tangerang, 01 Januari 1994</th>
@@ -41,12 +46,17 @@
                                 <th>Wahsington city</th>
                             </tr>
                             <tr>
+                                <td>Email</td>
+                                <td>:</td>
+                                <th>amararrasyid@gmail.com</th>
+                            </tr>
+                            <tr>
                                 <td>Profesi saat ini</td>
                                 <td>:</td>
                                 <th>Pedagang (Sepatu Import)</th>
                             </tr>
                             <tr>
-                                <td>tahun Mulai Berdagang</td>
+                                <td>Tahun Mulai Berdagang</td>
                                 <td>:</td>
                                 <th>1991</th>
                             </tr>
@@ -68,6 +78,32 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col text-center">
+            <!-- Large modal -->
+            <button type="button" class="btn btn-primary center-block" data-toggle="modal" data-target=".bd-example-modal-lg">Update Profile</button>
+
+            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Update Profile</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <hr>
     <h2><u> My Products</u></h2>
     <div class="row product text-center">
@@ -82,6 +118,32 @@
         </div>
         <div class="col-lg-3 col-sm-6 text-center"><a href="{{asset('image/profiletenant/4g-produk-banner-id.jpg')}}" target="_blank"><img src="{{asset('image/profiletenant/4g-produk-banner-id.jpg')}}" alt="" width="250px" height="230"></a>
             <p>Produk 4G</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <!-- Large modal -->
+            <button type="button" class="btn btn-primary center-block" data-toggle="modal" data-target=".bd-example-modal-lg">Upload Products</button>
+
+            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Upload Products</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
