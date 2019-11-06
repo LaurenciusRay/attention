@@ -14,12 +14,6 @@ class EoDetailSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create('id_ID');
-        for($i = 1; $i <= 3; $i++)
-        {
-            DB::table('eo_detail_categories')->insert([
-                'name' => $faker->word
-            ]);
-        }
         for($i = 1; $i <= 10; $i++)
         {
             DB::table('eo_details')->insert([
