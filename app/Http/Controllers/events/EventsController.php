@@ -25,7 +25,7 @@ class EventsController extends Controller
      */
     public function index()
     {
-        $event = EoDetail::all();
+        $event = $this->eventRepo->eventShowed();
         $category = EoDetailCategory::all();
         return view('events.index', compact('event', 'category'));
     }
@@ -61,8 +61,10 @@ class EventsController extends Controller
      */
     public function show(Eodetail $event)
     {
+        $image = $this->eventRepo->firstImage($event);
+        $images = $this->eventRepo->imageGallery($event);
         $daysLeft = $this->eventRepo->DaysLeftEvent($event);
-        return view('events.show')->with('event', $event)->with('daysLeft', $daysLeft);
+        return view('events.show')->with('event', $event)->with('daysLeft', $daysLeft)->with('image', $image)->with('images', $images);
     }
 
     /**

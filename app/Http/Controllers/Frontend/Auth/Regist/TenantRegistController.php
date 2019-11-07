@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend\Auth\Regist;
 
+use Auth;
 use App\Tenant\User\TenantRegistRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Regist\RegistTenantUser as ValidationRegistTenant;
@@ -15,9 +16,13 @@ class TenantRegistController extends Controller
         $this->tenantRegistRepository = $tenantRegistRepository;
     }
 
-    public function formRegist()
+    public function viewFormRegistTenant()
     {
-        return $this->tenantRegistRepository->formRegistTenant();
+        if (Auth::guard('eouser')->check() || Auth::guard('tenantuser')->check()) {
+            return redirect()->back();
+        } else {
+            return view('page.frontend.register.registerTenant');
+        }
     }
 
     public function registTenant(ValidationRegistTenant $request)

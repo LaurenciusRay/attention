@@ -9,19 +9,22 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="row d-flex justify-content-end">
-                        <button href="{{ asset('storage/events/image1.jpg') }}" class="btn btn-danger btn-sm" data-fancybox="images-preview" data-thumbs='{"autoStart":true}'>
+                        <button href="{{ asset('storage/'. $image[0]->images) }}" class="btn btn-danger btn-sm" data-fancybox="images-preview" data-thumbs='{"autoStart":true}'>
                             View Gallery
                         </button>
                         <div style="display:none;">
-                            <a href="{{ asset('storage/events/image2.jpg') }}" data-fancybox="images-preview"
+                            @foreach($images as $im)
+                            <a href="{{ asset('storage/' . $im->images) }}" data-fancybox="images-preview"
                             data-width="1500" data-height="1000"
                             ></a>
-                            <a href="{{ asset('storage/events/image3.jpg') }}" data-fancybox="images-preview"
+                            @endforeach
+                            
+                            <!-- <a href="{{ asset('storage/events/image3.jpg') }}" data-fancybox="images-preview"
                             data-width="1500" data-height="1000"
                             ></a>
                             <a href="{{ asset('storage/events/image4.jpg') }}" data-fancybox="images-preview"
                             data-width="1500" data-height="1000"
-                            ></a>
+                            ></a> -->
                         </div>
                     </div>
                 </div>

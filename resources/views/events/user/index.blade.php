@@ -70,14 +70,14 @@
                                             </div> -->
                                             <!-- end: progress bard -->
                                             @auth('eouser')
-                                                @if($eSel->eo_users_id == Auth::guard('eouser')->user()->id))
-                                                    <div class="col d-flex justify-content-center">
-                                                        <a class="btn btn-success" href="{{ route('events.show', $eSel->id) }}">
-                                                            Check
-                                                        </a>
-                                                    </div>
-                                                @endif
-                                            @endauth()
+                                            @if($eSel->eo_users_id == Auth::guard('eouser')->user()->id)
+                                                <div class="col d-flex justify-content-center">
+                                                    <a class="btn btn-success" href="{{ route('events.show', $eSel->id) }}">
+                                                        Check
+                                                    </a>
+                                                </div>
+                                            @endif
+                                            @endauth
                                         </div>
                                     </div>
                                     <!-- Card -->

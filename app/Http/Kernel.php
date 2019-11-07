@@ -60,7 +60,8 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-    'eo.user.auth' => \App\Http\Middleware\EoUserMiddleware::class,
+        'block-tenant-user' => \App\Http\Middleware\BlockTenantUserMiddleware::class,
+        'block-eo-user' => \App\Http\Middleware\BlockEoUserMiddleware::class,
     ];
 
     /**

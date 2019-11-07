@@ -2,7 +2,6 @@
 
 namespace App\EventOrganizer\User;
 
-use Auth;
 use App\EventOrganizer\User\EoUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -21,16 +20,5 @@ class EoRegistRepository
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
-    }
-
-    public function formRegistEo()
-    {
-        $request = view('page.frontend.register.registerEo');
-
-        if (Auth::guard('eouser')->check() || Auth::guard('tenantuser')->check()) {
-            return redirect()->back();
-        }
-
-        return $request;
     }
 }

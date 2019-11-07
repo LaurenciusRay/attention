@@ -3,6 +3,7 @@
 namespace App\Tenant\Product;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class TenantProduct extends Model
 {
@@ -13,5 +14,9 @@ class TenantProduct extends Model
     public function tenant_users()
     {
         return $this->belongsTo('App\Tenant\User\TenantUser');
+    }
+    public function deleteImage()
+    {
+        Storage::delete($this->image);
     }
 }

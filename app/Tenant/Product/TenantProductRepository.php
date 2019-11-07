@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Tenant\Product;
-// use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Storage;
 use App\Tenant\Product\TenantProduct;
 use Illuminate\Support\Facades\Request;
 
@@ -28,30 +28,19 @@ class TenantProductRepository{
     $data->delete();
   }
 
-  public function updateProducts($request, $id)
+  public function updateProducts($request, $product)
   {
-    $data = TenantProduct::where('id', $id)->first();
-      $data->title = $request->title;
-      $data->price = $request->price;
-
-      // cek
-      if ($request->file('image')== "") {
-          $data->image = $data->image;
-      }
-      else {
-          if ($request->hasFile('image')) {
-          $file = 'image/tenant/'.$data->image;
-          if (is_file($file)) {
-              unlink($file);
-          }
-          // 
-          $file = $request->file('image');
-          $filename = $file->getClientOriginalName();
-          $request->file('file')->move('image/tenant/'.$filename);
-          $data->file = $filename;
-      }
+    $data = $request->only('title', 'price');
+    if($request->hasFile('image'))
+    {
+        // Upload it
+        $image = $request->image->store('image/tenant');
+        // Delete old one
+        $product->deleteImage();
+        // Save the $image to $data array
+        $data['image'] = $image;
     }
-      $data->save();
+    $update = $product->update($data);
+    return $update;
   }
-
 }
