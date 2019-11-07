@@ -63,13 +63,14 @@ class EoDetailRepository
     public function eventShowed()
     {
         $search = request()->query('search');
+        $category = request('category');
         if($search)
         {
-            $result = EoDetail::where('start_date', '<=', now())->where('end_date', '>=', now())->where('title', 'LIKE', "%{$search}%")->paginate(4);
+            $result = EoDetail::where('start_date', '<=', now())->where('end_date', '>=', now())->where('title', 'LIKE', "%{$search}%")->filtercategory()->paginate(8);
         }
         else
         {
-            $result = EoDetail::where('start_date', '<=', now())->where('end_date', '>=', now())->paginate(8);
+            $result = EoDetail::where('start_date', '<=', now())->where('end_date', '>=', now())->filtercategory()->paginate(16);
         }
         return $result;
     }

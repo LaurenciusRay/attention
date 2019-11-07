@@ -18,6 +18,7 @@ class CreateEoGalleriesTable extends Migration
             $table->integer('eo_details_id');
             $table->string('images');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

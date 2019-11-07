@@ -22,4 +22,12 @@ class EoDetail extends Model
     {
         Storage::delete($this->image);
     }
+    public function scopeFiltercategory($event)
+    {
+        if(request('category'))
+        {
+            $event->where('eo_detail_categories_id', '=', request('category'));
+        }
+        return $event;
+    }
 }

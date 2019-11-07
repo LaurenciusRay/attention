@@ -4,23 +4,28 @@
 <!-- card event list  -->
 <div class="container">
     <form class="input-group mb-3" action="" method="GET">
-      <input type="text" class="form-control" name="search" placeholder="Search" value="{{ request()->query('search') }}">
-    </form>
-    <div class="row event-controllers-container">
-        <div class="event-controllers wow fadeLeft" data-wow-duration="1s" data-wow-delay=".1s">
-            <button type="button" class="btn filter-button active-work" data-filter="all">All</button>
+        <select name="category" id="category">
+            <option value="">Filter</option>
             @foreach($category as $cat)
-            <button type="button" class="btn filter-button" data-filter="{{$cat->id}}">{{$cat->name}}</button>
+            <option value="{{ $cat->id }}">
+                {{ $cat->name }}
+            </option>
             @endforeach
-        </div>
-    </div>
+        </select>
+        <input type="text" class="form-control mr-2" name="search" placeholder="Search for.."
+            value="{{ request()->query('search') }}">
+        <span class="input-group-btn">
+            <button class="btn btn-search" type="submit"><i class="fa fa-search fa-fw"></i> Search</button>
+        </span>
+    </form>
 </div>
 <div class="container">
     <div class="row">
         @forelse($event as $e)
         <div class="card filter {{$e->eo_detail_categories_id}}" onclick="this.classList.toggle('expanded')">
             <strong class="mt-4">{{$e->title}}</strong>
-                <img id="imageEventList" class="label" src="{{asset('storage/'.$e->image)}}" width="100%" height="200px" alt="card image event list">
+            <img id="imageEventList" class="label" src="{{asset('storage/'.$e->image)}}" width="100%" height="200px"
+                alt="card image event list">
             <div class="text1">
                 <div class="text-content">
                     <h5 class="title"> {{ $e->title }}</h5>
