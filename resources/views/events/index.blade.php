@@ -4,7 +4,7 @@
 <!-- card event list  -->
 <div class="container">
     <form class="input-group mb-3" action="" method="GET">
-      <input type="text" class="form-control" name="search" placeholder="Search" value="{{ request()->query('search') }}">
+        <input type="text" class="form-control" name="search" placeholder="Search" value="{{ request()->query('search') }}">
     </form>
     <div class="row event-controllers-container">
         <div class="event-controllers wow fadeLeft" data-wow-duration="1s" data-wow-delay=".1s">
@@ -18,9 +18,9 @@
 <div class="container">
     <div class="row">
         @forelse($event as $e)
-        <div class="card filter {{$e->eo_detail_categories_id}}" onclick="this.classList.toggle('expanded')">
+        <div class="card filter {{$e->eo_detail_categories_id}}">
             <strong class="mt-4">{{$e->title}}</strong>
-                <img id="imageEventList" class="label" src="{{asset('storage/'.$e->image)}}" width="100%" height="200px" alt="card image event list">
+            <img id="imageEventList" class="label" src="{{asset('storage/'.$e->image)}}" width="100%" height="200px" alt="card image event list">
             <div class="text1">
                 <div class="text-content">
                     <h5 class="title"> {{ $e->title }}</h5>

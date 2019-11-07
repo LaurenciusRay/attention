@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="{{ asset('css/tenants/style.css') }}">
 
     <!-- Font Awesome Icon Library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <!-- normalize  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
@@ -122,7 +122,7 @@
                             </form>
                         </div>
                     </li>
-                    @endauth    
+                    @endauth
                 </ul>
             </div>
         </div>

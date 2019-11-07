@@ -21,10 +21,6 @@
                         <label for="start_date"> Event Time</label>
                         <div class="text-muted">{{ date('d F Y | H:i', strtotime($eventbooth->start_date))}} - {{ date('d F Y | H:i', strtotime($eventbooth->end_date))}}</div>
                     </div>
-                    <div class="form-group">
-                        <label for="capacity"> Capacity </label>
-                        <h4>{{$eventbooth->capacity}} Booth</h4>
-                    </div>
                 </div>
             </div>
             <div class="col-sm-6 col-md-6">
@@ -47,15 +43,37 @@
                         @csrf
 
                         <table class="table table-bordered" id="dynamicTable">
+                            <div id="demo"></div>
+                            <button type="button" name="add" id="add" class="btn btn-success float-right mb-2"><i class="fas fa-plus-circle"></i></button>
                             <tr>
                                 <th>Booth Name</th>
-                                <th>Length</th>
-                                <th>Wide</th>
+                                <th>Length (m2)</th>
+                                <th>Wide (m2)</th>
                                 <th>Price (Rp.)</th>
                                 <th>Description</th>
+                                <th>Action</th>
                             </tr>
                             <tr>
                                 <input type="hidden" name="eo_users_id" value="{{$eventbooth->eo_users_id}}">
+                                <!-- Modal delete booth-->
+                                <div class="modal fade" id="boothdelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body text-center">
+                                                <h2>Are You Sure For Delete This Booth ?</h2>
+                                            </div>
+                                            <div class="modal-footer text-center">
+                                                <button type="button" class="btn btn-danger " data-dismiss="modal">Yes</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </tr>
                         </table>
 
@@ -66,6 +84,7 @@
         </div>
     </div>
 </div>
+
 @endsection
 @section('css_link')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -76,16 +95,25 @@
 <!-- add field  -->
 
 <script type="text/javascript">
-    var i;
-    for (i = 1; i <= <?php echo $eventbooth->capacity; ?>; i++) {
+    var i = 0;
+
+    $("#add").click(function() {
+
+        ++i;
         $("#dynamicTable").append('<tr>' +
             '<input type="hidden" name="booth[' + i + '][eo_detail_id]" value="{{$eventbooth->id}}" />' +
             '<td><input type="text" name="booth[' + i + '][boothname]" placeholder="Booth Name" class="form-control" required /></td>' +
             '<td><input type="number" step="0.01"  name="booth[' + i + '][panjang]" placeholder="Length" class="form-control" required /></td>' +
             '<td><input type="number" step="0.01" name="booth[' + i + '][lebar]" placeholder="Wide" class="form-control" required /></td>' +
             '<td><input type="number" step="0.01" name="booth[' + i + '][price]" placeholder="Price" class="form-control" required /></td>' +
-            '<td><input type="text" name="booth[' + i + '][description]" placeholder="Description" class="form-control" required /></td>');
-    }
+            '<td><input type="text" name="booth[' + i + '][description]" placeholder="Description" class="form-control" required /></td>' +
+            '<td><button type="button" class="btn btn-danger remove-tr"><i class="fas fa-minus-circle"></i></button></td></tr>');
+
+    });
+
+    $(document).on('click', '.remove-tr', function() {
+        $(this).parents('tr').remove();
+    });
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.0/trix.js"></script>

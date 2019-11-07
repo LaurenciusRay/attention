@@ -52,6 +52,10 @@ class EventsController extends Controller
 
         foreach ($request->booth as $key => $value) {
             EoDetailBooth::create($value);
+            // EoDetail::where('id', $request->eo_detail_id)
+            //     ->update([
+            //         'capacity' => $request->booth->count()
+            //     ]);
         }
         $eventorganizer = $request->eo_users_id;
 

@@ -35,9 +35,14 @@
                         <p> {!! $event->description !!} </p>
                     </div>
                 </div>
-                @auth('tenantuser')
+
                 <div class="text-center">
-                    <h3>Booking Now</h3>
+                    <h3>Booth Maps</h3>
+                </div>
+                <div class="row mb-4">
+                    <div class="card px-0 eo-content">
+                        <img src="{{ asset('storage/'.$event->image_layout) }}" height="300px" alt="">
+                    </div>
                 </div>
                 <div class="row mb-4">
                     <div class="card px-3 eo-content">
@@ -77,7 +82,17 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
+                                            @auth('tenantuser')
                                             <a href=""><img src="{{ asset('image/icon/booknow.png') }}" alt=""></a>
+                                            @endauth
+                                            @unless (Auth::guard('eouser')->check() || Auth::guard('tenantuser')->check())
+                                            <div class="text-center">
+                                                <p>You must login first as tenant to Join</p>
+                                            </div>
+                                            <div class="row mb-3 d-flex justify-content-center">
+                                                <a class="btn btn-info" href="{{ route('login.tenant-user-form') }}">Login</a>
+                                            </div>
+                                            @endunless
                                         </div>
                                         <div class="modal-footer text-center">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -94,7 +109,6 @@
                         Join
                     </button>
                 </div> -->
-                @endauth
                 @auth('eouser')
                 @if($event->eo_users_id == Auth::guard('eouser')->user()->id)
                 <div class="row mb-3 d-flex justify-content-center">
@@ -104,14 +118,14 @@
                 </div>
                 @endif
                 @endauth
-                @unless (Auth::guard('eouser')->check() || Auth::guard('tenantuser')->check())
+                <!-- @unless (Auth::guard('eouser')->check() || Auth::guard('tenantuser')->check())
                 <div class="text-center">
                     <p>You must login first as tenant to Join</p>
                 </div>
                 <div class="row mb-3 d-flex justify-content-center">
                     <a class="btn btn-info" href="{{ route('login.tenant-user-form') }}">Login</a>
                 </div>
-                @endunless
+                @endunless -->
             </div>
             <div class="col-md-4 text-center">
                 <div class="row mb-5">
