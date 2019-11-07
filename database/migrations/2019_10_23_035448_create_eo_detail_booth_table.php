@@ -22,7 +22,6 @@ class CreateEoDetailBoothTable extends Migration
             $table->decimal('price');
             $table->text('description');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

@@ -8,6 +8,7 @@ use App\Http\Requests\events\CreateEventsRequest;
 use App\Http\Requests\events\UpdateEventsRequest;
 use App\EventOrganizer\Detail\EoDetailRepository;
 use App\EventOrganizer\Detail\EoDetail;
+use App\EventOrganizer\DetailBooth\EoDetailBooth;
 use App\EventOrganizer\User\EoUser;
 use App\Http\Controllers\Controller;
 
@@ -40,6 +41,27 @@ class EventsController extends Controller
         return view('events.create')->with('eoDetailCategory', EoDetailCategory::all());
     }
 
+    public function createbooth($title, $capacity)
+    {
+        $eventbooth = $this->eventRepo->getEventBooth($title, $capacity);
+        return view('events.createbooth', compact('eventbooth'));
+    }
+
+    public function addbooth(Request $request)
+    {
+
+        foreach ($request->booth as $key => $value) {
+            EoDetailBooth::create($value);
+            // EoDetail::where('id', $request->eo_detail_id)
+            //     ->update([
+            //         'capacity' => $request->booth->count()
+            //     ]);
+        }
+        $eventorganizer = $request->eo_users_id;
+
+        return redirect(route('eventorganizer.index', compact('eventorganizer')));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -50,8 +72,12 @@ class EventsController extends Controller
     {
         $this->eventRepo->storeEvent($request);
         session()->flash('success', 'Event Created Successfully');
-        return redirect(route('events.index'));
+        $title = $request->title;
+        $capacity = $request->capacity;
+        return redirect(route('createboothnew', compact('title', 'capacity')));
     }
+
+
 
     /**
      * Display the specified resource.
@@ -64,7 +90,8 @@ class EventsController extends Controller
         $image = $this->eventRepo->firstImage($event);
         $images = $this->eventRepo->imageGallery($event);
         $daysLeft = $this->eventRepo->DaysLeftEvent($event);
-        return view('events.show')->with('event', $event)->with('daysLeft', $daysLeft)->with('image', $image)->with('images', $images);
+        $boothShow = $this->eventRepo->showBooth($event);
+        return view('events.show', compact('boothShow'))->with('event', $event)->with('daysLeft', $daysLeft)->with('image', $image)->with('images', $images);
     }
 
     /**

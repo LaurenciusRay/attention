@@ -8,7 +8,8 @@
         </div>
         <div class="card-body">
             @include('partials.error')
-            <form action="{{ isset($event) ? route('events.update', $event->id) : route('eouser.events.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ isset($event) ? route('events.update', $event->id) : route('eouser.events.store') }}"
+                method="post" enctype="multipart/form-data">
                 @csrf
                 @if(isset($event))
                 @method('PUT')
@@ -65,7 +66,8 @@
                 <!-- Input field 7 -->
                 <div class="form-group">
                     <label for="image"> Image </label>
-                    <input type="file" style="padding-bottom:37px" class="form-control" id="image" name="image" value={{isset($event) ? $event->image : ''}}>
+                    <input type="file" style="padding-bottom:37px" class="form-control" id="image" name="image"
+                        value={{isset($event) ? $event->image : ''}}>
                 </div>
                 <div class="form-group">
                     <img src=" {{ isset($event) ? asset('storage/'. $event->image) : ''}}" id="event-img-tag"
@@ -76,14 +78,22 @@
                     <label for="images">
                         <p>Add Image for your Gallery (can attach more than one image)</p>
                         <span class="btn btn-info">Add</span>
-                        <input type="file" multiple="multiple" id="images" name="images[]"
-                            style="display:none">
+                        <input type="file" multiple="multiple" id="images" name="images[]" style="display:none">
                     </label>
                 </div>
                 <div class="mb-3" id="image_preview"></div>
+                <div class="form-group">
+                    <label for="imagelayout">
+                        <span class="btn btn-info">Add Image Booth Layout</span>
+                        <input type="file" id="imagelayout" name="image_layout" style="display:none">
+                    </label>
+                </div>
+                <div class="form-group">
+                    <img src="" id="event-img-tag-layout" name="img-tag" width="200px" />
+                </div>
                 <div class="form-group text-center">
                     <button type="submit" class="btn btn-success">
-                        {{ isset($event) ? 'Edit' : 'Create'}}
+                        {{ isset($event) ? 'Edit' : 'Add Booth'}}
                     </button>
                 </div>
             </form>
@@ -124,6 +134,23 @@
     });
 
     // Flatpickr
+    function readURLayout(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#event-img-tag-layout').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#imagelayout").change(function() {
+        readURLayout(this);
+    });
+</script>
+<!-- Flatpickr -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
     flatpickr('#start_date', {
         enableTime: true,
         enableSeconds: true
