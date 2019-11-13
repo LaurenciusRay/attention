@@ -1,0 +1,264 @@
+* {
+    margin: 0;
+}
+
+body {
+    background: -webkit-gradient(linear, left top, right top, from(#5e02f5), to(#ff5e92));
+    background: linear-gradient(to right, #5e02f5, #ff5e92);
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+}
+
+.container {
+    margin-bottom: 15px;
+}
+
+.cover img {
+    box-shadow: 1px 1px 5px #5e02f5;
+    opacity: 0.8;
+}
+
+.col {
+    margin: 5px;
+}
+
+.card {
+    margin: 10px;
+    box-shadow: 1px 1px 5px #5e02f5;
+}
+
+.card-body {
+    background: -webkit-gradient(linear, left top, right top, from(#5e02f5), to(#ff5e92));
+    background: linear-gradient(to right, #5e02f5, #ff5e92);
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    color: #eeeef4;
+}
+
+
+.card-header {
+    background: radial-gradient(#5e02f5, #3e0b91);
+    color: white;
+    font-weight: bold;
+}
+
+
+.profile img {
+    position: absolute;
+    top: -240px;
+    left: 80px;
+    border-radius: 150px;
+    border: solid 5px snow;
+    box-shadow: 1px 1px 5px #5e02f5;
+    /* box-shadow: 2px 2px 4px rgba(209, 112, 219, 1); */
+}
+
+h3 {
+    position: absolute;
+    top: -50px;
+    left: 80px;
+    color: snow;
+    text-shadow: 0px 0px 4px black;
+}
+
+h2 {
+    color: white;
+    text-align: center;
+    margin: 30px;
+}
+
+.box {
+    padding: 30px;
+    font-family: Poppins, "Helvetica Neue", arial, sans-serif;
+    width: 100%;
+    display: flex;
+    margin-top: -5px;
+    border-radius: 2px;
+
+}
+
+.box1 {
+    background: radial-gradient(#5e02f5, #3e0b91);
+    box-shadow: 1px 1px 5px;
+}
+
+.btn {
+    margin: 7px;
+    box-shadow: 1px 1px 5px #5e02f5;
+}
+
+
+.product img {
+    border-radius: 10px;
+    opacity: 0.8;
+    cursor: pointer;
+    margin: 5px;
+    box-shadow: 1px 1px 5px #5e02f5;
+}
+
+.product img:hover {
+    opacity: 1;
+}
+
+.product p {
+    color: white;
+}
+
+@media (max-width: 575.98px) {
+    .cover img {
+        height: 160px;
+        width: 100%;
+    }
+
+    .box {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 15px;
+        text-align: center;
+    }
+
+    .profile img {
+        top: -120px;
+        left: 50px;
+        position: absolute;
+        border-radius: 150px;
+        border: solid 3px snow;
+    }
+
+    .profile h3 {
+        position: absolute;
+        top: -30px;
+        left: 28px;
+        font-size: 15px;
+    }
+
+    .card-header {
+        font-size: 10px;
+        color: white;
+        font-weight: bold;
+        height: 30px;
+    }
+
+    .card-body {
+        font-size: 10px;
+        color: white;
+    }
+
+    .
+}
+
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .cover img {
+        height: 210px;
+        width: 100%;
+    }
+
+    .box {
+        padding: 20px;
+    }
+
+    .profile img {
+        top: -120px;
+        left: 50px;
+        position: absolute;
+        border-radius: 150px;
+        border: solid 3px snow;
+    }
+
+    .profile h3 {
+        position: absolute;
+        top: -30px;
+        left: 28px;
+        font-size: 15px;
+    }
+
+    .product img {
+        width: 200px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .card-text {
+        font-size: 15px;
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+    .cover img {
+        height: 230px;
+        width: 100%;
+    }
+
+    .box {
+        padding: 20px;
+    }
+
+    .profile img {
+        top: -153px;
+        left: 50px;
+        position: absolute;
+        border-radius: 150px;
+        border: solid 3px snow;
+    }
+
+    .profile h3 {
+        position: absolute;
+        top: -32px;
+        left: 25px;
+        font-size: 16px;
+    }
+
+    h2 {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    .product img {
+        width: 220px;
+    }
+}
+
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .cover img {
+        height: 270px;
+        width: 100%;
+    }
+
+    .box {
+        padding: 20px;
+    }
+
+    .profile img {
+        top: -200px;
+        left: 50px;
+        position: absolute;
+        border-radius: 150px;
+        border: solid 3px snow;
+    }
+
+    .profile h3 {
+        position: absolute;
+        top: -37px;
+        left: 25px;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 26px;
+        text-align: center;
+    }
+
+    .product img {
+        width: 220px;
+    }
+}
