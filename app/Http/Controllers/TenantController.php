@@ -37,25 +37,6 @@ class TenantController extends Controller{
      * @return \Illuminate\Http\Response
      */
 
-    public function create()
-    {
-        //
-    }
-
-    // public function show(Eodetail $event)
-    // {
-    //     $eventRepo = new EoDetailRepository();
-    //     $daysLeft = $eventRepo->DaysLeftEvent($event);
-    //     return view('events.show')->with('event', $event)->with('daysLeft' , $daysLeft);
-    // }
-
-    
-
-    public function detail(TenantUser $id)
-    {
-        
-    }
-
     /**
      * Store a newly created resource in storage.
      *

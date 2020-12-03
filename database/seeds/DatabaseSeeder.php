@@ -13,6 +13,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(EoUserSeeder::class);
         $this->call(EventCategorySeeder::class);
-        $this->call(EoDetailSeeder::class);
+        $this->call(EventOrganizerSeeder::class);
     }
 }

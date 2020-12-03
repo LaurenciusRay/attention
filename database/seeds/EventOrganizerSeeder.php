@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\EventOrganizer\Detail\Category\EoDetailCategory;
+use App\EventOrganizer\Category\EventOrganizerCategory;
 use Faker\Factory as Faker;
 
-class EoDetailSeeder extends Seeder
+class EventOrganizerSeeder extends Seeder
 {
     /**
      * Run the database seeds.

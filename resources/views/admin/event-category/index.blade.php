@@ -15,7 +15,7 @@ Admin Attention
 </div>
 <div class="card card-default">
     <div class="card-body">
-        @if($eoDetailCategory->count() > 0)
+        @if($categories->count() > 0)
         <table class="table">
             <thead>
                 <th>No</th>
@@ -23,20 +23,20 @@ Admin Attention
                 <th></th>
             </thead>
             <tbody>
-                @foreach($eoDetailCategory as $eoDc)
+                @foreach($categories as $category)
                 <tr>
                     <td>
                         <strong> {{$loop->iteration}} </strong>
                     </td>
                     <td>
-                        <strong> {{$eoDc->name}} </strong>
+                        <strong> {{$category->name}} </strong>
                     </td>
                     <td>
                         <div class="row d-flex justify-content-end">
-                            <a href="{{ route('events-categories.edit', $eoDc->id) }}" class="btn btn-info mr-1">
+                            <a href="{{ route('events-categories.edit', $category->id) }}" class="btn btn-info mr-1">
                                 Edit
                             </a>
-                            <form method="POST" action=" {{ route('events-categories.destroy', $eoDc->id) }} ">
+                            <form method="POST" action=" {{ route('events-categories.destroy', $category->id) }} ">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
                                 <input type="submit" class="btn btn-danger" value="Delete">

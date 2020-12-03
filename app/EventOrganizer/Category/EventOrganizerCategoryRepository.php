@@ -1,15 +1,15 @@
 <?php
 
-namespace App\EventOrganizer\Detail\Category;
-use App\EventOrganizer\Detail\Category\EoDetailCategory;
+namespace App\EventOrganizer\Category;
+use App\EventOrganizer\Category\EventOrganizerCategory;
 
-class EoDetailCategoryRepository{
+class EventOrganizerCategoryRepository{
     public function storeCategory($request)
     {
-        $eventCategories = EoDetailCategory::create([
+        $eventCategory = EventOrganizerCategory::create([
             'name' => $request->name,
         ]);
-        return $eventCategories;
+        return $eventCategory;
     }
     public function updateCategory($request, $id)
     {

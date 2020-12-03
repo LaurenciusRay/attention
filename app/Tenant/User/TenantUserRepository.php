@@ -28,4 +28,27 @@ class TenantUserRepository{
         }
         return $result;
     }
+
+    public function loginFailed()
+    {
+        return redirect()->back()
+            ->withErrors([
+                'password' => 'wrong email or password combination',
+                'email' => 'wrong email or password combination'
+            ]);
+    }
+
+    public function createTenantUser(Request $request)
+    {
+        $photo = $request->file('photo');
+        $photoName = time() . "_" . $photo->getClientOriginalName();
+        $path = $photo->storeAs('TenantPhotos', $photoName);
+        return TenantUser::create([
+            'name' => $request['name'],
+            'image_banner' => $path,
+            'description' => $request['description'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
+    }
 }

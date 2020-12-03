@@ -1,10 +1,10 @@
 <?php
 
-namespace App\EventOrganizer\DetailBooth;
+namespace App\EventOrganizer\Booth;
 
 use Illuminate\Database\Eloquent\Model;
 
-class EoDetailBooth extends Model
+class BoothDetail extends Model
 {
     public $table = 'eo_detail_booth';
     protected $fillable = ['eo_detail_id', 'boothname', 'panjang', 'lebar', 'price', 'layout', 'description'];

@@ -4,17 +4,18 @@ namespace App\Http\Controllers\Frontend\Auth\Login;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Login\LoginTenantUser as ValidationLoginTenant;
-use App\Tenant\User\TenantLoginRepository;
+use App\Tenant\Auth\TenantLoginRepository;
+use App\Tenant\User\TenantUserRepository;
 use Auth;
 
 class TenantLoginController extends Controller
 {
-    private $tenantLoginRepository;
+    private $tenantUserRepo;
 
-    public function __construct(TenantLoginRepository $tenantLoginRepository)
+    public function __construct(TenantUserRepository $tenantUserRepo)
     {
         $this->middleware('guest:tenantuser')->except('logout');
-        $this->tenantLoginRepository = $tenantLoginRepository;
+        $this->tenantUserRepo = $tenantUserRepo;
     }
 
     public function formLogin()
@@ -28,6 +29,6 @@ class TenantLoginController extends Controller
             return redirect('/');
         }
 
-        return $this->tenantLoginRepository->loginFailed();
+        return $this->tenantUserRepo->loginFailed();
     }
 }

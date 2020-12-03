@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers\events;
 
-use App\EventOrganizer\Detail\Category\EoDetailCategory;
 use Illuminate\Http\Request;
 use App\Http\Requests\events\CreateEventsRequest;
 use App\Http\Requests\events\UpdateEventsRequest;
-use App\EventOrganizer\Detail\EoDetailRepository;
-use App\EventOrganizer\Detail\EoDetail;
-use App\EventOrganizer\DetailBooth\EoDetailBooth;
+use App\EventOrganizer\Detail\EventOrganizerRepository;
+use App\EventOrganizer\Detail\EventOrganizer;
+use App\EventOrganizer\Booth\BoothDetail;
+use App\EventOrganizer\Category\EventOrganizerCategory;
 use App\EventOrganizer\User\EoUser;
 use App\Http\Controllers\Controller;
 
 class EventsController extends Controller
 {
     private $eventRepo;
-    public function __construct(EoDetailRepository $eodetailrepository)
+    public function __construct(EventOrganizerRepository $eventRepo)
     {
-        $this->eventRepo = $eodetailrepository;
+        $this->eventRepo = $eventRepo;
     }
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class EventsController extends Controller
     public function index()
     {
         $event = $this->eventRepo->eventShowed();
-        $category = EoDetailCategory::all();
+        $category = EventOrganizerCategory::all();
         return view('events.index', compact('event', 'category'));
     }
 
@@ -38,7 +38,7 @@ class EventsController extends Controller
      */
     public function create()
     {
-        return view('events.create')->with('eoDetailCategory', EoDetailCategory::all());
+        return view('events.create')->with('category', EventOrganizerCategory::all());
     }
 
     public function createbooth($title, $capacity)
@@ -51,11 +51,7 @@ class EventsController extends Controller
     {
 
         foreach ($request->booth as $key => $value) {
-            EoDetailBooth::create($value);
-            // EoDetail::where('id', $request->eo_detail_id)
-            //     ->update([
-            //         'capacity' => $request->booth->count()
-            //     ]);
+            BoothDetail::create($value);
         }
         $eventorganizer = $request->eo_users_id;
 
@@ -85,7 +81,7 @@ class EventsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Eodetail $event)
+    public function show(EventOrganizer $event)
     {
         $image = $this->eventRepo->firstImage($event);
         $images = $this->eventRepo->imageGallery($event);
@@ -100,9 +96,9 @@ class EventsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Eodetail $event)
+    public function edit(EventOrganizer $event)
     {
-        return view('events.create')->with('event', $event)->with('eoDetailCategory', EoDetailCategory::all());
+        return view('events.create')->with('event', $event)->with('eventCategories', EventOrganizerCategory::all());
     }
 
     /**
@@ -112,7 +108,7 @@ class EventsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateEventsRequest $request, Eodetail $event)
+    public function update(UpdateEventsRequest $request, EventOrganizer $event)
     {
         $this->eventRepo->updateEvent($request, $event);
         session()->flash('success', 'Event Updated Successfully');

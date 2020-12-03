@@ -51,11 +51,13 @@
                     <label for="category">Category</label>
                     <select name="category" id="category" class="form-control">
                         <option value="">Default</option>
-                        @foreach($eoDetailCategory as $eoDc)
-                        <option value="{{ $eoDc->id }}" @if(isset($event)) @if($eoDc->id ==
-                            $event->eo_detail_categories_id)
-                            selected
-                            @endif
+                        @foreach($eventCategories as $category)
+                        <option value="{{ $category->id }}" 
+                            @if(isset($event)) 
+                                @if($category->id ==
+                                    $event->eo_detail_categories_id)
+                                        selected
+                                @endif
                             @endif
                             >
                             {{ $eoDc->name }}

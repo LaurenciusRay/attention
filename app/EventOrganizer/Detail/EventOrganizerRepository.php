@@ -2,13 +2,13 @@
 
 namespace App\EventOrganizer\Detail;
 
-use App\EventOrganizer\Detail\EoDetail;
-use App\EventOrganizer\Detail\Image\EoGallery;
-use App\EventOrganizer\DetailBooth\EoDetailBooth;
+use App\EventOrganizer\Detail\EventOrganizer;
+use App\EventOrganizer\Image\EventOrganizerGallery;
+use App\EventOrganizer\Booth\BoothDetail;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
-class EoDetailRepository
+class EventOrganizerRepository
 {
     public function storeEvent($request)
     {
@@ -16,7 +16,7 @@ class EoDetailRepository
         $image = $request->image->store('events');
         $imagelayout = $request->image_layout->store('events');
         // Storing Post
-        $event = EoDetail::create([
+        $event = EventOrganizer::create([
             'title' => $request->title,
             'description' => $request->description,
             'capacity' => $request->capacity,
@@ -30,7 +30,7 @@ class EoDetailRepository
         foreach ($request->images as $images)
         {
             $filename = $images->store('events');
-            $store = EoGallery::create([
+            $store = EventOrganizerGallery::create([
                 'eo_details_id' => $event->id,
                 'images' => $filename
             ]);
@@ -59,13 +59,13 @@ class EoDetailRepository
     }
     public function eventSelection($eventorganizer)
     {
-        $result = EoDetail::all()->where('eo_users_id', '==', $eventorganizer->id);
+        $result = EventOrganizer::all()->where('eo_users_id', '==', $eventorganizer->id);
         return $result;
     }
 
     public function getEventBooth($title, $capacity)
     {
-        return EoDetail::all()->where('title', '==', $title)
+        return EventOrganizer::all()->where('title', '==', $title)
             ->where('capacity', '==', $capacity)
             ->first();
     }
@@ -76,35 +76,35 @@ class EoDetailRepository
         $category = request('category');
         if($search)
         {
-            $result = EoDetail::where('start_date', '<=', now())->where('end_date', '>=', now())->where('title', 'LIKE', "%{$search}%")->filtercategory()->paginate(8);
+            $result = EventOrganizer::where('start_date', '<=', now())->where('end_date', '>=', now())->where('title', 'LIKE', "%{$search}%")->filtercategory()->paginate(8);
         }
         else
         {
-            $result = EoDetail::where('start_date', '<=', now())->where('end_date', '>=', now())->filtercategory()->paginate(16);
+            $result = EventOrganizer::where('start_date', '<=', now())->where('end_date', '>=', now())->filtercategory()->paginate(16);
         }
         return $result;
     }
     // This function for first image pop up on button view gallery
     public function firstImage($event)
     {
-        $result = EoGallery::all()->where('eo_details_id', '==', $event->id);
+        $result = EventOrganizerGallery::all()->where('eo_details_id', '==', $event->id);
         return $result;
     }
     // This function for images on gallery slide (except first image)
     public function imageGallery($event)
     {
-        $result = EoGallery::all()->where('eo_details_id', '==', $event->id)->where('id', '>', '1');
+        $result = EventOrganizerGallery::all()->where('eo_details_id', '==', $event->id)->where('id', '>', '1');
         return $result;
         if ($search) {
-            $result = EoDetail::where('start_date', '<=', now())->where('end_date', '>=', now())->where('title', 'LIKE', "%{$search}%")->paginate(4);
+            $result = EventOrganizer::where('start_date', '<=', now())->where('end_date', '>=', now())->where('title', 'LIKE', "%{$search}%")->paginate(4);
         } else {
-            $result = EoDetail::where('start_date', '<=', now())->where('end_date', '>=', now())->paginate(8);
+            $result = EventOrganizer::where('start_date', '<=', now())->where('end_date', '>=', now())->paginate(8);
         }
         return $result;
     }
 
     public function showBooth($event)
     {
-        return EoDetailBooth::all()->where('eo_detail_id', '==', $event->id);
+        return BoothDetail::all()->where('eo_detail_id', '==', $event->id);
     }
 }
