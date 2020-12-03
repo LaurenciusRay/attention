@@ -4,16 +4,15 @@
 @section('content')
   <!-- tenant content -->
   <div class="container mb-5">
-    <form>
-      <div class="form-row">
-        <div class="col-12">
-          <input id="tenantSearch" type="text" class="form-control" placeholder="Search for names..">
-        </div>
-      </div>
+    <form class="input-group mb-3" action="" method="GET">
+      <input type="text" class="form-control mr-2" name="search" placeholder="Search for.."
+            value="{{ request()->query('search') }}">
+        <span class="input-group-btn">
+            <button class="btn btn-search" type="submit"><i class="fa fa-search fa-fw"></i> Search</button>
+        </span>
     </form>
   </div>
-
-  <div class="container mb-5" id="container">
+<div class="container mb-5" id="container">
 
 @foreach($data as $datas)
     <div class="box">
@@ -31,9 +30,12 @@
       </div> 
     </div>
 @endforeach
-
+</div>
+<div class="row d-flex justify-content-center my-2">
+        {{ $data->appends(['search' => request()->query('search')])->links() }}
   </div>
-  
+@endsection
 
-  
+@section('css_link')
+<link href="{{asset('css/events/eventlist.css')}}" rel="stylesheet" type="text/css" />
 @endsection
