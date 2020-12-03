@@ -24,18 +24,18 @@ Auth::routes();
 // event list routes
 Route::resource('events', 'events\EventsController');
 
-Route::namespace('Frontend')->name('regist.')->group(function () {
-    Route::namespace('EventOrganizer')->name('regist.')->group(function () {
-        Route::get('/regist-eo','AuthController@viewFormRegistEo')->name('eo-user-form');
-        Route::post('/regist-eo', 'AuthController@registEo')->name('eo-user');
-        Route::get('/login-eo', 'AuthController@formLogin')->name('eo-user-form')->middleware('block-tenant-user:tenantuser');
-        Route::post('/login-eo', 'AuthController@login')->name('eo-user');
+Route::namespace('Frontend')->group(function () {
+    Route::namespace('EventOrganizer')->group(function () {
+        Route::get('/regist-eo','AuthController@viewFormRegistEo')->name('regist.eo-user-form');
+        Route::post('/regist-eo', 'AuthController@registEo')->name('regist.eo-user');
+        Route::get('/login-eo', 'AuthController@formLogin')->name('login.eo-user-form')->middleware('block-tenant-user:tenantuser');
+        Route::post('/login-eo', 'AuthController@login')->name('login.eo-user');
     });
-    Route::namespace('Tenant')->name('regist.')->group(function () { 
-        Route::get('/regist-tenant', 'AuthController@viewFormRegistTenant')->name('tenant-user-form');
-        Route::post('/regist-tenant', 'AuthController@registTenant')->name('tenant-user');
-        Route::get('/login-tenant', 'AuthController@formLogin')->name('tenant-user-form')->middleware('block-eo-user:eouser');
-        Route::post('/login-tenant', 'AuthController@login')->name('tenant-user');
+    Route::namespace('Tenant')->group(function () { 
+        Route::get('/regist-tenant', 'AuthController@viewFormRegistTenant')->name('regist.tenant-user-form');
+        Route::post('/regist-tenant', 'AuthController@registTenant')->name('regist.tenant-user');
+        Route::get('/login-tenant', 'AuthController@formLogin')->name('login.tenant-user-form')->middleware('block-eo-user:eouser');
+        Route::post('/login-tenant', 'AuthController@login')->name('login.tenant-user');
     });
 });
 
