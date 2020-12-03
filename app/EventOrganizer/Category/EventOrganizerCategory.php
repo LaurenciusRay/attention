@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class EventOrganizerCategory extends Model
 {
     protected $fillable = ['name'];
+    protected $table    = 'eo_detail_categories';
 
     public function eodetails()
     {

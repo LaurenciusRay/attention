@@ -12,6 +12,7 @@ class EventOrganizerUser extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    protected $table  = 'eo_users';
 
     protected $fillable = [
         'name',

@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class BoothDetail extends Model
 {
-    public $table = 'eo_detail_booth';
+    protected $table = 'eo_detail_booth';
     protected $fillable = ['eo_detail_id', 'boothname', 'panjang', 'lebar', 'price', 'layout', 'description'];
 }

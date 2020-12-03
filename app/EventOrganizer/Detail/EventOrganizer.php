@@ -9,6 +9,7 @@ class EventOrganizer extends Model
 {
     protected $fillable = ['title', 'description', 'capacity', 'image', 'image_layout', 'start_date', 'end_date', 'eo_detail_categories_id', 'eo_users_id'];
     protected $dates = ['start_date', 'end_date'];
+    protected $table = 'eo_details';
 
     public function eo_detail_categories()
     {
