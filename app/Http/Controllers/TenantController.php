@@ -27,7 +27,8 @@ class TenantController extends Controller{
      */
     public function index()
     {
-        return view('tenant.view-tenant')->with('data', TenantUser::all());
+        $data = $this->tenantRepo->tenantShowed();
+        return view('tenant.view-tenant')->with('data', $data);
     }
 
     /**

@@ -21,7 +21,7 @@
     }
 }
 
-.card.expanded {
+.card:hover {
     height: 100%;
 }
 
@@ -30,7 +30,7 @@
     transition: transform 1000ms;
 }
 
-.card.expanded .label {
+.card:hover .label {
     transform: translateY(5px);
 }
 
@@ -40,7 +40,7 @@
     transition: clip-path 1000ms;
 }
 
-.card.expanded .text1 {
+.card:hover .text1 {
     clip-path: polygon(100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%);
     -webkit-clip-path: polygon(0% 100%, 0 -100%, 50% -15%, 100% -100%, 100% 100%);
     padding-bottom: 30px;
@@ -52,7 +52,7 @@
     transition: clip-path 1000ms;
 }
 
-.card.expanded .text2 {
+.card:hover .text2 {
     clip-path: polygon(0% 100%, 0% -90%, 15% -80%, 17.23% -63.59%, 23% -50%, 27.23% -38.94%, 35% -30%, 41.09% -23.59%, 50% -20%, 58.91% -23.23%, 65% -30%, 72.77% -38.23%, 77% -50%, 82.77% -64.65%, 85% -80%, 100% -90%, 100% 100%);
     -webkit-clip-path: polygon(0% 100%, 0% -90%, 15% -80%, 17.23% -63.59%, 23% -50%, 27.23% -38.94%, 35% -30%, 41.09% -23.59%, 50% -20%, 58.91% -23.23%, 65% -30%, 72.77% -38.23%, 77% -50%, 82.77% -64.65%, 85% -80%, 100% -90%, 100% 100%);
 }
@@ -63,7 +63,7 @@
     color: transparent;
 }
 
-.card.expanded .text-content {
+.card:hover .text-content {
     transform: translateY(-15px);
     color: black;
 
@@ -78,7 +78,7 @@
     transition: transform 1000ms;
 }
 
-.card.expanded .chevron {
+.card:hover .chevron {
     transform: rotate(0deg);
 }
 
@@ -92,6 +92,7 @@
     width: 250px;
     overflow: hidden;
 }
+
 .line-clamp {
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -137,7 +138,26 @@
     color: #ff9800;
 }
 
-#imageEventList
-{
+#imageEventList {
     margin-top: -31px;
+}
+
+.btn-search 
+{
+    background: #424242;
+    border-radius: 2;
+    color: #fff;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #1c1c1c;
+    padding: 8px;
+}
+.btn-search:link, .btn-search:visited
+{
+    color: #fff;
+}
+.btn-search:active, .btn-search:hover
+{
+    background: #1c1c1c;
+    color: #fff;
 }

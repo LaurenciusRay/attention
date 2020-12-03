@@ -18,9 +18,8 @@ class TenantSeeder extends Seeder
  
       $faker = Faker::create('id_ID');
       $faker->addProvider(new EmanueleMinotto\Faker\PlaceholdItProvider($faker));
- 
-    	for($i = 1; $i <= 32; $i++){
- 
+      // for($i = 1; $i <= 32; $i++){
+    	for($i = 1; $i <= 12; $i++){
     		DB::table('tenant_users')->insert([
     			'email' => $faker->freeEmail,
     			'password' => $faker->password,
@@ -29,7 +28,6 @@ class TenantSeeder extends Seeder
           'image_banner' => $faker->ImageUrl(50, null, array(), 'lorem ipsum'),
           'description' => $faker->text
     		]);
- 
       }
     }
 }

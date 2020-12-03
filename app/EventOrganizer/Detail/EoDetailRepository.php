@@ -4,6 +4,7 @@ namespace App\EventOrganizer\Detail;
 
 use App\EventOrganizer\Detail\EoDetail;
 use App\EventOrganizer\Detail\Image\EoGallery;
+use App\EventOrganizer\DetailBooth\EoDetailBooth;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
@@ -13,12 +14,14 @@ class EoDetailRepository
     {
         // Store Image file
         $image = $request->image->store('events');
+        $imagelayout = $request->image_layout->store('events');
         // Storing Post
         $event = EoDetail::create([
             'title' => $request->title,
             'description' => $request->description,
             'capacity' => $request->capacity,
             'image' => $image,
+            'image_layout' => $imagelayout,
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
             'eo_detail_categories_id' => $request->category,
@@ -43,8 +46,7 @@ class EoDetailRepository
     public function updateEvent($request, $event)
     {
         $data = $request->only('title', 'description', 'start_date', 'end_date', 'capacity', 'category');
-        if($request->hasFile('image'))
-        {
+        if ($request->hasFile('image')) {
             // Upload it
             $image = $request->image->store('events');
             // Delete old one
@@ -60,16 +62,25 @@ class EoDetailRepository
         $result = EoDetail::all()->where('eo_users_id', '==', $eventorganizer->id);
         return $result;
     }
+
+    public function getEventBooth($title, $capacity)
+    {
+        return EoDetail::all()->where('title', '==', $title)
+            ->where('capacity', '==', $capacity)
+            ->first();
+    }
+
     public function eventShowed()
     {
         $search = request()->query('search');
+        $category = request('category');
         if($search)
         {
-            $result = EoDetail::where('start_date', '<=', now())->where('end_date', '>=', now())->where('title', 'LIKE', "%{$search}%")->paginate(4);
+            $result = EoDetail::where('start_date', '<=', now())->where('end_date', '>=', now())->where('title', 'LIKE', "%{$search}%")->filtercategory()->paginate(8);
         }
         else
         {
-            $result = EoDetail::where('start_date', '<=', now())->where('end_date', '>=', now())->paginate(8);
+            $result = EoDetail::where('start_date', '<=', now())->where('end_date', '>=', now())->filtercategory()->paginate(16);
         }
         return $result;
     }
@@ -84,5 +95,16 @@ class EoDetailRepository
     {
         $result = EoGallery::all()->where('eo_details_id', '==', $event->id)->where('id', '>', '1');
         return $result;
+        if ($search) {
+            $result = EoDetail::where('start_date', '<=', now())->where('end_date', '>=', now())->where('title', 'LIKE', "%{$search}%")->paginate(4);
+        } else {
+            $result = EoDetail::where('start_date', '<=', now())->where('end_date', '>=', now())->paginate(8);
+        }
+        return $result;
+    }
+
+    public function showBooth($event)
+    {
+        return EoDetailBooth::all()->where('eo_detail_id', '==', $event->id);
     }
 }

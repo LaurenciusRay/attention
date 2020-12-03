@@ -13,7 +13,7 @@ class EventCategorySeeder extends Seeder
     public function run()
     {
         $faker = Faker::create('id_ID');
-        for($i = 1; $i <= 3; $i++)
+        for($i = 1; $i <= 4; $i++)
         {
             DB::table('eo_detail_categories')->insert([
                 'name' => $faker->word,

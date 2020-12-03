@@ -72,3 +72,7 @@ Route::resource('products', 'ProductController');
 Route::get('/tenant/{id}', 'TenantController@detail');
 
 Route::resource('events-categories', 'admin\EoDetailCategoryController');
+
+// event booth 
+Route::get('events/createbooth/{title}/{capacity}', 'events\EventsController@createbooth')->name('createboothnew');
+Route::post('/events/createbooth/insert', 'events\EventsController@addbooth')->name('addbooth');

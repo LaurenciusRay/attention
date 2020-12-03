@@ -91,8 +91,9 @@ class EoDetailCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(EoDetailCategory $events_category)
     {
-        //
+        $this->eventCategoryRepo->deleteCategory($events_category);
+        return redirect(route('events-categories.index'));
     }
 }

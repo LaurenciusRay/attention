@@ -25,7 +25,7 @@ class TenantLoginController extends Controller
     public function login(ValidationLoginTenant $request)
     {
         if (Auth::guard('tenantuser')->attempt($request->only('email', 'password'), $request->filled('remember'))) {
-            return redirect()->intended('/');
+            return redirect('/');
         }
 
         return $this->tenantLoginRepository->loginFailed();
