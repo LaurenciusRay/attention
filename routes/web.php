@@ -24,18 +24,19 @@ Auth::routes();
 // event list routes
 Route::resource('events', 'events\EventsController');
 
-Route::namespace('Frontend\Auth\Regist')->name('regist.')->group(function () {
-    Route::get('/regist-eo','EoRegistController@viewFormRegistEo')->name('eo-user-form');
-    Route::post('/regist-eo', 'EoRegistController@registEo')->name('eo-user');
-    Route::get('/regist-tenant', 'TenantRegistController@viewFormRegistTenant')->name('tenant-user-form');
-    Route::post('/regist-tenant', 'TenantRegistController@registTenant')->name('tenant-user');
-});
-
-Route::namespace('Frontend\Auth\Login')->name('login.')->group(function () {
-    Route::get('/login-eo', 'EoLoginController@formLogin')->name('eo-user-form')->middleware('block-tenant-user:tenantuser');
-    Route::get('/login-tenant', 'TenantLoginController@formLogin')->name('tenant-user-form')->middleware('block-eo-user:eouser');
-    Route::post('/login-eo', 'EoLoginController@login')->name('eo-user');
-    Route::post('/login-tenant', 'TenantLoginController@login')->name('tenant-user');
+Route::namespace('Frontend')->name('regist.')->group(function () {
+    Route::namespace('EventOrganizer')->name('regist.')->group(function () {
+        Route::get('/regist-eo','AuthController@viewFormRegistEo')->name('eo-user-form');
+        Route::post('/regist-eo', 'AuthController@registEo')->name('eo-user');
+        Route::get('/login-eo', 'AuthController@formLogin')->name('eo-user-form')->middleware('block-tenant-user:tenantuser');
+        Route::post('/login-eo', 'AuthController@login')->name('eo-user');
+    });
+    Route::namespace('Tenant')->name('regist.')->group(function () { 
+        Route::get('/regist-tenant', 'AuthController@viewFormRegistTenant')->name('tenant-user-form');
+        Route::post('/regist-tenant', 'AuthController@registTenant')->name('tenant-user');
+        Route::get('/login-tenant', 'AuthController@formLogin')->name('tenant-user-form')->middleware('block-eo-user:eouser');
+        Route::post('/login-tenant', 'AuthController@login')->name('tenant-user');
+    });
 });
 
 Route::get('/unauthorized', function() {
