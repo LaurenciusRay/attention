@@ -5,7 +5,7 @@ namespace App\Http\Controllers\events;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\EventOrganizer\Detail\EventOrganizerRepository;
-use App\EventOrganizer\User\EoUser;
+use App\EventOrganizer\User\EventOrganizerUser;
 
 class EventOrganizerController extends Controller
 {
@@ -14,7 +14,7 @@ class EventOrganizerController extends Controller
     {
         $this->eventRepo = $eventRepo;
     }
-    public function index(EoUser $eventorganizer)
+    public function index(EventOrganizerUser $eventorganizer)
     {
         $eventSelection = $this->eventRepo->eventSelection($eventorganizer);
         return view('events.user.index')->with('eventorganizer', $eventorganizer)->with('eventSelection', $eventSelection);

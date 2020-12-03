@@ -4,17 +4,17 @@ namespace App\Http\Controllers\Frontend\Auth\Login;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Login\LoginEoUser as ValidationLoginEo;
-use App\EventOrganizer\User\EoLoginRepository;
+use App\EventOrganizer\User\EventOrganizerUserRepository;
 use Auth;
 
 class EoLoginController extends Controller
 {
-    private $eoLoginRepository;
+    private $eventOrgUserRepo;
 
-    public function __construct(EoLoginRepository $eoLoginRepository)
+    public function __construct(EventOrganizerUserRepository $eventOrgUserRepo)
     {
         $this->middleware('guest:eouser')->except('logout');
-        $this->eoLoginRepository = $eoLoginRepository;
+        $this->eventOrgUserRepo = $eventOrgUserRepo;
     }
 
     public function formLogin()
@@ -29,6 +29,6 @@ class EoLoginController extends Controller
             return redirect()->intended('/');
         }
 
-        return $this->eoLoginRepository->loginFailed();
+        return $this->eventOrgUserRepo->loginFailed();
     }
 }

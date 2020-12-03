@@ -9,7 +9,7 @@ use App\EventOrganizer\Detail\EventOrganizerRepository;
 use App\EventOrganizer\Detail\EventOrganizer;
 use App\EventOrganizer\Booth\BoothDetail;
 use App\EventOrganizer\Category\EventOrganizerCategory;
-use App\EventOrganizer\User\EoUser;
+use App\EventOrganizer\User\EventOrganizerUser;
 use App\Http\Controllers\Controller;
 
 class EventsController extends Controller

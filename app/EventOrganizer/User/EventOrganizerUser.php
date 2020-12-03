@@ -5,7 +5,7 @@ namespace App\EventOrganizer\User;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class EoUser extends Authenticatable
+class EventOrganizerUser extends Authenticatable
 {
     use Notifiable;
 

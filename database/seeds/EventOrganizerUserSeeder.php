@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 
-class EoUserSeeder extends Seeder
+class EventOrganizerUserSeeder extends Seeder
 {
     /**
      * Run the database seeds.

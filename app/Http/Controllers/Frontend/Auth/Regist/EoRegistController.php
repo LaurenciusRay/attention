@@ -3,17 +3,17 @@
 namespace App\Http\Controllers\Frontend\Auth\Regist;
 
 use Auth;
-use App\EventOrganizer\User\EoRegistRepository;
 use App\Http\Controllers\Controller;
+use App\EventOrganizer\User\EventOrganizerUserRepository;
 use App\Http\Requests\Regist\RegistEoUser as ValidationRegistEo;
 
 class EoRegistController extends Controller
 {
-    private $eoRegistRepository;
+    private $eventOrgUserRepo;
 
-    public function __construct(EoRegistRepository $eoRegistRepository)
+    public function __construct(EventOrganizerUserRepository $eventOrgUserRepo)
     {
-        $this->eoRegistRepository = $eoRegistRepository;
+        $this->eventOrgUserRepo = $eventOrgUserRepo;
     }
 
     public function viewFormRegistEo()
@@ -27,7 +27,7 @@ class EoRegistController extends Controller
 
     public function registEo(ValidationRegistEo $request)
     {
-        $this->eoRegistRepository->createEoUser($request);
+        $this->eventOrgUserRepo->createEventOrganizerUser($request);
 
         return redirect()->route('login.eo-user-form');
     }

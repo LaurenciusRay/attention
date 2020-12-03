@@ -16,7 +16,7 @@ class EventOrganizer extends Model
     }
     public function eo_users()
     {
-        return $this->belongsTo('App\EventOrganizer\User\EoUser');
+        return $this->belongsTo('App\EventOrganizer\User\EventOrganizerUser');
     }
     public function deleteImage()
     {
