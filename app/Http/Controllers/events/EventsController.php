@@ -38,7 +38,7 @@ class EventsController extends Controller
      */
     public function create()
     {
-        return view('events.create')->with('category', EventOrganizerCategory::all());
+        return view('events.create')->with('eventCategories', EventOrganizerCategory::all());
     }
 
     public function createbooth($title, $capacity)
@@ -49,7 +49,6 @@ class EventsController extends Controller
 
     public function addbooth(Request $request)
     {
-
         foreach ($request->booth as $key => $value) {
             BoothDetail::create($value);
         }
@@ -66,10 +65,13 @@ class EventsController extends Controller
      */
     public function store(CreateEventsRequest $request)
     {
-        $this->eventRepo->storeEvent($request);
+        $result = $this->eventRepo->storeEvent($request);
+        if(!$result['status']){
+            alertNotify(false, $result['message'], $request);
+        }
         session()->flash('success', 'Event Created Successfully');
-        $title = $request->title;
-        $capacity = $request->capacity;
+        $title = $result['message']->title;
+        $capacity = $result['message']->capacity;
         return redirect(route('createboothnew', compact('title', 'capacity')));
     }
 

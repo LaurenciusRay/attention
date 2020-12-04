@@ -60,7 +60,7 @@
                                 @endif
                             @endif
                             >
-                            {{ $eoDc->name }}
+                            {{ $category->name }}
                         </option>
                         @endforeach
                     </select>

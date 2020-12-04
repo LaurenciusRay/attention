@@ -33,7 +33,6 @@
 </div>
 </div>
 @endforeach
-<<<<<<< HEAD
 </div>
 <div class="row d-flex justify-content-center my-2">
         {{ $data->appends(['search' => request()->query('search')])->links() }}
@@ -42,11 +41,4 @@
 
 @section('css_link')
 <link href="{{asset('css/events/eventlist.css')}}" rel="stylesheet" type="text/css" />
-=======
-
-</div>
-
-
-
->>>>>>> 4c054b720230adf161d6382ddb64df95cd9e20b8
 @endsection

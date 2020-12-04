@@ -83,7 +83,7 @@ return [
 
         'eousers' => [
             'driver' => 'eloquent',
-            'model' => App\EventOrganizer\User\EoUser::class,
+            'model' => App\EventOrganizer\User\EventOrganizerUser::class,
         ],
 
         'tenantusers' => [

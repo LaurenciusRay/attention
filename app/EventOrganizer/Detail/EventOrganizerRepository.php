@@ -7,6 +7,7 @@ use App\EventOrganizer\Image\EventOrganizerGallery;
 use App\EventOrganizer\Booth\BoothDetail;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class EventOrganizerRepository
 {
@@ -15,26 +16,34 @@ class EventOrganizerRepository
         // Store Image file
         $image = $request->image->store('events');
         $imagelayout = $request->image_layout->store('events');
+        DB::beginTransaction();
         // Storing Post
-        $event = EventOrganizer::create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'capacity' => $request->capacity,
-            'image' => $image,
-            'image_layout' => $imagelayout,
-            'start_date' => $request->start_date,
-            'end_date' => $request->end_date,
-            'eo_detail_categories_id' => $request->category,
-            'eo_users_id' => $request->user_id,
-        ]);
-        foreach ($request->images as $images)
-        {
-            $filename = $images->store('events');
-            $store = EventOrganizerGallery::create([
-                'eo_details_id' => $event->id,
-                'images' => $filename
+        try{
+            $event = EventOrganizer::create([
+                'title' => $request->title,
+                'description' => $request->description,
+                'capacity' => $request->capacity,
+                'image' => $image,
+                'image_layout' => $imagelayout,
+                'start_date' => $request->start_date,
+                'end_date' => $request->end_date,
+                'eo_detail_categories_id' => $request->category,
+                'eo_users_id' => $request->user_id,
             ]);
-        };
+            foreach ($request->images as $images)
+            {
+                $filename = $images->store('events');
+                $store = EventOrganizerGallery::create([
+                    'eo_details_id' => $event->id,
+                    'images' => $filename
+                ]);
+            };
+        } catch(\Exception $e){
+            return returnResult($e->getMessage());
+        }
+        DB::commit();
+
+        return returnResult($event, true);
     }
     public function DaysLeftEvent($event)
     {

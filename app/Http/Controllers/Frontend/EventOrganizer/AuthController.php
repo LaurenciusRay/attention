@@ -44,8 +44,11 @@ class AuthController extends Controller
 
     public function registEo(ValidationRegistEo $request)
     {
-        $this->eventOrgUserRepo->createEventOrganizerUser($request);
-
+        $result = $this->eventOrgUserRepo->createEventOrganizerUser($request);
+        if(!$result['status']){
+            alertNotify(false, $result['message'], $request);
+	        return redirect()->back();
+        }
         return redirect()->route('login.eo-user-form');
     }
 }
