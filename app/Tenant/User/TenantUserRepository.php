@@ -4,6 +4,7 @@ namespace App\Tenant\User;
 
 use App\Tenant\User\TenantUser;
 use App\Tenant\Product\TenantProduct;
+use Illuminate\Support\Facades\Hash;
 
 class TenantUserRepository{
   
@@ -38,17 +39,22 @@ class TenantUserRepository{
             ]);
     }
 
-    public function createTenantUser(Request $request)
+    public function createTenantUser($request)
     {
-        $photo = $request->file('photo');
-        $photoName = time() . "_" . $photo->getClientOriginalName();
-        $path = $photo->storeAs('TenantPhotos', $photoName);
-        return TenantUser::create([
-            'name' => $request['name'],
-            'image_banner' => $path,
-            'description' => $request['description'],
-            'email' => $request['email'],
-            'password' => Hash::make($request['password']),
-        ]);
+        try{
+            $photo = $request->file('photo');
+            $photoName = time() . "_" . $photo->getClientOriginalName();
+            $path = $photo->storeAs('TenantPhotos', $photoName);
+            TenantUser::create([
+                'name' => $request['name'],
+                'image_banner' => $path,
+                'description' => $request['description'],
+                'email' => $request['email'],
+                'password' => Hash::make($request['password']),
+            ]);
+            return returnResult('', true);
+        }catch(\Exception $e){
+            return returnResult($e->getMessage());
+        }
     }
 }

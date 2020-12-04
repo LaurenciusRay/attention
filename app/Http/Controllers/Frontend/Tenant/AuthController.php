@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Frontend\Auth\Login;
+namespace App\Http\Controllers\Frontend\Tenant;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Login\LoginTenantUser as ValidationLoginTenant;
@@ -9,7 +9,7 @@ use App\Tenant\Auth\TenantLoginRepository;
 use App\Tenant\User\TenantUserRepository;
 use Auth;
 
-class TenantLoginController extends Controller
+class AuthController extends Controller
 {
     private $tenantUserRepo;
 
@@ -44,8 +44,11 @@ class TenantLoginController extends Controller
 
     public function registTenant(ValidationRegistTenant $request)
     {
-        $this->tenantUserRepo->createTenantUser($request);
-
+        $result = $this->tenantUserRepo->createTenantUser($request);
+        if(!$result['status']){
+            alertNotify(false, $result['message'], $request);
+	        return redirect()->back();
+        }
         return redirect()->route('login.tenant-user-form');
     }
 }

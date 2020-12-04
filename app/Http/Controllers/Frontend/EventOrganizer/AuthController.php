@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Frontend\Auth\Login;
+namespace App\Http\Controllers\Frontend\EventOrganizer;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Login\LoginEoUser as ValidationLoginEo;
@@ -8,7 +8,7 @@ use App\Http\Requests\Regist\RegistEoUser as ValidationRegistEo;
 use App\EventOrganizer\User\EventOrganizerUserRepository;
 use Auth;
 
-class EoLoginController extends Controller
+class AuthController extends Controller
 {
     private $eventOrgUserRepo;
 

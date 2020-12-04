@@ -8,6 +8,9 @@
                     background: linear-gradient(to right, #5e02f5, #3e0b91); color:#fff;">
                 <h3>Tenant<br>Register</h3>
             </div>
+            @if(Session::has('alert-class'))
+                <div class="text-center alert alert-{{ (Session::get('alert-class') == "success") ? "success" : "danger" }}" role="alert">{{ Session::get('status') }}</div>
+            @endif
             <div class="px-5 pb-5">
                 <form method="POST" action="{{ route('regist.tenant-user') }} " enctype="multipart/form-data">
                     @csrf
