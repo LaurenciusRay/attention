@@ -142,7 +142,7 @@
                         <!-- Card Profile -->
                         <div class="card" style="width: 18rem;">
                             <div class="img">
-                                <img src="{{ Gravatar::src('raymondantonio587@gmail.com') }}" class="card-img-top" alt="...">
+                                <img src="" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title">{{ $event->eo_users->name }}</h5>

@@ -31,4 +31,8 @@ class EventOrganizer extends Model
         }
         return $event;
     }
+
+    public function getFirstTitleAttribute(){
+        return strtok($this->title, " ");
+    }
 }

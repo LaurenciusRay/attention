@@ -21,9 +21,9 @@
 </div>
 <div class="container">
     <div class="row">
-        @forelse($event as $e)
+        @forelse($events as $e)
         <div class="card filter {{$e->eo_detail_categories_id}}">
-            <strong class="mt-4">{{$e->title}}</strong>
+            <strong class="mt-4">{{$e->first_title}}. . .</strong>
             <img id="imageEventList" class="label" src="{{asset('storage/'.$e->image)}}" width="100%" height="200px"
                 alt="card image event list">
             <div class="text1">
@@ -45,7 +45,7 @@
         @endforelse
     </div>
     <div class="row d-flex justify-content-center my-2">
-        {{ $event->appends(['search' => request()->query('search')])->links() }}
+        {{ $events->appends(['search' => request()->query('search')])->links() }}
     </div>
 </div>
 <!-- end card event list  -->

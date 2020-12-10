@@ -15,7 +15,7 @@
         <div class="row pb-4">
             <div id="profile" class="col-3 col-md-2">
                 <div class="border border-white">
-                    <img src="{{ Gravatar::src('raymondantonio587@gmail.com') }}" class="card-img-top" alt="...">
+                    <img src="" class="card-img-top" alt="...">
                 </div>
             </div>
             <div class="col-3">

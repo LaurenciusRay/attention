@@ -26,9 +26,9 @@ class EventsController extends Controller
      */
     public function index()
     {
-        $event = $this->eventRepo->eventShowed();
+        $events = $this->eventRepo->eventShowed();
         $category = EventOrganizerCategory::all();
-        return view('events.index', compact('event', 'category'));
+        return view('events.index', compact('events', 'category'));
     }
 
     /**
