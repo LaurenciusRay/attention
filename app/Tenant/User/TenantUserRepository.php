@@ -13,21 +13,17 @@ class TenantUserRepository{
         $result = TenantProduct::all()->where('tenant_users_id', '==', $productUser->id);
         return $result;
     }
-    public function tenantShowed()
+    public function getTenants($filters = [])
     {
-        $search = request()->query('search');
+        $data   =   TenantUser::with([]);
+        if(!empty($filters['name'])){
+            $data   = $data->where('name', 'LIKE', "%{$filters['name']}%");  
+        }
+        if(!empty($filters['email'])){
+            $data   = $data->where('email', $filters['email']);
+        }
 
-        // testing
-        
-        if($search)
-        {
-            $result = TenantUser::where('title', 'LIKE', "%{$search}%")->filtercategory()->paginate(8);
-        }
-        else
-        {
-            $result = TenantUser::paginate(16);
-        }
-        return $result;
+        return $data->paginate(25);
     }
 
     public function loginFailed()
